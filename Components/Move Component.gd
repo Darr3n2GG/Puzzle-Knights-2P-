@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
 @onready var anim : Node = $Sprite2D
+
 const speed : float = 200.0
 const jump_vel : float = -300.0
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
+@export var controls : Resource = null
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -14,13 +16,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("reset"):
 		global_position = Vector2(0, -10)
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed(controls.up) and is_on_floor():
 		velocity.y = jump_vel
 
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed(controls.right):
 		anim.flip_h = false
 		global_position.x += speed * delta
-	elif Input.is_action_pressed("left"):
+	elif Input.is_action_pressed(controls.left):
 		anim.flip_h = true
 		global_position.x -= speed * delta
 	else:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh6mn3lr4n2db"]
+[gd_scene load_steps=5 format=3 uid="uid://dh6mn3lr4n2db"]
 
 [ext_resource type="Script" path="res://Components/Move Component.gd" id="1_cksij"]
 [ext_resource type="Texture2D" uid="uid://caeaf7v4hil5g" path="res://Characters/Player 1/miner.jpg" id="1_q8mui"]
+[ext_resource type="Resource" uid="uid://deqgd3ry1p2rn" path="res://Resources/p1_controls.tres" id="2_20owb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2t2v"]
 radius = 5.0
@@ -10,6 +11,7 @@ height = 14.0
 [node name="Player 1" type="CharacterBody2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_cksij")
+controls = ExtResource("2_20owb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_q8mui")
