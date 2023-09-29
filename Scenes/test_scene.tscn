@@ -9,9 +9,10 @@
 [node name="floor" parent="." instance=ExtResource("1_d2xbe")]
 
 [node name="Player 1" parent="." instance=ExtResource("2_evenl")]
-position = Vector2(40, -52)
+position = Vector2(-72, -48)
 
 [node name="Player 2" parent="." instance=ExtResource("3_p0u6q")]
-position = Vector2(-93, -62)
+position = Vector2(75, -49)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)

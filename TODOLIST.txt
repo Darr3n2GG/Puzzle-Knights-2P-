@@ -1,0 +1,21 @@
+TO DO LIST:
+	Must ->
+	1. Program Characters
+		P1 - attack
+			 dash
+		P2 - place block (can place with tilemap or create a rigid body 2d)
+			 double jump
+	2. Draw Characters
+		P1 - Combat Knight
+			 (a samurai from Japan, skilled with a katana, wears samurai armor)
+		P2 - Block Knight
+			 (an adventurer from somewhere in europe idk, loves travelling, always carries a backpack 
+			  filled with many different blocks, wears leather clothing with a metal helmet)
+	3. Program Split Screen (Darr3n)
+	4. Draw Tileset
+	
+	Optional ->
+	1. Create temporary tilemap
+	2. Think of puzzle ideas (list here)
+		-
+	3. Draw Concept Art (place in concept art folder or send in whatsapp)
