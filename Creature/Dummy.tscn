@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbo3pmm3wx10q"]
+
+[ext_resource type="Texture2D" uid="uid://cl7s3d0qedkgl" path="res://Creature/Barrel.png" id="1_186f0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1b8"]
+size = Vector2(14, 16.25)
+
+[node name="Dummy" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.68221e-07, -6.4075e-07)
+scale = Vector2(0.112, 0.116788)
+texture = ExtResource("1_186f0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.125)
+shape = SubResource("RectangleShape2D_wu1b8")

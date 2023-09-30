@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://prdbs88kvp45"]
+[gd_scene load_steps=5 format=3 uid="uid://prdbs88kvp45"]
 
 [ext_resource type="PackedScene" uid="uid://db7y1wj8h4wcq" path="res://Resources/platform nodes.tscn" id="1_d2xbe"]
 [ext_resource type="PackedScene" uid="uid://dh6mn3lr4n2db" path="res://Characters/Player 1/player_1.tscn" id="2_evenl"]
 [ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Player 2/player_2.tscn" id="3_p0u6q"]
+[ext_resource type="PackedScene" uid="uid://bbo3pmm3wx10q" path="res://Creature/Dummy.tscn" id="4_twp03"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,3 +17,6 @@ position = Vector2(75, -49)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="Dummy" parent="." instance=ExtResource("4_twp03")]
+position = Vector2(-20, -29)
