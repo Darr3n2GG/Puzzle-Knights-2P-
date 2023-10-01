@@ -1,7 +1,7 @@
 TO DO LIST:
 	Must ->
 	1. Program Characters
-		P1 - attack 
+		P1 - attack
 			 dash
 		P2 - place block (can place with tilemap or create a rigid body 2d)
 			 double jump
