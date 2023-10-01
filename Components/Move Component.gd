@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 const speed : float = 200.0
 const jump_vel : float = -300.0
+const push_force = 40.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -33,6 +34,10 @@ func _physics_process(delta):
 		
 	move_and_slide()
 #	update_animation()
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 #
 #
 #func update_animation():

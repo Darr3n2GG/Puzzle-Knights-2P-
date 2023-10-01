@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbo3pmm3wx10q"]
+[gd_scene load_steps=4 format=3 uid="uid://bbo3pmm3wx10q"]
 
 [ext_resource type="Texture2D" uid="uid://cl7s3d0qedkgl" path="res://Creature/Barrel.png" id="1_186f0"]
+[ext_resource type="Script" path="res://Creature/Dummy.gd" id="1_sexp4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1b8"]
 size = Vector2(14, 16.25)
 
-[node name="Dummy" type="CharacterBody2D"]
+[node name="Dummy" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 5
+max_contacts_reported = 3
+contact_monitor = true
+script = ExtResource("1_sexp4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2.68221e-07, -6.4075e-07)
