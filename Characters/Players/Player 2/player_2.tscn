@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcqvvf88xlpis"]
+
+[ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_1r7u3"]
+[ext_resource type="Resource" uid="uid://djypgp1f3hkb3" path="res://Resources/p2_controls.tres" id="2_iea8n"]
+[ext_resource type="Texture2D" uid="uid://caeaf7v4hil5g" path="res://Characters/Players/Player 1/miner.jpg" id="3_4j30x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vah8s"]
+size = Vector2(10, 15)
+
+[node name="Player 2" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_1r7u3")
+controls = ExtResource("2_iea8n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.52549, 1, 1)
+texture = ExtResource("3_4j30x")
+region_enabled = true
+region_rect = Rect2(3, 1, 10, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vah8s")

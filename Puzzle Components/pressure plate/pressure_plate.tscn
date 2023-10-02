@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://bghlqie32d02s"]
+
+[ext_resource type="Script" path="res://Puzzle Components/pressure plate/pp_1.gd" id="1_6maro"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ix0"]
+size = Vector2(573, 67)
+
+[sub_resource type="Animation" id="Animation_tt0k6"]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shape2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0d8k6"]
+_data = {
+"Move": SubResource("Animation_tt0k6")
+}
+
+[node name="pressure plate" type="Node2D" node_paths=PackedStringArray("input_area")]
+position = Vector2(0, -1)
+scale = Vector2(0.0351225, 0.0296857)
+script = ExtResource("1_6maro")
+input_area = NodePath("Area_pp")
+
+[node name="Area_pp" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_pp"]
+position = Vector2(-0.5, 33.5)
+shape = SubResource("RectangleShape2D_v1ix0")
+
+[node name="Shape2D" type="Polygon2D" parent="."]
+position = Vector2(0, 34)
+scale = Vector2(16.875, 16.875)
+color = Color(0.45098, 0.45098, 0.45098, 1)
+polygon = PackedVector2Array(-17, -2, 17, -2, 17, 2, -17, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0d8k6")
+}
+
+[connection signal="body_exited" from="Area_pp" to="." method="_on_area_pp_body_exited"]

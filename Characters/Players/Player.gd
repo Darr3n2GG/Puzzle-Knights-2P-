@@ -34,10 +34,10 @@ func _physics_process(delta):
 		
 	move_and_slide()
 #	update_animation()
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody2D:
-			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+	for last_collided in get_slide_collision_count():
+		var collided = get_slide_collision(last_collided)
+		if collided.get_collider() is RigidBody2D:
+			collided.get_collider().apply_central_impulse(Vector2(-collided.get_normal().x * push_force,0))
 #
 #
 #func update_animation():

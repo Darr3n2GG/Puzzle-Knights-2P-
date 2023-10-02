@@ -1,5 +1,5 @@
 extends RigidBody2D
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_just_pressed("reset"):
-		global_position = Vector2(0, -10)
+		global_position = Vector2(0, -50)
