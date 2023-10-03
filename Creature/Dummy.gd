@@ -27,4 +27,4 @@ func damaged():
 		print("Stop vandalism! Barrel health:", health)
 		if health <= 0:
 			self.queue_free()
-			print("I said STOP!!! You have broken the barrel!")
+			print("I said STOP!!! What have you done?!")

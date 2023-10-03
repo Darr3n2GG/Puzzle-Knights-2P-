@@ -56,7 +56,7 @@ func attack():
 	if Input.is_action_just_pressed("1Attack"):
 		print("Bro is trying to attack")
 		global.p1_attacking = true
-		atk.start() #I don't know what's going on here, but I'll fix it
+		atk.start(-1) #What is going on????? I am doing what the online docs taught me!!!
 
 
 func _on_attacking_timeout():
