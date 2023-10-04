@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dcuhx8lvw2h2c"]
 
-[ext_resource type="Script" path="res://Puzzle Components/Exit Door/door_1.gd" id="1_eqeu2"]
+[ext_resource type="Script" path="res://Puzzle Components/Exit Door/Exit_Door.gd" id="1_ki66w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ix0"]
 size = Vector2(573, 67)
@@ -8,7 +8,7 @@ size = Vector2(573, 67)
 [node name="Exit Door" type="Node2D"]
 position = Vector2(0, -20)
 scale = Vector2(0.0306522, 0.606467)
-script = ExtResource("1_eqeu2")
+script = ExtResource("1_ki66w")
 
 [node name="Area_Door" type="Area2D" parent="."]
 collision_layer = 3

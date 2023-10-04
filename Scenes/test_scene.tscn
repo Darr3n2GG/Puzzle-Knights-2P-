@@ -27,3 +27,6 @@ position = Vector2(75, -49)
 
 [node name="Dummy" parent="." instance=ExtResource("4_twp03")]
 position = Vector2(-20, -29)
+
+[connection signal="win" from="Exit Door" to="Player 1" method="_on_exit_door_win"]
+[connection signal="win" from="Exit Door" to="Player 2" method="_on_exit_door_win"]

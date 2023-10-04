@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bna4yjr6e4uji"]
+[gd_scene load_steps=2 format=3 uid="uid://do504vh1r87pv"]
 
-[ext_resource type="Script" path="res://Puzzle Components/Laser/LaserCreate.gd" id="1_4hyjt"]
+[ext_resource type="Script" path="res://Puzzle Components/Laser/Laser.gd" id="1_41o7t"]
 
 [node name="Laser" type="Node2D"]
-script = ExtResource("1_4hyjt")
+script = ExtResource("1_41o7t")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 0)
