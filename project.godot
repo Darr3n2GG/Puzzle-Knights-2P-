@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/splitscreen.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+global="*res://global.gd"
+
 [display]
 
 window/size/viewport_width=640

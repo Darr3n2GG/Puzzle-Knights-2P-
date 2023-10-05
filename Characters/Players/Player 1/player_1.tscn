@@ -17,5 +17,9 @@ texture = ExtResource("3_24ed2")
 region_enabled = true
 region_rect = Rect2(3, 1, 10, 15)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0m543")
+
+[node name="Attacking" type="Timer" parent="."]
+
+[connection signal="timeout" from="Attacking" to="." method="_on_attacking_timeout"]

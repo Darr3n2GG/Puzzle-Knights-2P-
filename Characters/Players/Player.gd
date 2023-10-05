@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var anim : Node = $Sprite2D
+@onready var atk : Node = $Attacking
 
 const speed : float = 200.0
 const jump_vel : float = -300.0
@@ -10,7 +11,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @export var controls : Resource = null
 
+
+
+
 func _physics_process(delta):
+	attack()
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
@@ -38,8 +44,29 @@ func _physics_process(delta):
 		var collided = get_slide_collision(last_collided)
 		if collided.get_collider() is RigidBody2D:
 			collided.get_collider().apply_central_impulse(Vector2(-collided.get_normal().x * push_force,0))
-#
-#
+	
+
+
+func _input(_event):
+	if Input.is_action_just_pressed("2Place"):
+		print("Wait, bro, we haven't add that.")
+		pass
+
+func attack():
+	if Input.is_action_just_pressed("1Attack"):
+		print("Bro is trying to attack")
+		global.p1_attacking = true
+		atk.start(-1) #What is going on????? I am doing what the online docs taught me!!!
+
+
+func _on_attacking_timeout():
+	atk.stop()
+	global.p1_attacking = false
+	
+
+
+
+
 #func update_animation():
 #	if velocity.y < 0:
 #		while not is_on_floor():
