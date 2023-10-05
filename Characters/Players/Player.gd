@@ -57,7 +57,7 @@ func _physics_process(delta):
 #		anim.play("idle")
 
 func _on_exit_door_win(index):
-	print("on the way")
+#	print("on the way")
 	if index == controls.player_index:
 		queue_free()
-		print("function called")
+#		print("function called")
