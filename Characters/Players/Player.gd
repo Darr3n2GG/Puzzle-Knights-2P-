@@ -52,11 +52,11 @@ func _input(_event):
 		print("Wait, bro, we haven't add that.")
 		pass
 
-func attack():
+func attack(): #here needs a code to limit it to work only for p1
 	if Input.is_action_just_pressed("1Attack"):
 		print("Bro is trying to attack")
 		global.p1_attacking = true
-		atk.start(-1) #What is going on????? I am doing what the online docs taught me!!!
+		atk.start(-1) #Timer is only available on P1
 
 
 func _on_attacking_timeout():
