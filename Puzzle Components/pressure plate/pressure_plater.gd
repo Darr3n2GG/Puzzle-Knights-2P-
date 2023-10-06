@@ -18,14 +18,7 @@ func _on_area_pp_body_exited(_body):
 func _on_area_pp_body_entered(_body):
 	if area.has_overlapping_bodies() == true and pp_activated == false:
 		play_animation()
-	
-#
-#func _process(_delta):
-#	if area.has_overlapping_bodies() == true:
-#		pp_activated = true
-#	else:
-#		pp_activated = false
-		
+
 
 func play_animation():
 	if area.has_overlapping_bodies() == true:
