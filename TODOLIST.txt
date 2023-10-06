@@ -1,10 +1,11 @@
 TO DO LIST:
 	Must ->
 	1. Program Characters
-		P1 - attack (Skr)
+		P1 - attack (Skr) >change to hurtbox system for a flexible attack range
 			 dash
 		P2 - place block (can place with tilemap or create a rigid body 2d)
 			 double jump
+		P1&2 - Health system
 	2. Draw Characters
 		P1 - Combat Knight
 			 (a samurai from Japan, skilled with a katana, wears samurai armor)

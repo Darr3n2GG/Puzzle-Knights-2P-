@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://da1c0fs0p4kxp"]
+[gd_scene load_steps=6 format=3 uid="uid://da1c0fs0p4kxp"]
 
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_yjl8x"]
 [ext_resource type="Resource" uid="uid://deqgd3ry1p2rn" path="res://Resources/p1_controls.tres" id="2_g5pru"]
 [ext_resource type="Texture2D" uid="uid://caeaf7v4hil5g" path="res://Characters/Players/Player 1/miner.jpg" id="3_24ed2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah4og"]
+size = Vector2(17, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0m543"]
 size = Vector2(10, 15)
@@ -17,9 +20,18 @@ texture = ExtResource("3_24ed2")
 region_enabled = true
 region_rect = Rect2(3, 1, 10, 15)
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="HurtBox" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(13.5, 0)
+shape = SubResource("RectangleShape2D_ah4og")
+disabled = true
+debug_color = Color(0.937255, 0.25098, 0, 0.419608)
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0m543")
 
 [node name="Attacking" type="Timer" parent="."]
 
+[connection signal="area_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Attacking" to="." method="_on_attacking_timeout"]

@@ -15,6 +15,7 @@ func _physics_process(_delta):
 func _on_hitbox_body_entered(body):
 	if body.has_method("player_1"):
 		p1_attackzone = true
+		print("Get away from that barrel!")
 
 
 func _on_hitbox_body_exited(body):
