@@ -69,9 +69,9 @@ func _input(_event):
 func attack(): 
 	if controls.player_index == 0: #haha bug fixed
 		if Input.is_action_just_pressed("1Attack"):
-			print("Bro is trying to attack")
+			global.damage = 1 #Easier to modify the damage
 			global.p1_attacking = true
-			$Attacking.start() #Timer is only available on P1
+			$Attacking.start() #Will be changed to disable/enable the hurtbox according to animation
 
 func _on_attacking_timeout():
 	$Attacking.stop()
@@ -84,7 +84,3 @@ func _on_player_win(index):
 	if index == controls.player_index:
 		queue_free()
 #		print("function called")
-
-
-func _on_area_2d_area_entered(_area):
-	pass # Replace with function body.

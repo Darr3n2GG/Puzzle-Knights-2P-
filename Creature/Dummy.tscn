@@ -31,5 +31,9 @@ self_modulate = Color(1, 1, 1, 0.996078)
 shape = SubResource("RectangleShape2D_fe7n5")
 debug_color = Color(1, 0, 0.113725, 0.419608)
 
+[node name="Damaged_CD" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Damaged_CD" to="." method="_on_damaged_cd_timeout"]
