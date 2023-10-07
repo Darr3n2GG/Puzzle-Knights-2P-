@@ -5,23 +5,24 @@ extends Node2D
 @export var output_puzzle : Node2D = null
 var pp_activated : bool = false
 
+signal on_pp_activated(activated)
 
 func _ready():
-	area.body_entered.connect(output_puzzle._on_recieve_input)
-	area.body_exited.connect(output_puzzle._on_recieve_input)
+	self.on_pp_activated.connect(output_puzzle._on_recieve_input)
 #	print("signal_connected")
-	
-func _on_area_pp_body_exited(_body):
-	if area.has_overlapping_bodies() == false:
-		play_animation()
 
 func _on_area_pp_body_entered(_body):
-	if area.has_overlapping_bodies() == true and pp_activated == false:
+	if area.has_overlapping_bodies() and not pp_activated:
 		play_animation()
+		on_pp_activated.emit(pp_activated)
 
+func _on_area_pp_body_exited(_body):
+	if not area.has_overlapping_bodies():
+		play_animation()
+		on_pp_activated.emit(pp_activated)
 
 func play_animation():
-	if area.has_overlapping_bodies() == true:
+	if area.has_overlapping_bodies():
 		anim.play("Move")
 		pp_activated = true
 	else:

@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+@onready var hurtbox = get_node("../Player 1")
 var health = 10
 var p1_attackzone = false
 
@@ -13,17 +14,18 @@ func _physics_process(_delta):
 
 
 func _on_hitbox_body_entered(body):
-	if body.has_method("player_1"):
+	if body == hurtbox:
 		p1_attackzone = true
 		print("Get away from that barrel!")
 
 
 func _on_hitbox_body_exited(body):
-	if body.has_method("player_1"):
+	if body == hurtbox:
 		p1_attackzone = false
 
 func damaged():
 	if p1_attackzone and global.p1_attacking:
+		global.damage = 1
 		health = health - global.damage
 		print("Stop vandalism! Barrel health:", health)
 		if health <= 0:

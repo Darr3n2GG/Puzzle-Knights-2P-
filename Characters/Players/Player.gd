@@ -19,13 +19,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("reset"):
 		global_position = Vector2(0, -10)
 	
-	if Input.is_action_just_pressed(controls.up) or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
+	if Input.is_action_just_pressed(controls.up) and is_on_floor(): # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
 		velocity.y = jump_vel
 
-	if Input.is_action_pressed(controls.right) or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
+	if Input.is_action_pressed(controls.right): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
 		anim.flip_h = false
 		global_position.x += speed * delta
-	elif Input.is_action_pressed(controls.left) or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_LEFT):
+	elif Input.is_action_pressed(controls.left): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_LEFT):
 		anim.flip_h = true
 		global_position.x -= speed * delta
 	else:
@@ -71,7 +71,7 @@ func attack():
 		if Input.is_action_just_pressed("1Attack"):
 			print("Bro is trying to attack")
 			global.p1_attacking = true
-			$Attacking.start(-1) #Timer is only available on P1
+			$Attacking.start() #Timer is only available on P1
 
 func _on_attacking_timeout():
 	$Attacking.stop()
@@ -79,12 +79,12 @@ func _on_attacking_timeout():
 
 
 
-func _on_exit_door_win(index):
+func _on_player_win(index):
 #	print("on the way")
 	if index == controls.player_index:
 		queue_free()
 #		print("function called")
 
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	pass # Replace with function body.
