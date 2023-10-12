@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-global="*res://Creature/global.gd"
+global="*res://Resources/Attack.gd"
 
 [display]
 

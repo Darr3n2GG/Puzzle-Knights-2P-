@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv6y7cerjs8r6"
-path="res://.godot/imported/tileset_1-bit_360.png-aadc8fb7d177ee1d7f85f7a6a6353eae.ctex"
+uid="uid://bciqui848gfyw"
+path="res://.godot/imported/screenshot-1.png-853818c8ebc1d6929db34ec072ebf6b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileset_1-bit_360.png"
-dest_files=["res://.godot/imported/tileset_1-bit_360.png-aadc8fb7d177ee1d7f85f7a6a6353eae.ctex"]
+source_file="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/screenshot-1.png"
+dest_files=["res://.godot/imported/screenshot-1.png-853818c8ebc1d6929db34ec072ebf6b4.ctex"]
 
 [params]
 

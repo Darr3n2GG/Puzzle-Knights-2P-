@@ -1,23 +1,22 @@
 extends RigidBody2D
 
-@onready var hurtbox = get_node("../Player 1")
+@onready var hurtbox = get_node("../Player 1/Area2D")
 var health = 5
 var p1_attackzone = false
 var can_damaged = true
 
 
 func _physics_process(_delta):
-	damaged()
-	
 	if Input.is_action_just_pressed("reset"):
 		global_position = Vector2(0, -50)
+	damaged()
 
 
 
 func _on_hitbox_body_entered(body):
-	if body == hurtbox:
+	if body.get_child(2) == hurtbox:
 		p1_attackzone = true
-		print("Get away from that barrel!")
+#		print("Get away from that barrel!")
 
 
 func _on_hitbox_body_exited(body):

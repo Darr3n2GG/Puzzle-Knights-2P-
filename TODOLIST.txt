@@ -2,9 +2,9 @@ TO DO LIST:
 	Must ->
 	1. Program Characters
 		P1 - attack (Skr) >change to hurtbox system for a flexible attack range
-			 dash
+			 pogo ( refer hollow knight )
 		P2 - place block (can place with tilemap or create a rigid body 2d)
-			 double jump
+			 double jump?
 		P1&2 - Health system
 	2. Draw Characters
 		P1 - Combat Knight
