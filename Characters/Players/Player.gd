@@ -2,8 +2,10 @@ extends CharacterBody2D
 
 @onready var anim : Node = $Sprite2D
 
-var coyotetimer : float = 0
+var coyotetimer : float = 0.0
 var has_jumped : bool = false
+var placed_block : bool = false
+var direction : int = 1
 const maxcoyotetime : float = 0.2
 const speed : float = 200.0
 const jump_vel : float = -300.0
@@ -32,9 +34,11 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed(controls.right): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
 		anim.flip_h = false
+		direction = 1
 		global_position.x += speed * delta
 	elif Input.is_action_pressed(controls.left): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_LEFT):
 		anim.flip_h = true
+		direction = -1
 		global_position.x -= speed * delta
 	else:
 		pass
@@ -72,9 +76,14 @@ func push_collision():
 
 
 func _input(_event):
-	if Input.is_action_just_pressed("2Place"): 
-		print("Wait, bro, we haven't add that.") #Place holder code for block placing function
-		pass
+	if controls.player_index == 1:
+		if Input.is_action_just_pressed("2Place"):# and not placed_block: 
+			placed_block = true
+			var block = load("res://Creature/Dummy.tscn")
+			var block_instance = block.instantiate()
+			block_instance.set_name("block")
+			block_instance.global_position = Vector2(global_position.x + 25 * direction,global_position.y)
+			get_owner().add_child(block_instance)
 
 
 
