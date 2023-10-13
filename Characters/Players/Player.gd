@@ -88,11 +88,12 @@ func _input(_event):
 
 
 func attack(attack_damage : int): 
-	if controls.player_index == 0: #haha bug fixed
+	if controls.player_index == 0: 
 		if Input.is_action_just_pressed("1Attack"):
 			global.damage = attack_damage #Easier to modify the damage
+			global.knockback = 10 * direction
 			global.p1_attacking = true
-			$Timers/IsAttacking.start() #Will be changed to disable/enable the hurtbox according to animation
+			$Timers/IsAttacking.start() #Currently a place holder code
 
 func _on_player_win(index):
 #	print("on the way")
