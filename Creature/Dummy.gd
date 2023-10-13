@@ -19,7 +19,8 @@ func _physics_process(_delta):
 func damaged():
 	if p1_attackzone and global.p1_attacking:
 		if can_damaged:
-			health = health - global.damage
+			health -= global.damage
+			global_position.x += global.knockback
 			$Damaged_CD.start()
 			can_damaged = false
 			print("Stop vandalism! Barrel health: ", health)
