@@ -23,17 +23,17 @@ region_rect = Rect2(3, 1, 10, 15)
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0m543")
 
+[node name="Timers" type="Node" parent="."]
+
+[node name="IsAttacking" type="Timer" parent="Timers"]
+wait_time = 0.1
+one_shot = true
+
 [node name="HurtboxArea" type="Area2D" parent="."]
 
 [node name="HurtBox" type="CollisionShape2D" parent="HurtboxArea"]
 position = Vector2(17, 0)
 shape = SubResource("RectangleShape2D_ah4og")
 debug_color = Color(0.937255, 0.25098, 0, 0.419608)
-
-[node name="Timers" type="Node" parent="."]
-
-[node name="IsAttacking" type="Timer" parent="Timers"]
-wait_time = 0.1
-one_shot = true
 
 [connection signal="timeout" from="Timers/IsAttacking" to="." method="_on_is_attacking_timeout"]

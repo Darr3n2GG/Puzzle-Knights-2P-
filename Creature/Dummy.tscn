@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://djo7kll4eugwk"]
+[gd_scene load_steps=5 format=3 uid="uid://djo7kll4eugwk"]
 
 [ext_resource type="Script" path="res://Creature/Dummy.gd" id="1_1ub1h"]
 [ext_resource type="Texture2D" uid="uid://cl7s3d0qedkgl" path="res://Creature/Barrel.png" id="2_7m75l"]
-[ext_resource type="Script" path="res://Creature/Health Component.gd" id="3_2hqev"]
-[ext_resource type="Script" path="res://Creature/HitboxComponent.gd" id="4_6a01x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1b8"]
 size = Vector2(14, 16)
@@ -36,12 +34,5 @@ debug_color = Color(1, 0, 0.113725, 0.419608)
 [node name="Damaged_CD" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
-
-[node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("3_2hqev")
-MaxHealth = null
-
-[node name="HitboxComponent" type="Area2D" parent="."]
-script = ExtResource("4_6a01x")
 
 [connection signal="timeout" from="Damaged_CD" to="." method="_on_damaged_cd_timeout"]
