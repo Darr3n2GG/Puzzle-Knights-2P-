@@ -1,27 +1,20 @@
 extends RigidBody2D
 
-@onready var hurtbox = get_node("../Player 1/Area2D")
-var health = 5
-var p1_attackzone = false
-var can_damaged = true
+@onready var hurtbox = get_node("../Player 1/HurtboxArea")
+var health : float = 5.0
+var p1_attackzone : bool = false
+var can_damaged : bool = true
 
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("reset"):
-		global_position = Vector2(0, -50)
-	damaged()
-
-
-
-func _on_hitbox_body_entered(body):
-	if body.get_child(2) == hurtbox:
-		p1_attackzone = true
-#		print("Get away from that barrel!")
-
-
-func _on_hitbox_body_exited(body):
-	if body == hurtbox:
-		p1_attackzone = false
+	if (weakref(self).get_ref()):
+		if Input.is_action_just_pressed("reset"):
+			global_position = Vector2(0, -50)
+		if hurtbox in $Area2D.get_overlapping_areas():
+			p1_attackzone = true
+		else: 
+			p1_attackzone = false
+		damaged()
 
 func damaged():
 	if p1_attackzone and global.p1_attacking:

@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @onready var anim : Node = $Sprite2D
-
 var coyotetimer : float = 0.0
 var has_jumped : bool = false
 var placed_block : bool = false
@@ -36,10 +35,14 @@ func _physics_process(delta):
 		anim.flip_h = false
 		direction = 1
 		global_position.x += speed * delta
+		if controls.player_index == 0:
+			$HurtboxArea/HurtBox.position.x = 17
 	elif Input.is_action_pressed(controls.left): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_LEFT):
 		anim.flip_h = true
 		direction = -1
 		global_position.x -= speed * delta
+		if controls.player_index == 0:
+			$HurtboxArea/HurtBox.position.x = -17
 	else:
 		pass
 		
@@ -48,7 +51,8 @@ func _physics_process(delta):
 		
 	move_and_slide()
 #	update_animation()
-	attack(1)
+	if controls.player_index == 0 and Input.is_action_just_pressed("1Attack"): #haha bug fixed
+		attack(1)
 	push_collision()
 
 
@@ -88,11 +92,9 @@ func _input(_event):
 
 
 func attack(attack_damage : int): 
-	if controls.player_index == 0: #haha bug fixed
-		if Input.is_action_just_pressed("1Attack"):
-			global.damage = attack_damage #Easier to modify the damage
-			global.p1_attacking = true
-			$Timers/IsAttacking.start() #Will be changed to disable/enable the hurtbox according to animation
+	global.damage = attack_damage #Easier to modify the damage
+	global.p1_attacking = true
+	$Timers/IsAttacking.start() #Will be changed to disable/enable the hurtbox according to animation
 
 func _on_player_win(index):
 #	print("on the way")

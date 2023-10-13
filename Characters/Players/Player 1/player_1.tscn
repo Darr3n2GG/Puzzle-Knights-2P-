@@ -8,7 +8,7 @@
 size = Vector2(10, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah4og"]
-size = Vector2(17, 15)
+size = Vector2(24, 18)
 
 [node name="Player 1" type="CharacterBody2D"]
 collision_mask = 6
@@ -23,12 +23,11 @@ region_rect = Rect2(3, 1, 10, 15)
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0m543")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HurtboxArea" type="Area2D" parent="."]
 
-[node name="HurtBox" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(13.5, 0)
+[node name="HurtBox" type="CollisionShape2D" parent="HurtboxArea"]
+position = Vector2(17, 0)
 shape = SubResource("RectangleShape2D_ah4og")
-disabled = true
 debug_color = Color(0.937255, 0.25098, 0, 0.419608)
 
 [node name="Timers" type="Node" parent="."]

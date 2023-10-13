@@ -7,7 +7,7 @@
 size = Vector2(14, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fe7n5"]
-size = Vector2(38.5, 30.5)
+size = Vector2(28, 16)
 
 [node name="Dummy" type="RigidBody2D"]
 collision_layer = 2
@@ -35,6 +35,4 @@ debug_color = Color(1, 0, 0.113725, 0.419608)
 wait_time = 0.5
 one_shot = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="Damaged_CD" to="." method="_on_damaged_cd_timeout"]
