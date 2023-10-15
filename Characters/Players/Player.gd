@@ -5,6 +5,7 @@ var coyotetimer : float = 0.0
 var has_jumped : bool = false
 var placed_block : bool = false
 var direction : int = 1
+var last_detected : Array = []
 const maxcoyotetime : float = 0.2
 const speed : float = 200.0
 const jump_vel : float = -300.0
@@ -46,13 +47,17 @@ func _physics_process(delta):
 	else:
 		pass
 		
+	if controls.player_index == 0 and Input.is_action_just_pressed("1Attack"): #haha bug fixed
+		Attack(1)
+		
 	if position.y > 5000:
 		global_position = Vector2(0, 0)
 		
 	move_and_slide()
+	
 #	update_animation()
-	if controls.player_index == 0 and Input.is_action_just_pressed("1Attack"): #haha bug fixed
-		attack(1)
+
+
 	push_collision()
 
 
@@ -86,15 +91,15 @@ func _input(_event):
 			var block = load("res://Creature/Dummy.tscn")
 			var block_instance = block.instantiate()
 			block_instance.set_name("block")
-			block_instance.global_position = Vector2(global_position.x + 25 * direction,global_position.y)
+			block_instance.global_position.x = global_position.x + 25 * direction
 			get_owner().add_child(block_instance)
 
 
 
-func attack(attack_damage : int): 
-	global.damage = attack_damage #Easier to modify the damage
-	global.knockback = 10 * direction
-	global.p1_attacking = true
+func Attack(attack_damage : int): 
+	attack.damage = attack_damage #Easier to modify the damage
+	attack.knockback = 200 * direction
+	attack.p1_attacking = true
 	$Timers/IsAttacking.start() #Currently a place holder code
 
 func _on_player_win(index):
@@ -104,4 +109,4 @@ func _on_player_win(index):
 #		print("function called")
 
 func _on_is_attacking_timeout():
-	global.p1_attacking = false
+	attack.p1_attacking = false
