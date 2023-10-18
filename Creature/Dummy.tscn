@@ -39,7 +39,6 @@ one_shot = true
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_2hqev")
-MaxHealth = null
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 script = ExtResource("4_6a01x")

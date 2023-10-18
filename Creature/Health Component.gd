@@ -8,8 +8,8 @@ var health : int
 func _ready():
 	health = MaxHealth
 
-func damage(attack:Attack): #Bruh I need to watch another video to know how to fix this, worst tutorial ever
-	health -= attack.attack_damage
+func damage(): #Bruh the code is already included
+	health -= global.damage
 	if health <= 0:
 		get_parent().queue_free()
 

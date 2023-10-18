@@ -1,10 +1,10 @@
 extends Area2D
 
-@export var hc : Com_HP  #I declared but could not find it?
+@export var hc : Com_HP  
 
 
 
-func damage(attack:Attack): #Same thing again
+func damage(): #Same thing again
 	if hc:
-		hc.damage(attack)
+		hc.damage()
 
