@@ -142,11 +142,14 @@ func Attack(attack_damage : int):
 	attack.p1_attacking = true
 	$Timers/IsAttacking.start() #Currently a place holder code
 
+func _on_is_attacking_timeout():
+	global.p1_attacking = false
+
+
+
 func _on_player_win(index):
 #	print("on the way")
 	if index == controls.player_index:
 		queue_free()
 #		print("function called")
 
-func _on_is_attacking_timeout():
-	attack.p1_attacking = false
