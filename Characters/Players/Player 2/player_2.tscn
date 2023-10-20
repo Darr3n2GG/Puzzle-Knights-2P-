@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcqvvf88xlpis"]
+[gd_scene load_steps=6 format=3 uid="uid://bcqvvf88xlpis"]
 
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_1r7u3"]
 [ext_resource type="Resource" uid="uid://djypgp1f3hkb3" path="res://Resources/p2_controls.tres" id="2_iea8n"]
 [ext_resource type="Texture2D" uid="uid://caeaf7v4hil5g" path="res://Characters/Players/Player 1/miner.jpg" id="3_4j30x"]
+[ext_resource type="Texture2D" uid="uid://cl7s3d0qedkgl" path="res://Creature/Barrel.png" id="4_d63ff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vah8s"]
 size = Vector2(10, 15)
@@ -20,3 +21,11 @@ region_rect = Rect2(3, 1, 10, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vah8s")
+
+[node name="Block" type="Sprite2D" parent="."]
+position = Vector2(5.68434e-14, -16)
+scale = Vector2(0.112, 0.116788)
+texture = ExtResource("4_d63ff")
+
+[node name="Carry_State_Collision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-7, -24, -7, -8, 7, -8, 7, -24)

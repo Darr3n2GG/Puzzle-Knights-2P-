@@ -1,19 +1,42 @@
+##CharacterBody2d script that is used by player nodes to move, jump, attack, place/carry blocks, die, win and more
 extends CharacterBody2D
 
+##Player Animation Node
 @onready var anim : Node = $Sprite2D
+##Counts the amount of sec times delta that time has passed when not on floor
 var coyotetimer : float = 0.0
+##Checks if player has jumped
 var has_jumped : bool = false
-var placed_block : bool = false
+##Direction a player is facing in int value
 var direction : int = 1
-var last_detected : Array = []
-const maxcoyotetime : float = 0.2
-const speed : float = 200.0
-const jump_vel : float = -300.0
-const push_force = 40.0
 
+enum states
+{
+	carry,
+	placed
+}
+
+var p1_states = states.placed
+
+var has_block : bool = false
+##Max amount of time in sec that player can coyote jump when not on floor
+const maxcoyotetime : float = 0.2
+##Speed value of player
+const speed : float = 200.0
+##Jump velocity value of player
+const jump_vel : float = -300.0
+##Amount of push force player can exert on rigid bodies
+const push_force : float = 40.0
+
+##Gravity from project settings
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+##Control resource for two player controls, resources using control.gd can be dragged to this variable in th editor
 @export var controls : Resource = null
+
+func _ready():
+	$Block.visible = false
+	$Carry_State_Collision.disabled = true
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -54,12 +77,8 @@ func _physics_process(delta):
 		global_position = Vector2(0, 0)
 		
 	move_and_slide()
-	
 #	update_animation()
-
-
 	push_collision()
-
 
 #func update_animation():
 #	if velocity.y < 0:
@@ -77,26 +96,47 @@ func _physics_process(delta):
 #	else:
 #		anim.play("idle")
 
+##Adds collision to rigid bodies
 func push_collision():
 	for last_collided in get_slide_collision_count():
 		var collided = get_slide_collision(last_collided)
 		if collided.get_collider() is RigidBody2D:
 			collided.get_collider().apply_central_impulse(Vector2(-collided.get_normal().x * push_force,0))
 
-
 func _input(_event):
 	if controls.player_index == 1:
-		if Input.is_action_just_pressed("2Place"):# and not placed_block: 
-			placed_block = true
-			var block = load("res://Creature/Dummy.tscn")
-			var block_instance = block.instantiate()
-			block_instance.set_name("block")
-			block_instance.global_position.x = global_position.x + 25 * direction
-			get_owner().add_child(block_instance)
+		if Input.is_action_just_pressed("2PlaceOrCarry"):# and not placed_block: 
+			match p1_states:
+				states.placed:
+					if not has_block:
+						Place_Block()
+					else:
+						Place_Block_On_Floor()
+				states.carry:
+					pass
 
+##Places a block with carry state
+func Place_Block(): 
+	var block = load("res://Creature/Dummy.tscn")
+	var block_instance = block.instantiate()
+	block_instance.set_name("block")
+	block_instance.global_position.x = global_position.x + 25 * direction
+	get_owner().add_child(block_instance)
+	block_instance.On_Placed()
+	p1_states = states.carry
+	has_block = true
+	
+func Place_Block_On_Floor():
+	$Block.visible = false
+	$Carry_State_Collision.disabled = true
+	
+	
+func Carry_Block():
+	$Block.visible = true
+	$Carry_State_Collision.disabled = false
 
-
-func Attack(attack_damage : int): 
+##Attacks enemies with knockback
+func Attack(attack_damage : int):
 	attack.damage = attack_damage #Easier to modify the damage
 	attack.knockback = 200 * direction
 	attack.p1_attacking = true
