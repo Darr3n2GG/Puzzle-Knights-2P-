@@ -130,7 +130,6 @@ func Place_Block_On_Floor():
 	$Block.visible = false
 	$Carry_State_Collision.disabled = true
 	
-	
 func Carry_Block():
 	$Block.visible = true
 	$Carry_State_Collision.disabled = false
@@ -143,9 +142,7 @@ func Attack(attack_damage : int):
 	$Timers/IsAttacking.start() #Currently a place holder code
 
 func _on_is_attacking_timeout():
-	global.p1_attacking = false
-
-
+	attack.p1_attacking = false
 
 func _on_player_win(index):
 #	print("on the way")
