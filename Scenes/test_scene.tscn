@@ -18,7 +18,7 @@ output_puzzle = NodePath("../Exit Door")
 position = Vector2(236, -40)
 
 [node name="floor" parent="." instance=ExtResource("1_d2xbe")]
-position = Vector2(1, 34)
+position = Vector2(1, 32)
 
 [node name="Player 1" parent="." instance=ExtResource("2_evenl")]
 position = Vector2(-72, -48)

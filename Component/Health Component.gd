@@ -17,6 +17,7 @@ func damage():
 		can_damaged = false
 		print(Name, " health: ", health)
 		if health <= 0:
+			get_parent().die()
 			get_parent().queue_free()
 			print(Name, " is killed")
 
