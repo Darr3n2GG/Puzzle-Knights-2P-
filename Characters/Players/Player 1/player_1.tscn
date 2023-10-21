@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://da1c0fs0p4kxp"]
+[gd_scene load_steps=10 format=3 uid="uid://da1c0fs0p4kxp"]
 
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_yjl8x"]
 [ext_resource type="Resource" uid="uid://deqgd3ry1p2rn" path="res://Resources/p1_controls.tres" id="2_g5pru"]
 [ext_resource type="Texture2D" uid="uid://caeaf7v4hil5g" path="res://Characters/Players/Player 1/miner.jpg" id="3_24ed2"]
+[ext_resource type="PackedScene" uid="uid://bpdrkkdpu1hoc" path="res://Component/health_component.tscn" id="4_0g6dk"]
+[ext_resource type="PackedScene" uid="uid://dc560d02gq12i" path="res://Component/hitbox_component.tscn" id="5_g81ct"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cwjio"]
 animations = [{
@@ -16,10 +18,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0m543"]
-size = Vector2(10, 15)
+size = Vector2(10, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah4og"]
-size = Vector2(24, 18)
+size = Vector2(23, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2udho"]
+size = Vector2(10.5, 15)
 
 [node name="Player 1" type="CharacterBody2D"]
 collision_mask = 6
@@ -31,6 +36,7 @@ sprite_frames = SubResource("SpriteFrames_cwjio")
 animation = &"idle"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_0m543")
 
 [node name="Timers" type="Node" parent="."]
@@ -42,8 +48,25 @@ one_shot = true
 [node name="HurtboxArea" type="Area2D" parent="."]
 
 [node name="HurtBox" type="CollisionShape2D" parent="HurtboxArea"]
-position = Vector2(17, 0)
+position = Vector2(17.5, 0)
 shape = SubResource("RectangleShape2D_ah4og")
 debug_color = Color(0.937255, 0.25098, 0, 0.419608)
 
+[node name="HealthComponent" parent="." instance=ExtResource("4_0g6dk")]
+MaxHealth = 20.0
+Name = "Player 1"
+
+[node name="Damaged_CD" type="Timer" parent="HealthComponent"]
+wait_time = 0.5
+one_shot = true
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("5_g81ct")]
+hc = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_2udho")
+debug_color = Color(0, 0.619608, 0.560784, 0.419608)
+
 [connection signal="timeout" from="Timers/IsAttacking" to="." method="_on_is_attacking_timeout"]
+[connection signal="timeout" from="HealthComponent/Damaged_CD" to="HealthComponent" method="_on_damaged_cd_timeout"]

@@ -12,7 +12,8 @@ func _ready():
 func damage(): 
 	if can_damaged:
 		health -= attack.damage #damaged func
-		get_parent().apply_central_impulse(Vector2(attack.knockback,0)) #knockback func
+		if Name != "Player 1":
+			get_parent().apply_central_impulse(Vector2(attack.knockback,0)) #knockback func
 		$Damaged_CD.start()
 		can_damaged = false
 		print(Name, " health: ", health)

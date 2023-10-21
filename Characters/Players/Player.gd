@@ -74,7 +74,7 @@ func _physics_process(delta):
 		Attack(1)
 		
 	if position.y > 5000:
-		global_position = Vector2(0, 0)
+		global_position = Vector2(0, -10)
 		
 	move_and_slide()
 	update_animation()
