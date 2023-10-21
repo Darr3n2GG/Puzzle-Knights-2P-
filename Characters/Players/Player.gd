@@ -20,7 +20,7 @@ enum states
 	placed
 }
 
-var p1_states = states.placed
+var p2_states = states.placed
 
 var has_block : bool = false
 ##Max amount of time in sec that player can coyote jump when not on floor
@@ -110,15 +110,16 @@ func _input(_event):
 			if has_block == false:
 				Create_Block()
 			else:
-				match p1_states:
-					states.placed:
-						dist = global_position.distance_to(placed_block.global_position)
-						if dist < 100:
-							Carry_Block()
-							p1_states = states.carry
-					states.carry:
-						Place_Block()
-						p1_states = states.placed
+				if is_instance_valid(placed_block):
+					match p2_states:
+						states.placed:
+							dist = global_position.distance_to(placed_block.global_position)
+							if dist < 100:
+								Carry_Block()
+								p2_states = states.carry
+						states.carry:
+							Place_Block()
+							p2_states = states.placed
 
 ##Places a block with carry state
 func Create_Block(): 
@@ -128,7 +129,7 @@ func Create_Block():
 	placed_block.global_position.x = global_position.x + 25 * direction
 	get_owner().add_child(placed_block)
 	Carry_Block()
-	p1_states = states.carry
+	p2_states = states.carry
 	has_block = true
 	
 func Place_Block():
