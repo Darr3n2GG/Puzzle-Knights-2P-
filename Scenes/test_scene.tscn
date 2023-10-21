@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://prdbs88kvp45"]
+[gd_scene load_steps=10 format=3 uid="uid://prdbs88kvp45"]
 
 [ext_resource type="PackedScene" uid="uid://db7y1wj8h4wcq" path="res://Resources/platform nodes.tscn" id="1_d2xbe"]
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="2_evenl"]
@@ -6,6 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="5_bq8ql"]
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="6_ce6ys"]
 [ext_resource type="PackedScene" uid="uid://btbcfowqemp3y" path="res://Resources/tile_map.tscn" id="7_3m60n"]
+[ext_resource type="Script" path="res://GodotTilemapBaker-main/TilemapCollisionBaker.gd" id="7_4vi6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3in1"]
+size = Vector2(16, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjcut"]
+size = Vector2(576, 32)
 
 [node name="Node2D" type="Node2D"]
 
@@ -28,3 +35,17 @@ position = Vector2(75, -49)
 
 [node name="TileMap" parent="." instance=ExtResource("7_3m60n")]
 layer_0/tile_data = PackedInt32Array(65518, 196608, 2, 65519, 65536, 0, 65520, 131072, 0, 65521, 0, 0, 65522, 65536, 0, 65523, 131072, 0, 65524, 0, 0, 65525, 65536, 0, 65526, 131072, 0, 65527, 0, 0, 65528, 65536, 0, 65529, 131072, 0, 65530, 0, 0, 65531, 65536, 0, 65532, 131072, 0, 65533, 0, 0, 65534, 65536, 0, 65535, 131072, 0, 0, 0, 0, 1, 65536, 0, 2, 131072, 0, 3, 0, 0, 4, 65536, 0, 5, 131072, 0, 6, 0, 0, 7, 65536, 0, 8, 131072, 0, 9, 0, 0, 10, 65536, 0, 11, 131072, 0, 12, 0, 0, 13, 65536, 0, 14, 131072, 0, 15, 0, 0, 16, 65536, 0, 17, 131072, 0, -65554, 196608, 0, -18, 196608, 1, -262162, 196608, 0, -196626, 196608, 1, -131090, 196608, 2, -458770, 196608, 0, -393234, 196608, 1, -327698, 196608, 2, -655378, 196608, 0, -589842, 196608, 1, -524306, 196608, 2, 131054, 0, 0, 131055, 65536, 0, 131056, 131072, 0, 131057, 0, 0, 131058, 65536, 0, 131059, 131072, 0, 131060, 0, 0, 131061, 65536, 0, 131062, 131072, 0, 131063, 0, 0, 131064, 65536, 0, 131065, 131072, 0, 131066, 0, 0, 131067, 65536, 0, 131068, 131072, 0, 131069, 0, 0, 131070, 65536, 0, 131071, 131072, 0, 65536, 0, 0, 65537, 65536, 0, 65538, 131072, 0, 65539, 0, 0, 65540, 65536, 0, 65541, 131072, 0, 65542, 0, 0, 65543, 65536, 0, 65544, 131072, 0, 65545, 0, 0, 65546, 65536, 0, 65547, 131072, 0, 65548, 0, 0, 65549, 65536, 0, 65550, 131072, 0, 65551, 0, 0, 65552, 65536, 0, 65553, 131072, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("7_4vi6a")
+tilemap_nodepath = NodePath("../TileMap")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-280, -88)
+shape = SubResource("RectangleShape2D_p3in1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_vjcut")

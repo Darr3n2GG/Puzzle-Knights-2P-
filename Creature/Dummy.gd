@@ -26,6 +26,7 @@ func _physics_process(_delta):
 			States.carry:
 				global_position = p2.global_position + Vector2(30 * p2.direction,0)
 				gravity_scale = 0.0
+				linear_velocity = Vector2.ZERO
 
 func On_Create_or_Carry():
 	Golem_State = States.carry
