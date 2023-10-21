@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbehvmw2q4hgy"
-path="res://.godot/imported/castle-tileset.png-545a5cf1ca6f24ee8ff1db102a3ab123.ctex"
+uid="uid://dw8nldgdhsmjl"
+path="res://.godot/imported/AK idle.png-a0357c222d8d03a4b66f12ccd5a5adcf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Puzzle Components/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png"
-dest_files=["res://.godot/imported/castle-tileset.png-545a5cf1ca6f24ee8ff1db102a3ab123.ctex"]
+source_file="res://Imports/AK idle.png"
+dest_files=["res://.godot/imported/AK idle.png-a0357c222d8d03a4b66f12ccd5a5adcf.ctex"]
 
 [params]
 

@@ -1,19 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://da1c0fs0p4kxp"]
+[gd_scene load_steps=6 format=3 uid="uid://da1c0fs0p4kxp"]
 
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_yjl8x"]
 [ext_resource type="Resource" uid="uid://deqgd3ry1p2rn" path="res://Resources/p1_controls.tres" id="2_g5pru"]
 [ext_resource type="Texture2D" uid="uid://caeaf7v4hil5g" path="res://Characters/Players/Player 1/miner.jpg" id="3_24ed2"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cwjio"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_24ed2")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0m543"]
 size = Vector2(10, 15)
@@ -26,9 +15,10 @@ collision_mask = 6
 script = ExtResource("1_yjl8x")
 controls = ExtResource("2_g5pru")
 
-[node name="animation" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_cwjio")
-animation = &"idle"
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_24ed2")
+region_enabled = true
+region_rect = Rect2(3, 1, 10, 15)
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0m543")
