@@ -145,7 +145,7 @@ func Carry_Block():
 ##Attacks enemies with knockback
 func Attack(attack_damage : int):
 	attack.damage = attack_damage #Easier to modify the damage
-	attack.knockback = 200 * direction
+	attack.knockback = 150 * direction
 	attack.p1_attacking = true
 	$Timers/IsAttacking.start() #Currently a place holder code
 

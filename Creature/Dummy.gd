@@ -35,6 +35,7 @@ func On_Create_or_Carry():
 	Golem_State = States.carry
 	visible = false
 	disable_mode = CollisionObject2D.DISABLE_MODE_KEEP_ACTIVE
+	$HealthComponent.can_damaged = false
 	$Collision.disabled = true
 	
 	
@@ -42,6 +43,24 @@ func On_Placed():
 	Golem_State = States.placed
 	visible = true
 	disable_mode = CollisionObject2D.DISABLE_MODE_REMOVE
+	$HealthComponent.can_damaged = true
+
+
+#func damaged():
+#	if p1_attackzone and attack.p1_attacking:
+#		if can_damaged:
+#			health -= attack.damage
+#			apply_central_impulse(Vector2(attack.knockback,0))
+#			$Damaged_CD.start()
+#			can_damaged = false
+#			print("Stop vandalism! Barrel health: ", health)
+#			if health <= 0:
+#				queue_free()
+#				p2.has_placed = false
+#				print("I said STOP!!! What have you done?!")
+#
+#func _on_damaged_cd_timeout():
+#	can_damaged = true 
 	$Collision.disabled = false
 
 func damaged():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djo7kll4eugwk"]
+[gd_scene load_steps=7 format=3 uid="uid://djo7kll4eugwk"]
 
 [ext_resource type="Script" path="res://Creature/Dummy.gd" id="1_1ub1h"]
 [ext_resource type="Texture2D" uid="uid://cl7s3d0qedkgl" path="res://Creature/Barrel.png" id="2_7m75l"]
@@ -7,9 +7,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1b8"]
 size = Vector2(14, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fe7n5"]
-size = Vector2(28, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opaml"]
 size = Vector2(14, 16)
@@ -30,15 +27,9 @@ texture = ExtResource("2_7m75l")
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wu1b8")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="VandalismBox" type="CollisionShape2D" parent="Area2D"]
-self_modulate = Color(1, 1, 1, 0.996078)
-shape = SubResource("RectangleShape2D_fe7n5")
-debug_color = Color(1, 0, 0.113725, 0.419608)
-
 [node name="HealthComponent" parent="." instance=ExtResource("3_fo58o")]
-MaxHealth = 5
+MaxHealth = 5.0
+Name = "Barrel"
 
 [node name="Damaged_CD" type="Timer" parent="HealthComponent"]
 wait_time = 0.5
