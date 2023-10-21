@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://db7y1wj8h4wcq" path="res://Resources/platform nodes.tscn" id="1_d2xbe"]
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="2_evenl"]
 [ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Players/Player 2/player_2.tscn" id="3_p0u6q"]
-[ext_resource type="PackedScene" uid="uid://djo7kll4eugwk" path="res://Creature/Dummy.tscn" id="4_twp03"]
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="5_bq8ql"]
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="6_ce6ys"]
+[ext_resource type="PackedScene" uid="uid://btbcfowqemp3y" path="res://Resources/tile_map.tscn" id="7_3m60n"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -18,6 +18,7 @@ output_puzzle = NodePath("../Exit Door")
 position = Vector2(236, -40)
 
 [node name="floor" parent="." instance=ExtResource("1_d2xbe")]
+position = Vector2(1, 34)
 
 [node name="Player 1" parent="." instance=ExtResource("2_evenl")]
 position = Vector2(-72, -48)
@@ -25,5 +26,5 @@ position = Vector2(-72, -48)
 [node name="Player 2" parent="." instance=ExtResource("3_p0u6q")]
 position = Vector2(75, -49)
 
-[node name="Dummy" parent="." instance=ExtResource("4_twp03")]
-position = Vector2(-20, -29)
+[node name="TileMap" parent="." instance=ExtResource("7_3m60n")]
+layer_0/tile_data = PackedInt32Array(65518, 196608, 2, 65519, 65536, 0, 65520, 131072, 0, 65521, 0, 0, 65522, 65536, 0, 65523, 131072, 0, 65524, 0, 0, 65525, 65536, 0, 65526, 131072, 0, 65527, 0, 0, 65528, 65536, 0, 65529, 131072, 0, 65530, 0, 0, 65531, 65536, 0, 65532, 131072, 0, 65533, 0, 0, 65534, 65536, 0, 65535, 131072, 0, 0, 0, 0, 1, 65536, 0, 2, 131072, 0, 3, 0, 0, 4, 65536, 0, 5, 131072, 0, 6, 0, 0, 7, 65536, 0, 8, 131072, 0, 9, 0, 0, 10, 65536, 0, 11, 131072, 0, 12, 0, 0, 13, 65536, 0, 14, 131072, 0, 15, 0, 0, 16, 65536, 0, 17, 131072, 0, -65554, 196608, 0, -18, 196608, 1, -262162, 196608, 0, -196626, 196608, 1, -131090, 196608, 2, -458770, 196608, 0, -393234, 196608, 1, -327698, 196608, 2, -655378, 196608, 0, -589842, 196608, 1, -524306, 196608, 2)
