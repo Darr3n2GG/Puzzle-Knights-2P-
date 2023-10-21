@@ -10,8 +10,8 @@ func _ready():
 
 func damage(): 
 	if can_damaged:
-		health -= global.damage #damaged func
-		get_parent().global_position.x += global.knockback #knockback func
+		health -= attack.damage #damaged func
+		get_parent().global_position.x += attack.knockback #knockback func
 		$Damaged_CD.start()
 		can_damaged = false
 		print("Health: ", health)
