@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 ##Player Animation Node (temporary)
 @onready var anim : AnimatedSprite2D = $animation
-
+##Block instance
 var placed_block : RigidBody2D
 ##Counts the amount of sec times delta that time has passed when not on floor
 var coyotetimer : float = 0.0
@@ -11,17 +11,19 @@ var coyotetimer : float = 0.0
 var has_jumped : bool = false
 ##Direction a player is facing in int value
 var direction : int = 1
-
+##Distance from block
 var dist : float
-
+##Player 2 States dictionary :
+##carry - when player is carrying the block
+##placed - when player has placed the block
 enum states
 {
 	carry,
 	placed
 }
-
+##Player 2 state variable
 var p2_states = states.placed
-
+##Check if block is in tree
 var has_block : bool = false
 ##Max amount of time in sec that player can coyote jump when not on floor
 const maxcoyotetime : float = 0.2
@@ -106,7 +108,7 @@ func push_collision():
 
 func _input(_event):
 	if controls.player_index == 1:
-		if Input.is_action_just_pressed("2PlaceOrCarry"):# and not placed_block: 
+		if Input.is_action_just_pressed("2PlaceOrCarry"):
 			if has_block == false:
 				Create_Block()
 			else:

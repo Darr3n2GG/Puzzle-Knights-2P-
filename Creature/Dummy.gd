@@ -22,8 +22,10 @@ func _physics_process(_delta):
 					global_position = Vector2(0, -50)
 				if global_position.y > 100:
 					die()
+				gravity_scale = 1.0
 			States.carry:
 				global_position = p2.global_position + Vector2(30 * p2.direction,0)
+				gravity_scale = 0.0
 
 func On_Create_or_Carry():
 	Golem_State = States.carry
@@ -31,7 +33,6 @@ func On_Create_or_Carry():
 	disable_mode = CollisionObject2D.DISABLE_MODE_KEEP_ACTIVE
 	$HealthComponent.can_damaged = false
 	$Collision.disabled = true
-	
 	
 func On_Placed():
 	Golem_State = States.placed
