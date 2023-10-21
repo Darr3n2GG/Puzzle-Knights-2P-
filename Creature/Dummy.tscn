@@ -37,16 +37,19 @@ self_modulate = Color(1, 1, 1, 0.996078)
 shape = SubResource("RectangleShape2D_fe7n5")
 debug_color = Color(1, 0, 0.113725, 0.419608)
 
-[node name="Damaged_CD" type="Timer" parent="."]
+[node name="HealthComponent" parent="." instance=ExtResource("3_fo58o")]
+MaxHealth = 5
+
+[node name="Damaged_CD" type="Timer" parent="HealthComponent"]
 wait_time = 0.5
 one_shot = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_fo58o")]
-
-[node name="HitboxComponent" parent="." instance=ExtResource("4_vfmdo")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("4_vfmdo")]
 collision_layer = 8
+hc = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_opaml")
+debug_color = Color(0, 0.631373, 0.352941, 0.419608)
 
-[connection signal="timeout" from="Damaged_CD" to="." method="_on_damaged_cd_timeout"]
+[connection signal="timeout" from="HealthComponent/Damaged_CD" to="HealthComponent" method="_on_damaged_cd_timeout"]
