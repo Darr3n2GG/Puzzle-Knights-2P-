@@ -6,7 +6,7 @@ class_name Com_HB
 
 func _physics_process(_delta):
 	if (weakref(get_parent()).get_ref()):
-		if hurtbox in self.get_overlapping_areas() and global.p1_attacking:
+		if hurtbox in self.get_overlapping_areas() and attack.p1_attacking:
 			damage()
 
 func damage(): 

@@ -1,8 +1,9 @@
 extends Node
 class_name Com_HP
 
-@export var MaxHealth = 10
-var health : int
+@export var MaxHealth: float = 10
+@export var Name: String
+var health : float
 var can_damaged: bool = true
 
 func _ready():
@@ -10,14 +11,14 @@ func _ready():
 
 func damage(): 
 	if can_damaged:
-		health -= global.damage #damaged func
-		get_parent().global_position.x += global.knockback #knockback func
+		health -= attack.damage #damaged func
+		get_parent().apply_central_impulse(Vector2(attack.knockback,0)) #knockback func
 		$Damaged_CD.start()
 		can_damaged = false
-		print("Health: ", health)
+		print(Name, " health: ", health)
 		if health <= 0:
 			get_parent().queue_free()
-			print("Entity killed")
+			print(Name, " is killed")
 
 
 
