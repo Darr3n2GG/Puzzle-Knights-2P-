@@ -63,12 +63,16 @@ func _physics_process(delta):
 		global_position.x += speed * delta
 		if controls.player_index == 0:
 			$HurtboxArea/HurtBox.position.x = 17
+		else:
+			$TerrainDetector/TerrainDetectorCollsion.position.x = 16
 	elif Input.is_action_pressed(controls.left): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_LEFT):
 		anim.flip_h = true
 		direction = -1
 		global_position.x -= speed * delta
 		if controls.player_index == 0:
 			$HurtboxArea/HurtBox.position.x = -17
+		else:
+			$TerrainDetector/TerrainDetectorCollsion.position.x = -16
 	else:
 		pass
 		
@@ -113,15 +117,16 @@ func _input(_event):
 			Create_Block()
 		else:
 			if is_instance_valid(placed_block):
-				match p2_states:
-					states.placed:
-						dist = global_position.distance_to(placed_block.global_position)
-						if dist < 100:
-							Carry_Block()
-							p2_states = states.carry
-					states.carry:
-						Place_Block()
-						p2_states = states.placed
+				if not $TerrainDetector.has_overlapping_bodies():
+					match p2_states:
+						states.placed:
+							dist = global_position.distance_to(placed_block.global_position)
+							if dist < 100:
+								Carry_Block()
+								p2_states = states.carry
+						states.carry:
+							Place_Block()
+							p2_states = states.placed
 
 ##Places a block with carry state
 func Create_Block(): 

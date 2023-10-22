@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bcqvvf88xlpis"]
+[gd_scene load_steps=28 format=3 uid="uid://bcqvvf88xlpis"]
 
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_1r7u3"]
 [ext_resource type="Resource" uid="uid://djypgp1f3hkb3" path="res://Resources/p2_controls.tres" id="2_iea8n"]
@@ -150,10 +150,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vah8s"]
-size = Vector2(12, 15)
+size = Vector2(12, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17syw"]
-size = Vector2(14, 16)
+size = Vector2(12, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h73c5"]
+size = Vector2(44, 14)
 
 [node name="Player 2" type="CharacterBody2D"]
 collision_mask = 6
@@ -165,7 +168,7 @@ sprite_frames = SubResource("SpriteFrames_o2eun")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_vah8s")
 
 [node name="Block" type="Sprite2D" parent="."]
@@ -175,6 +178,15 @@ scale = Vector2(0.112, 0.116788)
 texture = ExtResource("4_d63ff")
 
 [node name="Carry_State_Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -18)
+position = Vector2(0, -17.5)
 shape = SubResource("RectangleShape2D_17syw")
 disabled = true
+
+[node name="TerrainDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="TerrainDetectorCollsion" type="CollisionShape2D" parent="TerrainDetector"]
+position = Vector2(16, -1)
+shape = SubResource("RectangleShape2D_h73c5")
+debug_color = Color(0.992157, 0, 0.239216, 0.419608)

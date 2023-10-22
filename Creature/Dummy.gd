@@ -31,18 +31,13 @@ func _physics_process(_delta):
 func On_Create_or_Carry():
 	Golem_State = States.carry
 	visible = false
-	disable_mode = CollisionObject2D.DISABLE_MODE_KEEP_ACTIVE
 	$HealthComponent.can_damaged = false
-	$Collision.disabled = true
 	
 func On_Placed():
 	Golem_State = States.placed
 	visible = true
-	disable_mode = CollisionObject2D.DISABLE_MODE_REMOVE
 	$HealthComponent.can_damaged = true
-	$Collision.disabled = false
 
-	
 func die():
 	if is_instance_valid(p2):
 		p2.has_block = false
