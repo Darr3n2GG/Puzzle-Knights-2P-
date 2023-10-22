@@ -44,5 +44,6 @@ func On_Placed():
 
 	
 func die():
-	p2.has_block = false
+	if is_instance_valid(p2):
+		p2.has_block = false
 	queue_free()

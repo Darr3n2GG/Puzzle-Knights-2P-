@@ -170,7 +170,7 @@ shape = SubResource("RectangleShape2D_vah8s")
 
 [node name="Block" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(5.68434e-14, -16)
+position = Vector2(5.68434e-14, -18)
 scale = Vector2(0.112, 0.116788)
 texture = ExtResource("4_d63ff")
 

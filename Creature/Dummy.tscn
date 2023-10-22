@@ -27,14 +27,6 @@ texture = ExtResource("2_7m75l")
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wu1b8")
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_fo58o")]
-MaxHealth = 5.0
-Name = "Barrel"
-
-[node name="Damaged_CD" type="Timer" parent="HealthComponent"]
-wait_time = 0.5
-one_shot = true
-
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("4_vfmdo")]
 collision_layer = 8
 hc = NodePath("../HealthComponent")
@@ -43,4 +35,5 @@ hc = NodePath("../HealthComponent")
 shape = SubResource("RectangleShape2D_opaml")
 debug_color = Color(0, 0.631373, 0.352941, 0.419608)
 
-[connection signal="timeout" from="HealthComponent/Damaged_CD" to="HealthComponent" method="_on_damaged_cd_timeout"]
+[node name="HealthComponent" parent="." instance=ExtResource("3_fo58o")]
+Name = "Dummy"

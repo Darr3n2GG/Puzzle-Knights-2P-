@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://prdbs88kvp45"]
+[gd_scene load_steps=11 format=3 uid="uid://prdbs88kvp45"]
 
 [ext_resource type="PackedScene" uid="uid://db7y1wj8h4wcq" path="res://Resources/platform nodes.tscn" id="1_d2xbe"]
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="2_evenl"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="6_ce6ys"]
 [ext_resource type="PackedScene" uid="uid://btbcfowqemp3y" path="res://Resources/tile_map.tscn" id="7_3m60n"]
 [ext_resource type="Script" path="res://GodotTilemapBaker-main/TilemapCollisionBaker.gd" id="7_4vi6a"]
+[ext_resource type="PackedScene" uid="uid://drnol0vfgck83" path="res://Puzzle Components/Door/door.tscn" id="8_mfjgk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3in1"]
 size = Vector2(16, 176)
@@ -17,9 +18,9 @@ size = Vector2(576, 32)
 [node name="Node2D" type="Node2D"]
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("output_puzzle") instance=ExtResource("5_bq8ql")]
-position = Vector2(151, -4)
+position = Vector2(153, -4)
 scale = Vector2(0.0812816, 0.0812173)
-output_puzzle = NodePath("../Exit Door")
+output_puzzle = NodePath("../Node2D/Door")
 
 [node name="Exit Door" parent="." instance=ExtResource("6_ce6ys")]
 position = Vector2(236, -40)
@@ -49,3 +50,8 @@ shape = SubResource("RectangleShape2D_p3in1")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_vjcut")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -53)
+
+[node name="Door" parent="Node2D" instance=ExtResource("8_mfjgk")]

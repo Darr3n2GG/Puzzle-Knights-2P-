@@ -53,7 +53,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("reset"):
 		global_position = Vector2(0, -10)
 	
-	if Input.is_action_just_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
+	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
 		velocity.y = jump_vel
 		has_jumped = true
 

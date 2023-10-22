@@ -52,14 +52,6 @@ position = Vector2(17.5, 0)
 shape = SubResource("RectangleShape2D_ah4og")
 debug_color = Color(0.937255, 0.25098, 0, 0.419608)
 
-[node name="HealthComponent" parent="." instance=ExtResource("4_0g6dk")]
-MaxHealth = 20.0
-Name = "Player 1"
-
-[node name="Damaged_CD" type="Timer" parent="HealthComponent"]
-wait_time = 0.5
-one_shot = true
-
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("5_g81ct")]
 hc = NodePath("../HealthComponent")
 
@@ -68,5 +60,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2udho")
 debug_color = Color(0, 0.619608, 0.560784, 0.419608)
 
+[node name="HealthComponent" parent="." instance=ExtResource("4_0g6dk")]
+Name = "Player 1"
+
 [connection signal="timeout" from="Timers/IsAttacking" to="." method="_on_is_attacking_timeout"]
-[connection signal="timeout" from="HealthComponent/Damaged_CD" to="HealthComponent" method="_on_damaged_cd_timeout"]

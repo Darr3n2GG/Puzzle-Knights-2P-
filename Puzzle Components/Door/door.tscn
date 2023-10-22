@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://drnol0vfgck83"]
+
+[ext_resource type="Script" path="res://Puzzle Components/Door/door.gd" id="1_3x404"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7thy5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gd58t"]
+size = Vector2(573, 67)
+
+[sub_resource type="Animation" id="Animation_sq47w"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.594604, 1.51572),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ic50f"]
+_data = {
+"move": SubResource("Animation_sq47w")
+}
+
+[node name="Door" type="Node2D"]
+scale = Vector2(0.0751381, 1.58318)
+script = ExtResource("1_3x404")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_7thy5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_gd58t")
+
+[node name="Shape2D" type="Polygon2D" parent="."]
+scale = Vector2(16.875, 16.875)
+color = Color(0.12549, 0.0901961, 0.00392157, 1)
+polygon = PackedVector2Array(-17, -2, 17, -2, 17, 2, -17, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ic50f")
+}

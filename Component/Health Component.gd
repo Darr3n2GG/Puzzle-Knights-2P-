@@ -22,7 +22,5 @@ func damage():
 			get_parent().queue_free()
 			print(Name, " is killed")
 
-
-
 func _on_damaged_cd_timeout():
 	can_damaged = true
