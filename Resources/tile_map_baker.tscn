@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5pgl83n2f8ig"]
+
+[ext_resource type="Script" path="res://GodotTilemapBaker-main/TilemapCollisionBaker.gd" id="1_y5d2l"]
+
+[node name="TileMapBaker" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_y5d2l")
