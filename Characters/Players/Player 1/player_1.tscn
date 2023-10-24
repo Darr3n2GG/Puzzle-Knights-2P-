@@ -21,7 +21,7 @@ animations = [{
 size = Vector2(10, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah4og"]
-size = Vector2(23, 18)
+size = Vector2(24, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2udho"]
 size = Vector2(10.5, 15)
@@ -48,7 +48,7 @@ one_shot = true
 [node name="HurtboxArea" type="Area2D" parent="."]
 
 [node name="HurtBox" type="CollisionShape2D" parent="HurtboxArea"]
-position = Vector2(17.5, 0)
+position = Vector2(17, 0)
 shape = SubResource("RectangleShape2D_ah4og")
 debug_color = Color(0.937255, 0.25098, 0, 0.419608)
 
@@ -61,6 +61,7 @@ shape = SubResource("RectangleShape2D_2udho")
 debug_color = Color(0, 0.619608, 0.560784, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_0g6dk")]
+MaxHealth = 20.0
 Name = "Player 1"
 
 [connection signal="timeout" from="Timers/IsAttacking" to="." method="_on_is_attacking_timeout"]
