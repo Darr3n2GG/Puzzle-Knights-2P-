@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bcqvvf88xlpis"]
+[gd_scene load_steps=31 format=3 uid="uid://bcqvvf88xlpis"]
 
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_1r7u3"]
 [ext_resource type="Resource" uid="uid://djypgp1f3hkb3" path="res://Resources/p2_controls.tres" id="2_iea8n"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cl7s3d0qedkgl" path="res://Creature/Barrel.png" id="4_d63ff"]
 [ext_resource type="Texture2D" uid="uid://bl5spby5lrgkh" path="res://Imports/AK/AK jump.png" id="4_rpfru"]
 [ext_resource type="Texture2D" uid="uid://cde2a5rmy2nxi" path="res://Imports/AK/AK walk.png" id="5_xbdjt"]
+[ext_resource type="PackedScene" uid="uid://dc560d02gq12i" path="res://Component/hitbox_component.tscn" id="7_g8b6j"]
+[ext_resource type="PackedScene" uid="uid://bpdrkkdpu1hoc" path="res://Component/health_component.tscn" id="8_h62eu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfdwl"]
 atlas = ExtResource("3_2rfap")
@@ -158,6 +160,9 @@ size = Vector2(12, 17)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h73c5"]
 size = Vector2(44, 14)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lr2n"]
+size = Vector2(12, 16)
+
 [node name="Player 2" type="CharacterBody2D"]
 collision_mask = 6
 platform_floor_layers = 4294967293
@@ -191,3 +196,15 @@ collision_mask = 4
 position = Vector2(16, -1)
 shape = SubResource("RectangleShape2D_h73c5")
 debug_color = Color(0.992157, 0, 0.239216, 0.419608)
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("7_g8b6j")]
+hc = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_3lr2n")
+debug_color = Color(0, 0.631373, 0.482353, 0.419608)
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_h62eu")]
+MaxHealth = 20.0
+Name = "Player 2"

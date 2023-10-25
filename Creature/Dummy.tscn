@@ -39,4 +39,5 @@ shape = SubResource("RectangleShape2D_opaml")
 debug_color = Color(0, 0.631373, 0.352941, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_fo58o")]
+MaxHealth = 5.0
 Name = "Dummy"
