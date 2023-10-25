@@ -28,6 +28,7 @@ size = Vector2(10.5, 15)
 
 [node name="Player 1" type="CharacterBody2D"]
 collision_mask = 6
+platform_floor_layers = 4294967293
 script = ExtResource("1_yjl8x")
 controls = ExtResource("2_g5pru")
 

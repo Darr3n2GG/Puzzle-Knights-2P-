@@ -8,16 +8,18 @@ extends Node
 	"1": {
 		viewport = $HBoxContainer/LeftViewportContainer/LeftSubViewport,
 		camera = $HBoxContainer/LeftViewportContainer/LeftSubViewport/LeftCam,
-		player = $"HBoxContainer/LeftViewportContainer/LeftSubViewport/Tutorial/Player 1"
+		player = $"HBoxContainer/LeftViewportContainer/LeftSubViewport/".get_child(1).get_node("Player 1")
 		},
 	"2": {
 		viewport = $HBoxContainer/RightViewportContainer/RightSubViewport,
 		camera = $HBoxContainer/RightViewportContainer/RightSubViewport/RightCam,
-		player = $"HBoxContainer/LeftViewportContainer/LeftSubViewport/Tutorial/Player 2"
+		player = $"HBoxContainer/LeftViewportContainer/LeftSubViewport/".get_child(1).get_node("Player 2")
 	}
 }
 
 func _ready() -> void:
+#	players["1"] = get_node(current_level_nodepath)
+#	players["1"].player = $" global.current_level_node.Node + Player 1"
 	# The world_2d object of the viewport contains information about what to
 	# render. Here, it's our game level. We need to pass it from the first to
 	# the second viewport for both of them to render the same level.
@@ -28,3 +30,5 @@ func _ready() -> void:
 		var remote_transform := RemoteTransform2D.new()
 		remote_transform.remote_path = node.camera.get_path()
 		node.player.add_child(remote_transform)
+		
+

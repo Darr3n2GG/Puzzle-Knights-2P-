@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjskn6uarh4ds"]
+
+[ext_resource type="PackedScene" uid="uid://btbcfowqemp3y" path="res://Resources/tile_map.tscn" id="1_n0v6u"]
+[ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_syma7"]
+[ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="3_dmsnf"]
+[ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Players/Player 2/player_2.tscn" id="4_c2o0x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prjgm"]
+size = Vector2(576, 32)
+
+[node name="Level 1" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_n0v6u")]
+
+[node name="TileMapBaker" parent="." instance=ExtResource("2_syma7")]
+tilemap_nodepath = NodePath("../TileMap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapBaker"]
+shape = SubResource("RectangleShape2D_prjgm")
+
+[node name="Player 1" parent="." instance=ExtResource("3_dmsnf")]
+position = Vector2(0, -55)
+
+[node name="Player 2" parent="." instance=ExtResource("4_c2o0x")]
+position = Vector2(-57, -48)

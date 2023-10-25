@@ -13,7 +13,7 @@ TO DO LIST:
 			 (an adventurer from somewhere in europe idk, loves travelling, always carries a backpack 
 			  filled with many different blocks, wears leather clothing with a metal helmet)
 	3. Program Split Screen (Darr3n) done
-	4. Draw Tileset
+	4. Draw Tileset 
 	
 	Optional ->
 	1. Create temporary tilemap
