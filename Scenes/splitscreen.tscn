@@ -11,9 +11,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="LeftViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 
 [node name="LeftSubViewport" type="SubViewport" parent="HBoxContainer/LeftViewportContainer"]
+disable_3d = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 size = Vector2i(320, 360)
@@ -24,9 +26,11 @@ render_target_update_mode = 4
 [node name="Tutorial" parent="HBoxContainer/LeftViewportContainer/LeftSubViewport" instance=ExtResource("2_yyanm")]
 
 [node name="RightViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 
 [node name="RightSubViewport" type="SubViewport" parent="HBoxContainer/RightViewportContainer"]
+disable_3d = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 size = Vector2i(320, 360)

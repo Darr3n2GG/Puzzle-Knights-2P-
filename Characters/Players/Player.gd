@@ -1,30 +1,15 @@
 ##CharacterBody2d script that is used by player nodes to move, jump, attack, place/carry blocks, die, win and more
+class_name player
 extends CharacterBody2D
 
 ##Player Animation Node (temporary)
 @onready var anim : AnimatedSprite2D = $animation
-##Block instance
-var placed_block : RigidBody2D
 ##Counts the amount of sec times delta that time has passed when not on floor
 var coyotetimer : float = 0.0
 ##Checks if player has jumped
 var has_jumped : bool = false
 ##Direction a player is facing in int value
 var direction : int = 1
-##Distance from block
-var dist : float
-##Player 2 States dictionary :
-##carry - when player is carrying the block
-##placed - when player has placed the block
-enum states
-{
-	carry,
-	placed
-}
-##Player 2 state variable
-var p2_states = states.placed
-##Check if block is in tree
-var has_block : bool = false
 ##Max amount of time in sec that player can coyote jump when not on floor
 const maxcoyotetime : float = 0.2
 ##Speed value of player
@@ -108,55 +93,5 @@ func push_collision():
 		var collided = get_slide_collision(last_collided)
 		if collided.get_collider() is RigidBody2D:
 			collided.get_collider().apply_central_impulse(Vector2(-collided.get_normal().x * push_force,0))
-
-func _input(_event):
-	if controls.player_index == 0 and Input.is_action_just_pressed("1Attack"): #haha bug fixed
-		Attack(1)
-	elif controls.player_index == 1 and Input.is_action_just_pressed("2PlaceOrCarry"):
-		if has_block == false:
-			Create_Block()
-		else:
-			if is_instance_valid(placed_block):
-				if not $TerrainDetector.has_overlapping_bodies():
-					match p2_states:
-						states.placed:
-							dist = global_position.distance_to(placed_block.global_position)
-							if dist < 100:
-								Carry_Block()
-								p2_states = states.carry
-						states.carry:
-							Place_Block()
-							p2_states = states.placed
-
-##Places a block with carry state
-func Create_Block(): 
-	var block = load("res://Creature/Dummy.tscn")
-	placed_block = block.instantiate()
-	placed_block.set_name("block")
-	placed_block.global_position.x = global_position.x + 25 * direction
-	get_owner().add_child(placed_block)
-	Carry_Block()
-	p2_states = states.carry
-	has_block = true
-	
-func Place_Block():
-	$Block.visible = false
-	$Carry_State_Collision.disabled = true
-	placed_block.On_Placed()
-	
-func Carry_Block():
-	$Block.visible = true
-	$Carry_State_Collision.disabled = false
-	placed_block.On_Create_or_Carry()
-
-##Attacks enemies with knockback
-func Attack(attack_damage : int):
-	attack.damage = attack_damage #Easier to modify the damage
-	attack.knockback = 150 * direction
-	attack.p1_attacking = true
-	$Timers/IsAttacking.start() #Currently a place holder code
-
-func _on_is_attacking_timeout():
-	attack.p1_attacking = false
 
 

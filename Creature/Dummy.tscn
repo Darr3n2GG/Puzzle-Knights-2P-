@@ -1,31 +1,30 @@
 [gd_scene load_steps=8 format=3 uid="uid://djo7kll4eugwk"]
 
 [ext_resource type="Script" path="res://Creature/Dummy.gd" id="1_1ub1h"]
-[ext_resource type="Texture2D" uid="uid://cl7s3d0qedkgl" path="res://Creature/Barrel.png" id="2_7m75l"]
+[ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_2j32n"]
 [ext_resource type="PackedScene" uid="uid://bpdrkkdpu1hoc" path="res://Component/health_component.tscn" id="3_fo58o"]
 [ext_resource type="PackedScene" uid="uid://dc560d02gq12i" path="res://Component/hitbox_component.tscn" id="4_vfmdo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x6ci1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1b8"]
-size = Vector2(14, 16)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opaml"]
-size = Vector2(14, 16)
+size = Vector2(16, 16)
 
 [node name="Dummy" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_x6ci1")
-max_contacts_reported = 3
-contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_1ub1h")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Block" type="Sprite2D" parent="."]
 position = Vector2(-2.68221e-07, -6.4075e-07)
-scale = Vector2(0.112, 0.116788)
-texture = ExtResource("2_7m75l")
+texture = ExtResource("2_2j32n")
+region_enabled = true
+region_rect = Rect2(32, 112, 16, 16)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wu1b8")

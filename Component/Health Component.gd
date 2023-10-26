@@ -3,23 +3,23 @@ class_name Com_HP
 
 @export var MaxHealth: float = 10
 @export var Name: String
-var type: String
+var type : String # good naming convention good job :>
 var health : float
 var can_damaged: bool = true
 
 func _ready():
 	health = MaxHealth
 	if Name == "Player 1" or Name == "Player 2":
-		type = "Pl"
+		type = "player"
 	elif Name == "Dummy":
-		type == Name
+		type = Name
 	else:
-		type == "En"
+		type = "enemy"
 	
 
 func damage(agent: String): 
 	if can_damaged:
-		if type != "Pl":
+		if type == "Dummy":
 			get_parent().apply_central_impulse(Vector2(attack.knockback,0)) #knockback func
 		if type != agent: #No suiciding
 			health -= attack.damage #damaged func

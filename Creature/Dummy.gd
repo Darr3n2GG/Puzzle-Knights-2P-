@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@onready var p2 = get_node("../Player 2")
+@onready var p2 = get_node("../Player 2") as player
 @export var health : float = 5.0
 var p1_attackzone : bool = false
 var can_damaged : bool = true
@@ -14,17 +14,18 @@ enum States
 var Golem_State = States.placed
 
 func _physics_process(_delta):
-	match Golem_State:
-		States.placed:
-			if Input.is_action_just_pressed("reset"):
-				global_position = Vector2(0, -50)
-			if global_position.y > 100:
-				die()
-			gravity_scale = 1.0
-		States.carry:
-			global_position = p2.global_position + Vector2(30 * p2.direction,0)
-			gravity_scale = 0.0
-			linear_velocity = Vector2.ZERO
+	if is_instance_valid(p2):
+		match Golem_State:
+				States.placed:
+					if Input.is_action_just_pressed("reset"):
+						global_position = Vector2(0, -50)
+					if global_position.y > 100:
+						die()
+					gravity_scale = 1.0
+				States.carry:
+					global_position = p2.global_position + Vector2(30 * p2.direction,0)
+					gravity_scale = 0.0
+					linear_velocity = Vector2.ZERO
 
 func On_Create_or_Carry():
 	Golem_State = States.carry
@@ -40,5 +41,5 @@ func On_Placed():
 
 func die():
 	if is_instance_valid(p2):
-		p2.has_block = false
+		p2.get_node("Place_Block").has_block = false
 	queue_free()

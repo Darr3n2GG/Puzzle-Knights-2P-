@@ -11,5 +11,5 @@ func _physics_process(_delta):
 
 func damage(): 
 	if hc:
-		hc.damage("Pl")
+		hc.damage("player")
 
