@@ -1,9 +1,10 @@
 extends RigidBody2D
 
 @onready var p2 = get_node("../Player 2") as player
-@export var health : float = 5.0
-var p1_attackzone : bool = false
-var can_damaged : bool = true
+#The below code seems to be functionless
+#@export var health : float = 5.0
+#var p1_attackzone : bool = false
+#var can_damaged : bool = true
 
 enum States
 {
@@ -32,7 +33,7 @@ func On_Create_or_Carry():
 	visible = false
 	$Collision.disabled = true
 	$HealthComponent.can_damaged = false
-	
+
 func On_Placed():
 	Golem_State = States.placed
 	visible = true

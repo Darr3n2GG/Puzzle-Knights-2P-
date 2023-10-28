@@ -63,5 +63,6 @@ debug_color = Color(0, 0.619608, 0.560784, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_0g6dk")]
 Name = "Player 1"
+type = "player"
 
 [connection signal="timeout" from="HurtboxArea/IsAttacking" to="HurtboxArea" method="_on_is_attacking_timeout"]
