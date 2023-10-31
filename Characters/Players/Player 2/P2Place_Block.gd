@@ -20,7 +20,7 @@ enum states
 var p2_states = states.placed
 
 func _input(_event):
-	if p2.controls.player_index == 1 and Input.is_action_just_pressed("2PlaceOrCarry"):
+	if Input.is_action_just_pressed("2PlaceOrCarry"):
 		if has_block == false:
 			Create_Block()
 		else:
