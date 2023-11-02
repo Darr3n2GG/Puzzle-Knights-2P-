@@ -1,24 +1,26 @@
 TO DO LIST:
 	Must ->
-	1. Program Characters
-		P1 - attack (Skr) >change to hurtbox system for a flexible attack range
-			 pogo ( refer hollow knight )
-		P2 - place block (can place with tilemap or create a rigid body 2d)
-			 double jump?
-		P1&2 - Health system
-	2. Draw Characters
-		P1 - Combat Knight
-			 (a samurai from Japan, skilled with a katana, wears samurai armor)
-		P2 - Block Knight
-			 (an adventurer from somewhere in europe idk, loves travelling, always carries a backpack 
-			  filled with many different blocks, wears leather clothing with a metal helmet)
-	3. Program Split Screen (Darr3n) done
-	4. Draw Tileset 
-	
+		1. Program Characters
+			P1 - attack //
+				 pogo ( refer hollow knight )
+			P2 - place barrel //
+				 double jump?
+			P1&2 - Health system //
+			Enemy - Attack system (Maybe an independent class)
+		2. Draw Characters
+			P1 - Combat Knight 
+				 (a samurai from Japan, skilled with a katana, wears samurai armor)
+			P2 - Block Knight //
+				 (an adventurer from somewhere in europe idk, loves travelling, always carries a backpack 
+				  filled with many different blocks, wears leather clothing with a metal helmet)
+		3. Program Split Screen //
+		4. Draw Tileset (I don't think we need this)
+		5. Draw Background for Main Menu
+		
 	Optional ->
-	1. Create temporary tilemap
-	2. Think of puzzle ideas (list here)
-		-fix the ruined in time, before both knights get killed by hostile mob
-		-complex pressure plate puzzles for late game
-		-lasers
-	3. Draw Concept Art (place in concept art folder or send in whatsapp)
+		1. Create temporary tilemap
+		2. Think of puzzle ideas (list here)
+			-fix the ruined in time, before both knights get killed by hostile mob
+			-complex pressure plate puzzles for late game
+			-lasers
+		3. Draw Concept Art (place in concept art folder or send in whatsapp)
