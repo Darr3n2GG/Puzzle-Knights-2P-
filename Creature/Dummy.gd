@@ -34,7 +34,7 @@ func On_Create_or_Carry():
 	visible = false
 	$Collision.disabled = true
 	$HealthComponent.can_damaged = false
-	
+
 func On_Placed():
 	Golem_State = States.placed
 	visible = true

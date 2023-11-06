@@ -6,10 +6,10 @@ class_name Com_HB
 
 func _physics_process(_delta):
 	if is_instance_valid(get_parent()):
-		if hurtbox in get_overlapping_areas() and attack.p1_attacking:
+		if hurtbox in get_overlapping_areas() and attack.p1_attacking: 
 			damage()
 
 func damage(): 
 	if hc:
-		hc.damage("player")
+		hc.damage("player") 
 

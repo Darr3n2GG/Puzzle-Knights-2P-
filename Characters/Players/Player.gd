@@ -97,4 +97,5 @@ func push_collision():
 		if collided.get_collider() is RigidBody2D:
 			collided.get_collider().apply_central_impulse(Vector2(-collided.get_normal().x * push_force,0))
 
-
+func die():
+	queue_free()
