@@ -22,6 +22,4 @@ func deferred_change_scene(path):
 	var root = get_tree().root
 	root.get_child(root.get_child_count() - 1).get_node("HBoxContainer/LeftViewportContainer/LeftSubViewport").add_child(current_level_node)
 	splitscreen._ready()
-	
-	
-	
+

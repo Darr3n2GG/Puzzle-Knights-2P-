@@ -2,9 +2,10 @@ extends Area2D
 
 @onready var p1 = get_parent() as player
 @export var p1_attack_damage = 1
+
 # Called when the node enters the scene tree for the first time.
 func _input(_event):
-	if p1.controls.player_index == 0 and Input.is_action_just_pressed("1Attack"): #haha bug fixed
+	if Input.is_action_just_pressed("1Attack"): #haha bug fixed
 		Attack(p1_attack_damage)
 		
 ##Attacks enemies with knockback

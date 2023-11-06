@@ -17,10 +17,9 @@ size = Vector2(576, 32)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="pressure plate" parent="." node_paths=PackedStringArray("output_puzzle") instance=ExtResource("5_bq8ql")]
+[node name="pressure plate" parent="." instance=ExtResource("5_bq8ql")]
 position = Vector2(153, -4)
 scale = Vector2(0.0812816, 0.0812173)
-output_puzzle = NodePath("../Node2D/Door")
 
 [node name="Exit Door" parent="." instance=ExtResource("6_ce6ys")]
 position = Vector2(236, -40)

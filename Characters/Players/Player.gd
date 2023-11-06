@@ -4,14 +4,17 @@ extends CharacterBody2D
 
 ##Player Animation Node (temporary)
 @onready var anim : AnimatedSprite2D = $animation
+##Players spawn point when ready or respawn
+@onready var spawn_point : Vector2 = global_position
 ##Counts the amount of sec times delta that time has passed when not on floor
 var coyotetimer : float = 0.0
 ##Checks if player has jumped
 var has_jumped : bool = false
-##Direction a player is facing in int value
-var direction : int = 1
 ##Max amount of time in sec that player can coyote jump when not on floor
 const maxcoyotetime : float = 0.2
+
+##Direction a player is facing in int value
+var direction : int = 1
 ##Speed value of player
 const speed : float = 200.0
 ##Jump velocity value of player
@@ -25,7 +28,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 ##Control resource for two player controls, resources using control.gd can be dragged to this variable in th editor
 @export var controls : Resource = null
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
@@ -36,7 +39,7 @@ func _physics_process(delta):
 		coyotetimer += delta
 	
 	if Input.is_action_pressed("reset"):
-		global_position = Vector2(0, -10)
+		global_position = spawn_point
 	
 	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
 		velocity.y = jump_vel

@@ -1,30 +1,29 @@
 extends Node2D
 
 @onready var anim = $AnimationPlayer
-@onready var area = $Area_pp
-@export var output_puzzle : Node2D = null
-var pp_activated : bool = false
-
-signal on_pp_activated(activated)
+@onready var area = $Area_2D
+@onready var input_class = Input_Puzzle.new()
+@export var puzzle_array : Array[Node2D]
 
 func _ready():
-	self.on_pp_activated.connect(output_puzzle._on_recieve_input)
-#	print("signal_connected")
+	input_class.output_puzzles = puzzle_array
+#	print(input_class.output_puzzles)
+	input_class.setup()
 
 func _on_area_pp_body_entered(_body):
-	if area.has_overlapping_bodies() and not pp_activated:
+	if area.has_overlapping_bodies() and not input_class.activated:
 		play_animation()
-		on_pp_activated.emit(pp_activated)
+		input_class.send_input(true)
 
 func _on_area_pp_body_exited(_body):
 	if not area.has_overlapping_bodies():
 		play_animation()
-		on_pp_activated.emit(pp_activated)
+		input_class.send_input(false)
 
 func play_animation():
 	if area.has_overlapping_bodies():
 		anim.play("Move")
-		pp_activated = true
+		input_class.activated = true
 	else:
 		anim.play_backwards("Move")
-		pp_activated = false
+		input_class.activated = false

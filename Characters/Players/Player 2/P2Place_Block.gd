@@ -2,9 +2,9 @@ extends Node
 
 @onready var p2 = get_parent() as player
 ##Block instance
-var placed_block : RigidBody2D
+@onready var placed_block : RigidBody2D
 ##Check if block is in tree
-var has_block : bool = false
+var block_in_scene : bool = false
 ##Distance from block
 var dist : float
 
@@ -20,8 +20,8 @@ enum states
 var p2_states = states.placed
 
 func _input(_event):
-	if p2.controls.player_index == 1 and Input.is_action_just_pressed("2PlaceOrCarry"):
-		if has_block == false:
+	if Input.is_action_just_pressed("2PlaceOrCarry"):
+		if block_in_scene == false:
 			Create_Block()
 		else:
 			if is_instance_valid(placed_block):
@@ -35,15 +35,18 @@ func _input(_event):
 						states.carry:
 							Place_Block()
 							p2_states = states.placed
-							
-func Create_Block(): 
-	var block = load("res://Creature/Dummy.tscn")
-	placed_block = block.instantiate()
-	placed_block.set_name("block")
-	p2.get_parent().add_child(placed_block)
+						
+func Create_Block():
+	if not is_instance_valid(placed_block):
+		var block = load("res://Creature/Dummy.tscn")
+		placed_block = block.instantiate()
+		placed_block.set_name("block")
+		p2.get_parent().add_child(placed_block)
+	else:
+		placed_block.Setup()
 	Carry_Block()
 	p2_states = states.carry
-	has_block = true
+	block_in_scene = true
 	
 func Place_Block():
 	$"../Block".visible = false

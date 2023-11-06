@@ -29,7 +29,6 @@ _data = {
 }
 
 [node name="Door" type="Node2D"]
-position = Vector2(0, -100)
 scale = Vector2(0.0751381, 1.58318)
 script = ExtResource("1_3x404")
 

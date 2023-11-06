@@ -8,13 +8,16 @@ var health : float
 var can_damaged: bool = true
 
 func _ready():
-	health = MaxHealth
+	Set_Health()
 	if Name == "Player 1" or Name == "Player 2":
 		type = "player"
 	elif Name == "Dummy":
 		type = Name
 	else:
 		type = "enemy"
+		
+func Set_Health():
+	health = MaxHealth
 	
 
 func damage(agent: String): 
@@ -28,7 +31,6 @@ func damage(agent: String):
 			print(Name, " health: ", health)
 		if health <= 0:
 			get_parent().die()
-			get_parent().queue_free()
 			print(Name, " is killed")
 
 func _on_damaged_cd_timeout():

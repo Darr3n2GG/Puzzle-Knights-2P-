@@ -1,23 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://bghlqie32d02s"]
+[gd_scene load_steps=6 format=3 uid="uid://bghlqie32d02s"]
 
 [ext_resource type="Script" path="res://Puzzle Components/pressure plate/pressure_plater.gd" id="1_dm5x0"]
+[ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_ox4oi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ix0"]
-size = Vector2(573, 67)
+size = Vector2(16, 8)
 
 [sub_resource type="Animation" id="Animation_tt0k6"]
 resource_name = "Move"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Shape2D:offset")
+tracks/0/path = NodePath("platesprite:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.25, 2),
+"transitions": PackedFloat32Array(0.25, 1.75),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 4)]
+"values": [Vector2(0, 0), Vector2(0, 8)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0d8k6"]
@@ -26,28 +27,32 @@ _data = {
 }
 
 [node name="pressure plate" type="Node2D"]
-position = Vector2(0, -1)
-scale = Vector2(0.0351225, 0.0296857)
 script = ExtResource("1_dm5x0")
 
-[node name="Area_pp" type="Area2D" parent="."]
+[node name="Area_2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_pp"]
-position = Vector2(-0.5, 33.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_2D"]
 shape = SubResource("RectangleShape2D_v1ix0")
 
 [node name="Shape2D" type="Polygon2D" parent="."]
+visible = false
 position = Vector2(0, 34)
 scale = Vector2(16.875, 16.875)
 color = Color(0.45098, 0.45098, 0.45098, 1)
+offset = Vector2(0, 4)
 polygon = PackedVector2Array(-17, -2, 17, -2, 17, 2, -17, 2)
+
+[node name="platesprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ox4oi")
+region_enabled = true
+region_rect = Rect2(48, 136, 16, 8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_0d8k6")
 }
 
-[connection signal="body_entered" from="Area_pp" to="." method="_on_area_pp_body_entered"]
-[connection signal="body_exited" from="Area_pp" to="." method="_on_area_pp_body_exited"]
+[connection signal="body_entered" from="Area_2D" to="." method="_on_area_pp_body_entered"]
+[connection signal="body_exited" from="Area_2D" to="." method="_on_area_pp_body_exited"]
