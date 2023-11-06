@@ -16,7 +16,7 @@ func change_scene(path):
 	call_deferred("deferred_change_scene",path)
 	
 func deferred_change_scene(path):
-	current_level_node.free()
+	current_level_node.free() #Problem 3: We can't proceed to level 2
 	var next_scene = ResourceLoader.load(path)
 	current_level_node = next_scene.instantiate()
 	current_level_node.name = "Level " + str(current_level)

@@ -18,3 +18,6 @@ func on_start_pressed() -> void: #When clicked on start button
 func on_quit_pressed() -> void: #When clicked on quit button
 	get_tree().quit()
 
+func _physics_process(_delta):
+	if Input.is_action_just_pressed("Quit game"):
+		get_tree().quit()

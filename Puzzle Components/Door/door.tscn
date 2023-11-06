@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://drnol0vfgck83"]
+[gd_scene load_steps=7 format=3 uid="uid://drnol0vfgck83"]
 
 [ext_resource type="Script" path="res://Puzzle Components/Door/door.gd" id="1_3x404"]
 
@@ -28,6 +28,9 @@ _data = {
 "move": SubResource("Animation_sq47w")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v6t1"]
+size = Vector2(567.28, 66.9007)
+
 [node name="Door" type="Node2D"]
 scale = Vector2(0.0751381, 1.58318)
 script = ExtResource("1_3x404")
@@ -49,3 +52,10 @@ polygon = PackedVector2Array(-17, -2, 17, -2, 17, 2, -17, 2)
 libraries = {
 "": SubResource("AnimationLibrary_ic50f")
 }
+
+[node name="ExecutionBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExecutionBox"]
+position = Vector2(-4.15444, 0.0265605)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_6v6t1")

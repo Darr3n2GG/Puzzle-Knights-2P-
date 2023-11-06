@@ -29,4 +29,6 @@ func _ready() -> void:
 		remote_transform.remote_path = node.camera.get_path()
 		node.player.add_child(remote_transform)
 
-
+func _physics_process(_delta):
+	if Input.is_action_just_pressed("Quit game"):
+		get_tree().quit()
