@@ -9,8 +9,8 @@ func _physics_process(_delta):
 	if is_instance_valid(get_parent()):
 		if hurtbox in get_overlapping_areas() and attack.p1_attacking: 
 			damage()
-		if exebox in get_overlapping_areas(): 
-			get_parent().die()
+#		if exebox in get_overlapping_areas(): 
+#			get_parent().die()
 
 func damage(): 
 	if hc:

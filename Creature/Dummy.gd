@@ -45,7 +45,8 @@ func Setup():
 	$HealthComponent.Set_Health()
 
 func die():
-	p2.get_node("Place_Block").block_in_scene = false #Problem 2: We need to detect whether p2 passed level or not
+	if is_instance_valid(p2):
+		p2.get_node("Place_Block").block_in_scene = false #Problem 2: We need to detect whether p2 passed level or not
 	$Collision.disabled = true
 	Golem_State = States.dead
 	visible = false
