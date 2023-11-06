@@ -6,6 +6,7 @@ extends Control
 @onready var start_level = preload("res://Scenes/splitscreen.tscn") as PackedScene
 	#decides the scene to be loaded after clicking on start button
 
+
 func _ready():
 	start_button.button_down.connect(on_start_pressed)
 	quit_button.button_down.connect(on_quit_pressed)
