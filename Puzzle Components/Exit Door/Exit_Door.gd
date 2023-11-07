@@ -7,8 +7,8 @@ const FILE_BEGIN = "res://Scenes/Levels/level_"
 
 func _on_area_door_body_entered(body):
 #	print("entered door ", door_activated, " ", body)
-	if output_class.activated and body is CharacterBody2D:
-		body.queue_free()
+	if output_class.activated and body is player:
+		body.entered_door()
 		players_exited += 1
 		if players_exited == 2:
 			var current_scene_file = get_parent().scene_file_path

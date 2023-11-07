@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="6_72or7"]
 [ext_resource type="PackedScene" uid="uid://drnol0vfgck83" path="res://Puzzle Components/Door/door.tscn" id="6_lu30r"]
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="7_qh14o"]
-[ext_resource type="PackedScene" uid="uid://djo7kll4eugwk" path="res://Creature/Dummy.tscn" id="8_okv1c"]
+[ext_resource type="PackedScene" uid="uid://djo7kll4eugwk" path="res://Creature/Barrel/Dummy.tscn" id="8_okv1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cp0r"]
 size = Vector2(16, 208)
@@ -111,8 +111,9 @@ position = Vector2(447, -140)
 position = Vector2(255, 53)
 move_direction = -1
 
-[node name="pressure plate" parent="." instance=ExtResource("7_qh14o")]
+[node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("7_qh14o")]
 position = Vector2(143, -4)
+puzzle_array = [NodePath("../Door")]
 
 [node name="Dummy" parent="." instance=ExtResource("8_okv1c")]
 position = Vector2(143, -21)

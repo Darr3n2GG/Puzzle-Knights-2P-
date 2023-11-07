@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var anim : AnimatedSprite2D = $animation
 ##Players spawn point when ready or respawn
 @onready var spawn_point : Vector2 = global_position
+
 ##Counts the amount of sec times delta that time has passed when not on floor
 var coyotetimer : float = 0.0
 ##Checks if player has jumped
@@ -15,6 +16,8 @@ const maxcoyotetime : float = 0.2
 
 ##Direction a player is facing in int value
 var direction : int = 1
+##detect if player is moving
+var is_moving : bool = false
 ##Speed value of player
 const speed : float = 200.0
 ##Jump velocity value of player
@@ -48,20 +51,24 @@ func _physics_process(delta) -> void:
 	if Input.is_action_pressed(controls.right): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
 		anim.flip_h = false
 		direction = 1
+		is_moving = true
 		global_position.x += speed * delta
 		if controls.player_index == 0:
 			$HurtboxArea/HurtBox.position.x = 17
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = 16
+		
 	elif Input.is_action_pressed(controls.left): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_LEFT):
 		anim.flip_h = true
 		direction = -1
+		is_moving = true
 		global_position.x -= speed * delta
 		if controls.player_index == 0:
 			$HurtboxArea/HurtBox.position.x = -17
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -16
 	else:
+		is_moving = false
 		pass
 		
 	if position.y > 5000:
@@ -97,5 +104,9 @@ func push_collision():
 		if collided.get_collider() is RigidBody2D:
 			collided.get_collider().apply_central_impulse(Vector2(-collided.get_normal().x * push_force,0))
 
+func entered_door() -> void:
+	visible = false
+	PROCESS_MODE_DISABLED
+
 func die():
-	queue_free()
+	pass

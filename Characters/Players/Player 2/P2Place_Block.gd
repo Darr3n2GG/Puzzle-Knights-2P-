@@ -38,7 +38,7 @@ func _input(_event):
 						
 func Create_Block():
 	if not is_instance_valid(placed_block):
-		var block = load("res://Creature/Dummy.tscn")
+		var block = load("res://Creature/Barrel/Dummy.tscn")
 		placed_block = block.instantiate()
 		placed_block.set_name("block")
 		p2.get_parent().add_child(placed_block)
