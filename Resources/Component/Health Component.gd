@@ -25,7 +25,7 @@ func damage(agent: String):
 			print(Name, " is attacked by ", agent, ", Current health:", health)
 		if health <= 0:
 			get_parent().die()
-			print(Name, " is killed by", agent)
+			print(Name, " is killed by ", agent)
 
 func _on_damaged_cd_timeout():
 	can_damaged = true

@@ -110,3 +110,4 @@ func entered_door() -> void:
 
 func die():
 	pass
+	print("Assume player is killed")
