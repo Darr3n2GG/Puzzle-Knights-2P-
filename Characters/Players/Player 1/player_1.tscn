@@ -59,7 +59,7 @@ hc = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2udho")
-debug_color = Color(0, 0.619608, 0.560784, 0.419608)
+debug_color = Color(0, 0.635294, 0.4, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_0g6dk")]
 Name = "Player 1"
