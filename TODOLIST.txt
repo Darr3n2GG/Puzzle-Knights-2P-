@@ -14,7 +14,7 @@ TO DO LIST:
 				 (an adventurer from somewhere in europe idk, loves travelling, always carries a backpack 
 				  filled with many different blocks, wears leather clothing with a metal helmet)
 		3. Program Split Screen //
-		4. Draw Tileset (I don't think we need this)
+		4. Draw Tileset (I don't think we need this) 
 		5. Draw Background for Main Menu
 		
 	Optional ->

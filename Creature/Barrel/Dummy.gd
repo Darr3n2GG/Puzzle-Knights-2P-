@@ -53,7 +53,7 @@ func calc_place_range() -> float:
 
 func die() -> void:
 	if is_instance_valid(p2):
-		p2.get_node("Place_Block").block_in_scene = false #Problem 2: We need to detect whether p2 passed level or not
+		p2.get_node("Place_Block").block_in_scene = false 
 	$Collision.disabled = true
 	Golem_State = States.dead
 	visible = false

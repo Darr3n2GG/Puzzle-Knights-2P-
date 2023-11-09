@@ -29,7 +29,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6v6t1"]
-size = Vector2(359.338, 67.5589)
+size = Vector2(359.338, 65.3615)
 
 [node name="Door" type="Node2D"]
 scale = Vector2(0.0751381, 1.58318)
@@ -56,5 +56,5 @@ libraries = {
 [node name="ExecutionBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExecutionBox"]
-scale = Vector2(1, 1)
+position = Vector2(0, 1.09872)
 shape = SubResource("RectangleShape2D_6v6t1")
