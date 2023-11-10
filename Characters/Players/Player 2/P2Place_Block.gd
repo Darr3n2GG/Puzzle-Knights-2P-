@@ -23,21 +23,19 @@ func _input(_event):
 	if Input.is_action_just_pressed("2PlaceOrCarry"):
 		if block_in_scene == false:
 			Create_Block()
-		else:
-			if is_instance_valid(placed_block):
-				if not $"../TerrainDetector".has_overlapping_bodies():
-					match p2_states:
-						states.placed:
-							dist = p2.global_position.distance_to(placed_block.global_position)
-							if dist < 100:
-								Carry_Block()
-								p2_states = states.carry
-						states.carry:
-							Place_Block()
-							p2_states = states.placed
+		elif not $"../TerrainDetector".has_overlapping_bodies():
+			match p2_states:
+				states.placed:
+					dist = p2.global_position.distance_to(placed_block.global_position)
+					if dist < 100:
+						Carry_Block()
+						p2_states = states.carry
+				states.carry:
+					Place_Block()
+					p2_states = states.placed
 						
 func Create_Block():
-	if not is_instance_valid(placed_block):
+	if not placed_block:
 		var block = load("res://Creature/Barrel/Dummy.tscn")
 		placed_block = block.instantiate()
 		placed_block.set_name("block")

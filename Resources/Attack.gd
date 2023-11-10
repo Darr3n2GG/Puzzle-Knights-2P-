@@ -1,6 +1,7 @@
+##class for attack
 extends Node
-#class for attack
 
-var p1_attacking = false
-var damage : int
-var knockback : int
+class_name Attack
+
+var damage : float
+var knockback : float

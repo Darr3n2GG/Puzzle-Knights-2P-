@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://btbcfowqemp3y"]
+[gd_scene load_steps=23 format=3 uid="uid://bxjod2sflh7jp"]
 
 [ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_dpooq"]
 [ext_resource type="Texture2D" uid="uid://dtd0mc3r63bnt" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png" id="2_ytq3n"]

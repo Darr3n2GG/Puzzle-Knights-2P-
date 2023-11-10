@@ -30,7 +30,7 @@ region_rect = Rect2(32, 112, 16, 16)
 shape = SubResource("RectangleShape2D_wu1b8")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("4_vfmdo")]
-collision_layer = 8
+collision_layer = 2
 hc = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -39,5 +39,3 @@ debug_color = Color(0, 0.631373, 0.352941, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_fo58o")]
 MaxHealth = 1.0
-Name = "Barrel"
-type = "dummy"

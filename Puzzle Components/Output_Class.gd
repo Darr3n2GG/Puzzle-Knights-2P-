@@ -12,6 +12,7 @@ func Check_Activation() -> bool:
 		activation_index += 1
 	else:
 		activation_index -= 1
+	
 	if activation_index == 1 and activated or activation_index == 0:
 		return true
 	else:

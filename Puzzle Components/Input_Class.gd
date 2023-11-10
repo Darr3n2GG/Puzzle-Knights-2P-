@@ -5,7 +5,7 @@ class_name Input_Puzzle
 var output_puzzles : Array[Node2D]
 var activated : bool = false
 
-signal on_activated(is_activated)
+signal on_activated(is_activated : bool)
 
 func setup() -> void:
 	for nodes in output_puzzles:
