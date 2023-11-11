@@ -20,7 +20,7 @@ func change_scene(path) -> void:
 	call_deferred("deferred_change_scene",path)
 	
 func deferred_change_scene(path) -> void:
-	current_level_node.free() #Problem 3: We can't proceed to level 2
+	current_level_node.free()
 	var next_scene = ResourceLoader.load(path)
 	current_level_node = next_scene.instantiate()
 	current_level_node.name = "Level " + str(current_level)
@@ -38,4 +38,3 @@ func deferred_reset_scene():
 	root.get_child(root.get_child_count() - 1).get_node("HBoxContainer/LeftViewportContainer/LeftSubViewport").add_child(current_level_node)
 	var splitscreen = root.get_node("Node")
 	splitscreen._ready()
-

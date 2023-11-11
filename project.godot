@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Puzzle-knights-2p-"
+config/name="Puzzle-knights-2p-Redcoat"
 run/main_scene="res://Scenes/Main Menu/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://Barrel.png"
