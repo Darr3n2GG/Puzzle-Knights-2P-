@@ -1,7 +1,6 @@
 extends Resource
 
 class_name controls
-#class for controls
 
 @export var player_index := 0
 @export var left := "1Left"
