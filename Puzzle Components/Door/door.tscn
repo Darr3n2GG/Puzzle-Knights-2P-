@@ -1,11 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://drnol0vfgck83"]
 
 [ext_resource type="Script" path="res://Puzzle Components/Door/door.gd" id="1_3x404"]
+[ext_resource type="PackedScene" uid="uid://c8f6t6wa8tuwh" path="res://Resources/Component/Hurtbox_Component.tscn" id="2_2kql4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7thy5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gd58t"]
-size = Vector2(573, 67)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v6t1"]
+size = Vector2(359.338, 66.0064)
 
 [sub_resource type="Animation" id="Animation_sq47w"]
 resource_name = "move"
@@ -13,14 +14,14 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("AnimatableBody2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.594604, 1.51572),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -100)]
+"values": [Vector2(0, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ic50f"]
@@ -28,33 +29,33 @@ _data = {
 "move": SubResource("Animation_sq47w")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v6t1"]
-size = Vector2(359.338, 65.3615)
-
 [node name="Door" type="Node2D"]
 scale = Vector2(0.0751381, 1.58318)
 script = ExtResource("1_3x404")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 collision_layer = 4
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_7thy5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_gd58t")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatableBody2D"]
+polygon = PackedVector2Array(-292.794, 33.4769, -186.324, 33.4769, -186.324, -32.2136, 186.324, -32.2136, 186.324, 33.4769, 292.794, 33.4769, 292.794, -34.1086, -292.794, -34.1086)
 
-[node name="Shape2D" type="Polygon2D" parent="."]
+[node name="Shape2D" type="Polygon2D" parent="AnimatableBody2D"]
 scale = Vector2(16.875, 16.875)
 color = Color(0.12549, 0.0901961, 0.00392157, 1)
 polygon = PackedVector2Array(-17, -2, 17, -2, 17, 2, -17, 2)
+
+[node name="Hurtbox_Component" parent="AnimatableBody2D" instance=ExtResource("2_2kql4")]
+collision_layer = 0
+damage = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Hurtbox_Component"]
+position = Vector2(0, 0.473715)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_6v6t1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ic50f")
 }
-
-[node name="ExecutionBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExecutionBox"]
-position = Vector2(0, 1.09872)
-shape = SubResource("RectangleShape2D_6v6t1")

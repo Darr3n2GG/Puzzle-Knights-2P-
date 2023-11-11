@@ -20,10 +20,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0m543"]
-size = Vector2(10, 15.5)
+size = Vector2(10, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2udho"]
-size = Vector2(10.5, 15)
+size = Vector2(10, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah4og"]
 size = Vector2(23, 18)
@@ -35,18 +35,19 @@ script = ExtResource("1_yjl8x")
 controls = ExtResource("2_g5pru")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 0.5)
 sprite_frames = SubResource("SpriteFrames_cwjio")
 animation = &"idle"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_0m543")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("5_g81ct")]
+collision_layer = 1
+collision_mask = 0
 hc = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2udho")
 debug_color = Color(0, 0.635294, 0.4, 0.419608)
 
@@ -58,7 +59,7 @@ collision_mask = 11
 knockback = 1.0
 
 [node name="HurtBox" type="CollisionShape2D" parent="Hurtbox_Component"]
-position = Vector2(17.5, 0)
+position = Vector2(16.5, 0)
 shape = SubResource("RectangleShape2D_ah4og")
 debug_color = Color(0.937255, 0.25098, 0, 0.419608)
 

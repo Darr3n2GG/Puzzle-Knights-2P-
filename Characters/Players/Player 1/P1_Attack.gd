@@ -6,7 +6,7 @@ extends Node
 func _ready() -> void:
 	hurtbox.monitoring = false
 
-func _input(_event) -> void:
+func _physics_process(_delta) -> void:
 	if Input.is_action_just_pressed("1Attack"): #haha bug fixed
 		hurtbox.monitoring = true
 		timer.start()

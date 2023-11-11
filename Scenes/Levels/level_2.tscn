@@ -439,3 +439,5 @@ position = Vector2(447, -12)
 
 [node name="Door" parent="." instance=ExtResource("7_0y2p1")]
 position = Vector2(239, -54)
+offset = Vector2(0, -75)
+duration = 1.0

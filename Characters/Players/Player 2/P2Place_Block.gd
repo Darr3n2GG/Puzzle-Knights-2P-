@@ -19,7 +19,7 @@ enum states
 ##Player 2 state variable
 var p2_states = states.placed
 
-func _input(_event):
+func _physics_process(_delta) -> void:
 	if Input.is_action_just_pressed("2PlaceOrCarry"):
 		if block_in_scene == false:
 			Create_Block()

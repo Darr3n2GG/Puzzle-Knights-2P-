@@ -22,7 +22,7 @@ var direction : int = 1
 ##Jump velocity value of player
 @export var jump_vel : float = -300.0
 ##Amount of push force player can exert on rigid bodies
-@export var push_force : float = 40.0
+@export var push_force : float = 20.0
 
 @export var base_place_range : float = 16.0
 
@@ -41,9 +41,6 @@ func _physics_process(delta) -> void:
 		has_jumped = false
 	else:
 		coyotetimer += delta
-	
-	if Input.is_action_pressed("reset"):
-		global_position = spawn_point
 	
 	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
 		velocity.y = jump_vel
@@ -71,7 +68,7 @@ func _physics_process(delta) -> void:
 		pass
 		
 	if position.y > 5000:
-		global_position = Vector2(0, -10)
+		global_position = spawn_point
 		
 	move_and_slide()
 	update_animation()
@@ -108,5 +105,5 @@ func entered_door() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func die():
-	pass
 	print("Assume player is killed")
+	global_position = spawn_point

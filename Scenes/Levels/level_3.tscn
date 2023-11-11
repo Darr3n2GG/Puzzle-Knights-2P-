@@ -382,12 +382,15 @@ position = Vector2(15, -6)
 position = Vector2(447, -140)
 
 [node name="Door" parent="." instance=ExtResource("6_lu30r")]
-position = Vector2(255, 53)
-move_direction = -1
+position = Vector2(255, -54)
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("7_qh14o")]
 position = Vector2(143, -4)
 puzzle_array = [NodePath("../Door")]
+
+[node name="pressure plate2" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("7_qh14o")]
+position = Vector2(335, -132)
+puzzle_array = [NodePath("../Exit Door")]
 
 [node name="Dummy" parent="." instance=ExtResource("8_okv1c")]
 position = Vector2(143, -21)

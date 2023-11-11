@@ -156,7 +156,7 @@ animations = [{
 size = Vector2(12, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17syw"]
-size = Vector2(12, 16)
+size = Vector2(12, 14.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h73c5"]
 size = Vector2(30, 14)
@@ -171,22 +171,22 @@ script = ExtResource("1_1r7u3")
 controls = ExtResource("2_iea8n")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_o2eun")
 animation = &"idle"
 
 [node name="Block" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, -17)
+position = Vector2(0, -15)
 texture = ExtResource("6_q8qd8")
 region_enabled = true
 region_rect = Rect2(32, 112, 16, 16)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_vah8s")
 
 [node name="Carry_State_Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -17)
+position = Vector2(0, -15.25)
 shape = SubResource("RectangleShape2D_17syw")
 disabled = true
 
@@ -195,7 +195,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="TerrainDetectorCollsion" type="CollisionShape2D" parent="TerrainDetector"]
-position = Vector2(9, -1)
+position = Vector2(9, 0)
 shape = SubResource("RectangleShape2D_h73c5")
 debug_color = Color(0.992157, 0, 0.239216, 0.419608)
 
@@ -208,5 +208,4 @@ script = ExtResource("7_vvske")
 hc = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_qw1vh")
