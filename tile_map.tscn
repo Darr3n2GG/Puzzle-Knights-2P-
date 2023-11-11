@@ -150,7 +150,6 @@ texture = SubResource("CompressedTexture2D_uucln")
 0:12/0 = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y1332"]
-load_path = "res://.godot/imported/castle-tileset-grayscale.png-a87447ee8ff9bdef2c81d07839e658c1.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1tpm3"]
 texture = SubResource("CompressedTexture2D_y1332")
