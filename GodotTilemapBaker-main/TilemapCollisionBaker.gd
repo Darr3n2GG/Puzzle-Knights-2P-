@@ -1,6 +1,9 @@
 @tool
 extends StaticBody2D
 
+## This script pre-bakes collisions for square tilemaps, therefore optimizing code 
+## and getting rid of weird physics bugs!
+##
 ## How it works TLDR:
 ## This script finds the position of every tile on the layer you've selected from the top left
 ## It then goes to the right until it reaches an edge, then created a rectange CollisionShape2D
@@ -25,6 +28,7 @@ extends StaticBody2D
 func run_code(_fake_bool = null):
 	var tile_map: TileMap = get_node(tilemap_nodepath)
 	if tile_map == null:
+		print("Hey, you forgot to set your Tilemap Nodepath.")
 		return
 	
 	if delete_children_on_run:
@@ -34,6 +38,7 @@ func run_code(_fake_bool = null):
 	var tilemap_locations = tile_map.get_used_cells(target_tiles_layer)
 	
 	if tilemap_locations.size() == 0:
+		print("Hey, this tilemap is empty (did you choose the correct layer?)")
 		return
 	
 	# I use .pop_back() to go through the array, so I sort them from bottom right to top left.
@@ -42,6 +47,8 @@ func run_code(_fake_bool = null):
 	var last_loc: Vector2i = Vector2i(-99999, -99999)
 	var size: Vector2i = Vector2i(1, 1)
 	var xMarginStart = 0
+	
+	print("Starting first pass (Creating initial colliders)...")
 	
 	var first_colliders_arr = []
 	## First pass: add horizontal rect colliders starting from the top left
@@ -54,6 +61,7 @@ func run_code(_fake_bool = null):
 			@warning_ignore("integer_division")
 			var newYPos = last_loc.y * tile_size.y - (-tile_size.y / 2)
 			first_colliders_arr.append(createCollisionShape(Vector2i(newXPos, newYPos), size, tile_size))
+			print("Finished calculating first pass!")
 			break
 		
 		if last_loc == Vector2i(-99999, -99999):
@@ -83,6 +91,8 @@ func run_code(_fake_bool = null):
 	
 	var second_colliders_arr = []
 	
+	print("Starting second pass (Merging colliders)...")
+	
 	## Second pass: Merge colliders that are on top of eachother and are the same size
 	while true:
 		var temp_collider = first_colliders_arr.pop_back()
@@ -92,6 +102,8 @@ func run_code(_fake_bool = null):
 			last_collider.shape.size.y = tile_size.y * colliders_to_merge
 			last_collider.position.y -= (colliders_to_merge / 2.0 - 0.5) * tile_size.y
 			second_colliders_arr.append(last_collider)
+			
+			print("Finished baking tilemap collisions!")
 			break
 		
 		if last_collider_pos == Vector2(-99999, -99999):
