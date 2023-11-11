@@ -35,21 +35,18 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var controls : Resource = null
 
 func _physics_process(delta) -> void:
-	if not is_on_floor() and not god_mode:
+	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if is_on_floor() and not god_mode:
+	if is_on_floor():
 		coyotetimer = 0.0
 		has_jumped = false
 	else:
 		coyotetimer += delta
-	if not god_mode:
-		if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
+		
+	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
 			velocity.y = jump_vel
 			has_jumped = true
-	else:
-		if Input.is_action_pressed(controls.up):
-			global_position.y += jump_vel * delta
 
 	if Input.is_action_pressed(controls.right): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
 		anim.flip_h = false
@@ -69,14 +66,6 @@ func _physics_process(delta) -> void:
 			$Hurtbox_Component/HurtBox.position.x = -17
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
-			
-	elif Input.is_action_just_pressed("god_mode"):
-		if god_mode:
-			god_mode = false
-		else:
-			god_mode = true
-	else:
-		pass
 		
 	if position.y > 5000:
 		global_position = spawn_point
