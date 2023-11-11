@@ -1,4 +1,5 @@
 extends Area2D
+
 class_name Com_HurtB
 
 @export var damage : float = 1.0

@@ -11,11 +11,7 @@ var dist : float
 ##Player 2 States dictionary :
 ##carry - when player is carrying the block
 ##placed - when player has placed the block
-enum states
-{
-	carry,
-	placed
-}
+enum states {carry, placed}
 ##Player 2 state variable
 var p2_states = states.placed
 

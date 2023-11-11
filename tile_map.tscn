@@ -1,8 +1,5 @@
 [gd_scene load_steps=23 format=3 uid="uid://vdjm2ci4dk5w"]
 
-[ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_r1tx0"]
-[ext_resource type="Texture2D" uid="uid://dtd0mc3r63bnt" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png" id="2_81jq7"]
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ifvb1"]
 tile_data = PackedInt32Array(0, 1, 5, 65536, 1, 6, 1, 65537, 5, 65537, 65537, 6, 2, 131073, 5, 65538, 131073, 6, 3, 196609, 5, 65539, 196609, 6, 4, 262145, 5, 65540, 262145, 6, 5, 327681, 5, 65541, 327681, 6, 6, 393217, 5, 65542, 393217, 6)
 
@@ -54,8 +51,11 @@ tile_data = PackedInt32Array(0, 65537, 4, 1, 131073, 4, 2, 196609, 4)
 [sub_resource type="TileMapPattern" id="TileMapPattern_n7ppf"]
 tile_data = PackedInt32Array(0, 262145, 4, 1, 327681, 4, 2, 393217, 4)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uucln"]
+load_path = "res://.godot/imported/castle-tileset.png-70b14904abe2dceabbc85a563ec5d24f.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bc8ua"]
-texture = ExtResource("1_r1tx0")
+texture = SubResource("CompressedTexture2D_uucln")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -149,8 +149,11 @@ texture = ExtResource("1_r1tx0")
 3:11/0 = 0
 0:12/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y1332"]
+load_path = "res://.godot/imported/castle-tileset-grayscale.png-a87447ee8ff9bdef2c81d07839e658c1.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1tpm3"]
-texture = ExtResource("2_81jq7")
+texture = SubResource("CompressedTexture2D_y1332")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0

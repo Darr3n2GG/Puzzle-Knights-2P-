@@ -1,9 +1,6 @@
 @tool
 extends StaticBody2D
 
-## This script pre-bakes collisions for square tilemaps, therefore optimizing code 
-## and getting rid of weird physics bugs!
-##
 ## How it works TLDR:
 ## This script finds the position of every tile on the layer you've selected from the top left
 ## It then goes to the right until it reaches an edge, then created a rectange CollisionShape2D
