@@ -47,7 +47,8 @@ func Setup() -> void:
 	$HealthComponent.Set_Health()
 
 func die() -> void:
-	p2.get_node("Place_Block").block_in_scene = false 
+	if is_instance_valid(p2):
+		p2.get_node("Place_Block").block_in_scene = false 
 	$Collision.call_deferred("set_disabled",true)
 	Golem_State = States.dead
 	visible = false

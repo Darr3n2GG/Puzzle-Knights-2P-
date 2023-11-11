@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_ox4oi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ix0"]
-size = Vector2(16, 8)
+size = Vector2(22, 8)
 
 [sub_resource type="Animation" id="Animation_tt0k6"]
 resource_name = "Move"
@@ -36,15 +36,8 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_2D"]
 shape = SubResource("RectangleShape2D_v1ix0")
 
-[node name="Shape2D" type="Polygon2D" parent="."]
-visible = false
-position = Vector2(0, 34)
-scale = Vector2(16.875, 16.875)
-color = Color(0.45098, 0.45098, 0.45098, 1)
-offset = Vector2(0, 4)
-polygon = PackedVector2Array(-17, -2, 17, -2, 17, 2, -17, 2)
-
 [node name="platesprite" type="Sprite2D" parent="."]
+scale = Vector2(1.375, 1)
 texture = ExtResource("2_ox4oi")
 region_enabled = true
 region_rect = Rect2(48, 136, 16, 8)

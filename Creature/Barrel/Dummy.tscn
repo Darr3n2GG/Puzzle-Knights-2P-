@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djo7kll4eugwk"]
+[gd_scene load_steps=7 format=3 uid="uid://djo7kll4eugwk"]
 
 [ext_resource type="Script" path="res://Creature/Barrel/Dummy.gd" id="1_1ub1h"]
 [ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_2j32n"]
@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dc560d02gq12i" path="res://Resources/Component/hitbox_component.tscn" id="4_vfmdo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x6ci1"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1b8"]
-size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opaml"]
 size = Vector2(16, 16)
@@ -26,8 +23,8 @@ texture = ExtResource("2_2j32n")
 region_enabled = true
 region_rect = Rect2(32, 112, 16, 16)
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_wu1b8")
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 5, 5, 8, -5, 8, -8, 5)
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("4_vfmdo")]
 collision_layer = 2
@@ -38,4 +35,4 @@ shape = SubResource("RectangleShape2D_opaml")
 debug_color = Color(0, 0.631373, 0.352941, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_fo58o")]
-MaxHealth = 1.0
+MaxHealth = 2.0

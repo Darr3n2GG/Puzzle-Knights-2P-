@@ -17,13 +17,15 @@ var has_jumped : bool = false
 ##Direction a player is facing in int value
 var direction : int = 1
 
+var god_mode : bool = false
+
 ##Speed value of player
 @export var speed : float = 200.0
 ##Jump velocity value of player
 @export var jump_vel : float = -300.0
 ##Amount of push force player can exert on rigid bodies
 @export var push_force : float = 20.0
-
+##Place range of player
 @export var base_place_range : float = 16.0
 
 ##Gravity from project settings
@@ -33,18 +35,21 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var controls : Resource = null
 
 func _physics_process(delta) -> void:
-	if not is_on_floor():
+	if not is_on_floor() and not god_mode:
 		velocity.y += gravity * delta
 
-	if is_on_floor():
+	if is_on_floor() and not god_mode:
 		coyotetimer = 0.0
 		has_jumped = false
 	else:
 		coyotetimer += delta
-	
-	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
-		velocity.y = jump_vel
-		has_jumped = true
+	if not god_mode:
+		if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
+			velocity.y = jump_vel
+			has_jumped = true
+	else:
+		if Input.is_action_pressed(controls.up):
+			global_position.y += jump_vel * delta
 
 	if Input.is_action_pressed(controls.right): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
 		anim.flip_h = false
@@ -64,6 +69,12 @@ func _physics_process(delta) -> void:
 			$Hurtbox_Component/HurtBox.position.x = -17
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
+			
+	elif Input.is_action_just_pressed("god_mode"):
+		if god_mode:
+			god_mode = false
+		else:
+			god_mode = true
 	else:
 		pass
 		

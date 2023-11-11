@@ -22,3 +22,4 @@ func start_tween(stated_offset : Vector2) -> void:
 	var tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.set_loops().set_parallel(false)
 	tween.tween_property($AnimatableBody2D, "position", stated_offset, duration / 2)
+	tween.bind_node(self)

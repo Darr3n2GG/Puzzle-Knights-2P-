@@ -383,6 +383,8 @@ position = Vector2(447, -140)
 
 [node name="Door" parent="." instance=ExtResource("6_lu30r")]
 position = Vector2(255, -54)
+offset = Vector2(0, 58)
+duration = 1.0
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("7_qh14o")]
 position = Vector2(143, -4)
@@ -394,3 +396,11 @@ puzzle_array = [NodePath("../Exit Door")]
 
 [node name="Dummy" parent="." instance=ExtResource("8_okv1c")]
 position = Vector2(143, -21)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 117.0
+offset_top = -124.0
+offset_right = 183.0
+offset_bottom = -54.0
+text = "down key to attack"
+scroll_active = false
