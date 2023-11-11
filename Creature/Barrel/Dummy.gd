@@ -25,7 +25,7 @@ func _physics_process(_delta) -> void:
 					die()
 				gravity_scale = 1.0
 			States.carry:
-				global_position = p2.global_position + Vector2(calc_place_range() * p2.direction,0)
+				global_position = p2.global_position + Vector2(base_place_range * p2.direction,0)
 				gravity_scale = 0.0
 				linear_velocity = Vector2.ZERO
 			States.dead:
@@ -45,16 +45,9 @@ func On_Placed() -> void :
 
 func Setup() -> void:
 	$HealthComponent.Set_Health()
-	
-func calc_place_range() -> float:
-	if p2.is_moving:
-		return base_place_range * 2.6
-	else:
-		return base_place_range
 
 func die() -> void:
-	if is_instance_valid(p2):
-		p2.get_node("Place_Block").block_in_scene = false 
+	p2.get_node("Place_Block").block_in_scene = false 
 	$Collision.call_deferred("set_disabled",true)
 	Golem_State = States.dead
 	visible = false

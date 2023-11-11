@@ -16,8 +16,6 @@ var has_jumped : bool = false
 
 ##Direction a player is facing in int value
 var direction : int = 1
-##detect if player is moving
-var is_moving : bool = false
 
 ##Speed value of player
 @export var speed : float = 200.0
@@ -54,37 +52,22 @@ func _physics_process(delta) -> void:
 	if Input.is_action_pressed(controls.right): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
 		anim.flip_h = false
 		direction = 1
-		is_moving = true
 		global_position.x += speed * delta
 		if controls.player_index == 0:
 			$Hurtbox_Component/HurtBox.position.x = 17
 		else:
-			var terrain_detector : CollisionShape2D = $TerrainDetector/TerrainDetectorCollsion
-			if is_moving:
-				terrain_detector.shape.size = Vector2(46,14)
-				terrain_detector.position.x = 17
-			else:
-				terrain_detector.shape.size = Vector2(30,14)
-				terrain_detector.position.x = 9
+			$TerrainDetector/TerrainDetectorCollsion.position.x = 9
 				
 		
 	elif Input.is_action_pressed(controls.left): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_LEFT):
 		anim.flip_h = true
 		direction = -1
-		is_moving = true
 		global_position.x -= speed * delta
 		if controls.player_index == 0:
 			$Hurtbox_Component/HurtBox.position.x = -17
 		else:
-			var terrain_detector : CollisionShape2D = $TerrainDetector/TerrainDetectorCollsion
-			if is_moving:
-				terrain_detector.shape.size = Vector2(46,14)
-				terrain_detector.position.x = -17
-			else:
-				terrain_detector.shape.size = Vector2(30,14)
-				terrain_detector.position.x = -9
+			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
 	else:
-		is_moving = false
 		pass
 		
 	if position.y > 5000:
@@ -119,12 +102,6 @@ func push_collision():
 		var collided = get_slide_collision(last_collided)
 		if collided.get_collider() is RigidBody2D:
 			collided.get_collider().apply_central_impulse(Vector2(-collided.get_normal().x * push_force,0))
-
-func calc_place_range() -> float:
-	if is_moving:
-		return base_place_range * 2.6
-	else:
-		return base_place_range
 
 func entered_door() -> void:
 	visible = false
