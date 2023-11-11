@@ -399,6 +399,9 @@ shape = SubResource("RectangleShape2D_aqv2j")
 position = Vector2(296, -64)
 shape = SubResource("RectangleShape2D_sm010")
 
+[node name="Exit Door" parent="." instance=ExtResource("6_v3c68")]
+position = Vector2(447, -12)
+
 [node name="Player 1" parent="." instance=ExtResource("3_dmsnf")]
 position = Vector2(-15, -8)
 
@@ -412,9 +415,6 @@ puzzle_array = [NodePath("../Door")]
 [node name="pressure plate2" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("5_orrw6")]
 position = Vector2(495, -148)
 puzzle_array = [NodePath("../Door"), NodePath("../Exit Door")]
-
-[node name="Exit Door" parent="." instance=ExtResource("6_v3c68")]
-position = Vector2(447, -12)
 
 [node name="Door" parent="." instance=ExtResource("7_0y2p1")]
 position = Vector2(239, -54)

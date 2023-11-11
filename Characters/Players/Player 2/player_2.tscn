@@ -153,16 +153,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vah8s"]
-size = Vector2(12, 16)
+size = Vector2(12, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17syw"]
-size = Vector2(12, 14.5)
+size = Vector2(12, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h73c5"]
-size = Vector2(30, 14)
+size = Vector2(30, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qw1vh"]
-size = Vector2(12, 16)
+size = Vector2(12, 15)
 
 [node name="Player 2" type="CharacterBody2D"]
 collision_mask = 6
@@ -183,10 +183,11 @@ region_enabled = true
 region_rect = Rect2(32, 112, 16, 16)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_vah8s")
 
 [node name="Carry_State_Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15.25)
+position = Vector2(0, -14.5)
 shape = SubResource("RectangleShape2D_17syw")
 disabled = true
 
@@ -195,7 +196,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="TerrainDetectorCollsion" type="CollisionShape2D" parent="TerrainDetector"]
-position = Vector2(9, 0)
+position = Vector2(9, 0.5)
 shape = SubResource("RectangleShape2D_h73c5")
 debug_color = Color(0.992157, 0, 0.239216, 0.419608)
 
@@ -210,4 +211,5 @@ collision_mask = 8
 hc = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_qw1vh")

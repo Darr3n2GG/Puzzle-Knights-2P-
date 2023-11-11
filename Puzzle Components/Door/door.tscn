@@ -6,7 +6,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7thy5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6v6t1"]
-size = Vector2(359.338, 66.0064)
+size = Vector2(359.338, 34.1086)
 
 [sub_resource type="Animation" id="Animation_sq47w"]
 resource_name = "move"
@@ -39,7 +39,7 @@ collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_7thy5")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatableBody2D"]
-polygon = PackedVector2Array(-292.794, 33.4769, -186.324, 33.4769, -186.324, -32.2136, 186.324, -32.2136, 186.324, 33.4769, 292.794, 33.4769, 292.794, -34.1086, -292.794, -34.1086)
+polygon = PackedVector2Array(-292.794, 33.4769, -186.324, 33.4769, -186.324, -0.63164, 186.324, -0.63164, 186.324, 33.4769, 292.794, 33.4769, 292.794, -34.1086, -292.794, -34.1086)
 
 [node name="Shape2D" type="Polygon2D" parent="AnimatableBody2D"]
 scale = Vector2(16.875, 16.875)
@@ -48,11 +48,11 @@ polygon = PackedVector2Array(-17, -2, 17, -2, 17, 2, -17, 2)
 
 [node name="Hurtbox_Component" parent="AnimatableBody2D" instance=ExtResource("2_2kql4")]
 collision_layer = 0
+collision_mask = 3
 damage = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Hurtbox_Component"]
-position = Vector2(0, 0.473715)
-scale = Vector2(1, 1)
+position = Vector2(0, 16.4226)
 shape = SubResource("RectangleShape2D_6v6t1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -11,6 +11,6 @@ func _on_area_entered(area: Area2D) -> void:
 		var hitbox : Com_HitB = area
 		var attack_instance = Attack.new()
 		attack_instance.damage = damage
-		attack_instance.knockback = knockback
+		attack_instance.knockback = knockback * get_parent().direction
 		
 		hitbox.damage(attack_instance, get_parent())
