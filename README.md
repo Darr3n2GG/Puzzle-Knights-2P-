@@ -3,4 +3,5 @@
 
 Feel free to send pull requests and issues to improve/fix our game!
 
-## PRE RELEASE SOON
+## PRE OUT NOW
+YOOHOO it's a pre release!
