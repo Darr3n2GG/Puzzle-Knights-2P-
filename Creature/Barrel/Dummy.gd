@@ -31,6 +31,9 @@ func _physics_process(_delta) -> void:
 			States.dead:
 				pass
 
+func Setup() -> void:
+	$HealthComponent.Set_Health()
+
 func On_Create_or_Carry() -> void:
 	Golem_State = States.carry
 	visible = false
@@ -42,9 +45,6 @@ func On_Placed() -> void :
 	visible = true
 	$Collision.disabled = false
 	$HitboxComponent.monitorable = true
-
-func Setup() -> void:
-	$HealthComponent.Set_Health()
 
 func die() -> void:
 	if is_instance_valid(p2):

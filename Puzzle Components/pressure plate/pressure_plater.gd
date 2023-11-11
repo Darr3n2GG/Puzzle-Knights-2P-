@@ -12,18 +12,10 @@ func _ready():
 
 func _on_area_pp_body_entered(_body):
 	if area.has_overlapping_bodies() and not input_class.activated:
-		play_animation()
+		anim.play("Move")
 		input_class.send_input(true)
 
 func _on_area_pp_body_exited(_body):
 	if not area.has_overlapping_bodies():
-		play_animation()
-		input_class.send_input(false)
-
-func play_animation():
-	if area.has_overlapping_bodies():
-		anim.play("Move")
-		input_class.activated = true
-	else:
 		anim.play_backwards("Move")
-		input_class.activated = false
+		input_class.send_input(false)

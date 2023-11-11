@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtd0mc3r63bnt"
-path="res://.godot/imported/castle-tileset-grayscale.png-a87447ee8ff9bdef2c81d07839e658c1.ctex"
+uid="uid://caeaf7v4hil5g"
+path="res://.godot/imported/miner.jpg-984312a8f52866c49d7d6d0370672620.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png"
-dest_files=["res://.godot/imported/castle-tileset-grayscale.png-a87447ee8ff9bdef2c81d07839e658c1.ctex"]
+source_file="res://Characters/Player/Player 1/miner.jpg"
+dest_files=["res://.godot/imported/miner.jpg-984312a8f52866c49d7d6d0370672620.ctex"]
 
 [params]
 
