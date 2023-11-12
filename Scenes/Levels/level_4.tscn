@@ -1,12 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://cqinodsrklt2y"]
+[gd_scene load_steps=27 format=3 uid="uid://u7i88k42gbgg"]
 
-[ext_resource type="PackedScene" uid="uid://vdjm2ci4dk5w" path="res://tile_map.tscn" id="1_wsf6s"]
+[ext_resource type="PackedScene" uid="uid://d6d15jtyyq7l" path="res://tile_map.tscn" id="1_wsf6s"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_5iuso"]
 [ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Players/Player 2/player_2.tscn" id="3_o86ys"]
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="4_8qak7"]
 [ext_resource type="PackedScene" uid="uid://djo7kll4eugwk" path="res://Creature/Barrel/Dummy.tscn" id="5_rshh1"]
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="6_qrit0"]
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="7_0o1ek"]
+[ext_resource type="Script" path="res://Creature/Barrel/DummyE.gd" id="7_ob882"]
 [ext_resource type="PackedScene" uid="uid://drnol0vfgck83" path="res://Puzzle Components/Door/door.tscn" id="8_wtvmw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ece7"]
@@ -59,28 +60,6 @@ size = Vector2(112, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_assen"]
 size = Vector2(16, 96)
-
-[sub_resource type="GDScript" id="GDScript_kxiic"]
-script/source = "extends RigidBody2D
-
-class_name BarrelE
-
-enum States
-{
-	dead #is dead
-}
-
-var p1_attackzone : bool = false
-var can_damaged : bool = true
-@export var base_place_range : float = 16.0
-
-func Setup() -> void:
-	$HealthComponent.Set_Health()
-
-func die() -> void:
-	$Collision.call_deferred(\"set_disabled\",true)
-	visible = false
-"
 
 [node name="level_4" type="Node2D"]
 
@@ -173,7 +152,7 @@ position = Vector2(-15, -8)
 
 [node name="DummyE" parent="." instance=ExtResource("5_rshh1")]
 position = Vector2(69, -12)
-script = SubResource("GDScript_kxiic")
+script = ExtResource("7_ob882")
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("7_0o1ek")]
 position = Vector2(113, -164)

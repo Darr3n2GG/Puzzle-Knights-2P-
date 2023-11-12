@@ -1,11 +1,19 @@
 extends RigidBody2D
 
+class_name BarrelE
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+enum States
+{
+	dead #is dead
+}
 
+var p1_attackzone : bool = false
+var can_damaged : bool = true
+@export var base_place_range : float = 16.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func Setup() -> void:
+	$HealthComponent.Set_Health()
+
+func die() -> void:
+	$Collision.call_deferred("set_disabled",true)
+	visible = false
