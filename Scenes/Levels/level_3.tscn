@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cu7t504wjyrwg"]
+[gd_scene load_steps=41 format=3 uid="uid://cu7t504wjyrwg"]
 
 [ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_w1imt"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_8utug"]
@@ -302,6 +302,28 @@ size = Vector2(16, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhf7f"]
 size = Vector2(16, 112)
 
+[sub_resource type="GDScript" id="GDScript_g1ewi"]
+script/source = "extends RigidBody2D
+
+class_name BarrelE
+
+enum States
+{
+	dead #is dead
+}
+
+var p1_attackzone : bool = false
+var can_damaged : bool = true
+@export var base_place_range : float = 16.0
+
+func Setup() -> void:
+	$HealthComponent.Set_Health()
+
+func die() -> void:
+	$Collision.call_deferred(\"set_disabled\",true)
+	visible = false
+"
+
 [node name="Level 1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -394,8 +416,9 @@ position = Vector2(239, -38)
 offset = Vector2(0, 50)
 duration = 1.0
 
-[node name="Dummy" parent="." instance=ExtResource("8_okv1c")]
+[node name="DummyE" parent="." instance=ExtResource("8_okv1c")]
 position = Vector2(143, -21)
+script = SubResource("GDScript_g1ewi")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 105.0

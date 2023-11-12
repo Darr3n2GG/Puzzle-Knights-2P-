@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://u7i88k42gbgg"]
+[gd_scene load_steps=27 format=3 uid="uid://cqinodsrklt2y"]
 
 [ext_resource type="PackedScene" uid="uid://vdjm2ci4dk5w" path="res://tile_map.tscn" id="1_wsf6s"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_5iuso"]
@@ -59,6 +59,28 @@ size = Vector2(112, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_assen"]
 size = Vector2(16, 96)
+
+[sub_resource type="GDScript" id="GDScript_kxiic"]
+script/source = "extends RigidBody2D
+
+class_name BarrelE
+
+enum States
+{
+	dead #is dead
+}
+
+var p1_attackzone : bool = false
+var can_damaged : bool = true
+@export var base_place_range : float = 16.0
+
+func Setup() -> void:
+	$HealthComponent.Set_Health()
+
+func die() -> void:
+	$Collision.call_deferred(\"set_disabled\",true)
+	visible = false
+"
 
 [node name="level_4" type="Node2D"]
 
@@ -149,8 +171,9 @@ position = Vector2(15, -6)
 [node name="Player 1" parent="." instance=ExtResource("4_8qak7")]
 position = Vector2(-15, -8)
 
-[node name="Dummy" parent="." instance=ExtResource("5_rshh1")]
-position = Vector2(69, -8)
+[node name="DummyE" parent="." instance=ExtResource("5_rshh1")]
+position = Vector2(69, -12)
+script = SubResource("GDScript_kxiic")
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("7_0o1ek")]
 position = Vector2(113, -164)
