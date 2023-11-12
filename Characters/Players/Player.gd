@@ -1,4 +1,4 @@
-##CharacterBody2d script that is used by player nodes to move, jump, attack, place/carry blocks, die, win and more
+##player script that is used by player nodes to move, jump, attack, place/carry blocks, die, win and more
 class_name player
 extends CharacterBody2D
 

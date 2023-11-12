@@ -13,6 +13,3 @@ func _ready():
 func on_start_pressed() -> void: #When clicked on start button
 	get_tree().change_scene_to_packed(start_level)
 	global.setup_level()
-
-func on_quit_pressed() -> void: #When clicked on quit button
-	get_tree().quit()

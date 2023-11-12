@@ -38,3 +38,6 @@ func deferred_reset_scene():
 	root.get_child(root.get_child_count() - 1).get_node("HBoxContainer/LeftViewportContainer/LeftSubViewport").add_child(current_level_node)
 	var splitscreen = root.get_node("Node")
 	splitscreen._ready()
+
+func on_quit_pressed() -> void: #When clicked on quit button
+	get_tree().quit()
