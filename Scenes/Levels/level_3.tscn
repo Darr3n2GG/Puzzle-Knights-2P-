@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cu7t504wjyrwg"]
+[gd_scene load_steps=41 format=3 uid="uid://cu7t504wjyrwg"]
 
 [ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_w1imt"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_8utug"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://drnol0vfgck83" path="res://Puzzle Components/Door/door.tscn" id="6_lu30r"]
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="7_qh14o"]
 [ext_resource type="PackedScene" uid="uid://djo7kll4eugwk" path="res://Creature/Barrel/Dummy.tscn" id="8_okv1c"]
+[ext_resource type="Script" path="res://Creature/Barrel/DummyE.gd" id="10_h1ffq"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ifvb1"]
 tile_data = PackedInt32Array(0, 1, 5, 65536, 1, 6, 1, 65537, 5, 65537, 65537, 6, 2, 131073, 5, 65538, 131073, 6, 3, 196609, 5, 65539, 196609, 6, 4, 262145, 5, 65540, 262145, 6, 5, 327681, 5, 65541, 327681, 6, 6, 393217, 5, 65542, 393217, 6)
@@ -389,6 +390,14 @@ puzzle_array = [NodePath("../Door")]
 position = Vector2(335, -132)
 puzzle_array = [NodePath("../Exit Door")]
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+[node name="DummyE" parent="." instance=ExtResource("8_okv1c")]
+position = Vector2(143, -23)
+script = ExtResource("10_h1ffq")
+=======
+>>>>>>> Stashed changes
 [node name="Door" parent="." instance=ExtResource("6_lu30r")]
 position = Vector2(239, -38)
 offset = Vector2(0, 50)
@@ -396,6 +405,7 @@ duration = 1.0
 
 [node name="Dummy" parent="." instance=ExtResource("8_okv1c")]
 position = Vector2(143, -21)
+>>>>>>> e718cecde08738054cd23452f9d11b4bdf292a50
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 105.0

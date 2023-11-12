@@ -80,11 +80,11 @@ position = Vector2(326, -4)
 puzzle_array = [NodePath("../Exit Door")]
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-offset_left = 225.0
-offset_top = -134.0
-offset_right = 431.0
-offset_bottom = -46.0
-text = "Arrow down key (Player 2) to create,  carry, place, and pick up barrel"
+offset_left = 244.0
+offset_top = -113.0
+offset_right = 413.0
+offset_bottom = -38.0
+text = "Arrow down key to create,  carry, place, and pick up barrel"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = -32.0

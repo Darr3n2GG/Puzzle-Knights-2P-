@@ -1,4 +1,12 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=26 format=3 uid="uid://u7i88k42gbgg"]
+=======
+<<<<<<< HEAD
+[gd_scene load_steps=25 format=3 uid="uid://u7i88k42gbgg"]
+=======
+[gd_scene load_steps=26 format=3 uid="uid://u7i88k42gbgg"]
+>>>>>>> e718cecde08738054cd23452f9d11b4bdf292a50
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://vdjm2ci4dk5w" path="res://tile_map.tscn" id="1_wsf6s"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_5iuso"]
@@ -6,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="4_8qak7"]
 [ext_resource type="PackedScene" uid="uid://djo7kll4eugwk" path="res://Creature/Barrel/Dummy.tscn" id="5_rshh1"]
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="6_qrit0"]
+[ext_resource type="Script" path="res://Creature/Barrel/DummyE.gd" id="6_scbqq"]
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="7_0o1ek"]
 [ext_resource type="PackedScene" uid="uid://drnol0vfgck83" path="res://Puzzle Components/Door/door.tscn" id="8_wtvmw"]
 
@@ -149,8 +158,14 @@ position = Vector2(15, -6)
 [node name="Player 1" parent="." instance=ExtResource("4_8qak7")]
 position = Vector2(-15, -8)
 
+<<<<<<< Updated upstream
 [node name="Dummy" parent="." instance=ExtResource("5_rshh1")]
 position = Vector2(69, -8)
+=======
+[node name="DummyE" parent="." instance=ExtResource("5_rshh1")]
+position = Vector2(95, -8)
+script = ExtResource("6_scbqq")
+>>>>>>> Stashed changes
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("7_0o1ek")]
 position = Vector2(113, -164)
