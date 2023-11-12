@@ -25,7 +25,7 @@ func _physics_process(_delta) -> void:
 				die()
 			gravity_scale = 1.0
 		States.carry:
-			global_position = p2.global_position + Vector2(base_place_range * p2.direction,0)
+			global_position = p2.global_position + base_place_range * p2.direction
 			gravity_scale = 0.0
 			linear_velocity = Vector2.ZERO
 		States.dead:

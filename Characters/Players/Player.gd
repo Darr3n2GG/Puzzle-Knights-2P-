@@ -15,8 +15,10 @@ var has_jumped : bool = false
 @export var maxcoyotetime : float = 0.2
 
 ##Direction a player is facing in int value
-var direction : int = 1
-
+var direction : Vector2 = Vector2.RIGHT
+##knockback for player whenever being hit by something or is hitting something
+var knockback : Vector2 = Vector2.ZERO
+##god mode
 var god_mode : bool = false
 
 ##Speed value of player
@@ -35,6 +37,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var controls : Resource = null
 
 func _physics_process(delta) -> void:
+	if velocity.x != 0:
+		velocity.x = lerp(Vector2(velocity.x , 0), Vector2.ZERO, 1.0).x
+		
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
@@ -45,27 +50,30 @@ func _physics_process(delta) -> void:
 		coyotetimer += delta
 		
 	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
-			velocity.y = jump_vel
-			has_jumped = true
+		velocity.y = jump_vel
+		has_jumped = true
 
 	if Input.is_action_pressed(controls.right): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
 		anim.flip_h = false
-		direction = 1
+		direction = Vector2.RIGHT
 		global_position.x += speed * delta
 		if controls.player_index == 0:
 			$Hurtbox_Component/HurtBox.position.x = 17
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = 9
-				
 		
 	elif Input.is_action_pressed(controls.left): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_LEFT):
 		anim.flip_h = true
-		direction = -1
+		direction = Vector2.LEFT
 		global_position.x -= speed * delta
 		if controls.player_index == 0:
 			$Hurtbox_Component/HurtBox.position.x = -17
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
+			
+	if knockback != Vector2.ZERO:
+		velocity = knockback * delta
+		knockback = lerp(knockback, Vector2.ZERO, 0.1)
 		
 	if position.y > 5000:
 		global_position = spawn_point

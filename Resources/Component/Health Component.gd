@@ -19,8 +19,8 @@ func damage(attack : Attack, creature : Object) -> void:
 	health -= attack.damage
 	if parent is player:
 		pass
-	elif parent is Barrel:
-		parent.apply_central_impulse(Vector2(attack.knockback * 200 ,0)) #knockback func
+	elif parent is Barrel or BarrelE:
+		parent.apply_central_impulse(attack.knockback) #knockback func
 	
 	var parent_class = parent.get_class()
 	var creature_class = creature.get_class()
