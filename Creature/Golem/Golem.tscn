@@ -25,7 +25,7 @@ size = Vector2(31, 58)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iaebd"]
 size = Vector2(34, 60)
 
-[node name="Golem" type="CharacterBody2D"]
+[node name="Golem" type="CharacterBody2D" groups=["creature"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(10, 0)

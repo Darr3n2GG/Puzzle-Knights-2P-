@@ -28,19 +28,20 @@ size = Vector2(10, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah4og"]
 size = Vector2(23, 18)
 
-[node name="Player 1" type="CharacterBody2D"]
+[node name="Player 1" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
 platform_floor_layers = 4294967293
 script = ExtResource("1_yjl8x")
 controls = ExtResource("2_g5pru")
 
-[node name="animation" type="AnimatedSprite2D" parent="."]
+[node name="Animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 0.5)
 sprite_frames = SubResource("SpriteFrames_cwjio")
 animation = &"idle"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0m543")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("5_g81ct")]
 collision_layer = 1
@@ -49,7 +50,7 @@ hc = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_2udho")
-debug_color = Color(0, 0.635294, 0.4, 0.419608)
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_0g6dk")]
 
@@ -68,6 +69,10 @@ script = ExtResource("7_55mj7")
 
 [node name="IsAttacking" type="Timer" parent="P1_Attack"]
 wait_time = 0.1
+one_shot = true
+
+[node name="Attack_Cooldown" type="Timer" parent="P1_Attack"]
+wait_time = 0.9
 one_shot = true
 
 [connection signal="area_entered" from="Hurtbox_Component" to="P1_Attack" method="_on_hurtbox_component_area_entered"]

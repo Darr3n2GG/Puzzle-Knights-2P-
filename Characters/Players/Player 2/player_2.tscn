@@ -164,25 +164,25 @@ size = Vector2(30, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qw1vh"]
 size = Vector2(12, 15)
 
-[node name="Player 2" type="CharacterBody2D"]
+[node name="Player 2" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
 platform_floor_layers = 4294967293
 script = ExtResource("1_1r7u3")
 controls = ExtResource("2_iea8n")
 
-[node name="animation" type="AnimatedSprite2D" parent="."]
+[node name="Animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_o2eun")
 animation = &"idle"
 
-[node name="Block" type="Sprite2D" parent="."]
+[node name="Barrel" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, -15)
 texture = ExtResource("6_q8qd8")
 region_enabled = true
 region_rect = Rect2(32, 112, 16, 16)
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_vah8s")
 
@@ -213,3 +213,4 @@ hc = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_qw1vh")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

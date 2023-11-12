@@ -3,7 +3,7 @@ class_name player
 extends CharacterBody2D
 
 ##Player Animation Node (temporary)
-@onready var anim : AnimatedSprite2D = $animation
+@onready var anim : AnimatedSprite2D = $Animation
 ##Players spawn point when ready or respawn
 @onready var spawn_point : Vector2 = global_position
 
@@ -72,7 +72,7 @@ func _physics_process(delta) -> void:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
 			
 	if knockback != Vector2.ZERO:
-		velocity = knockback * delta
+		velocity = knockback
 		knockback = lerp(knockback, Vector2.ZERO, 0.1)
 		
 	if position.y > 5000:
