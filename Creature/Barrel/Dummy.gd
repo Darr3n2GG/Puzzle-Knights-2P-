@@ -50,5 +50,6 @@ func die() -> void:
 	if is_instance_valid(p2):
 		p2.get_node("Place_Block").block_in_scene = false 
 	$Collision.call_deferred("set_disabled",true)
+	$HitboxComponent.call_deferred("set_monitorable",false)
 	Golem_State = States.dead
 	visible = false

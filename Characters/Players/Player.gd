@@ -14,6 +14,8 @@ var has_jumped : bool = false
 ##Max amount of time in sec that player can coyote jump when not on floor
 @export var maxcoyotetime : float = 0.2
 
+var is_pogo : bool = false
+
 ##Direction a player is facing in int value
 var direction : Vector2 = Vector2.RIGHT
 ##knockback for player whenever being hit by something or is hitting something
@@ -49,16 +51,19 @@ func _physics_process(delta) -> void:
 	else:
 		coyotetimer += delta
 		
-	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
+	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped and not is_pogo: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
 		velocity.y = jump_vel
 		has_jumped = true
+		print("jump")
 
 	if Input.is_action_pressed(controls.right): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
 		anim.flip_h = false
 		direction = Vector2.RIGHT
 		global_position.x += speed * delta
 		if controls.player_index == 0:
-			$Hurtbox_Component/HurtBox.position.x = 17
+			var hurtbox = $Hurtbox_Component/HurtBox
+			hurtbox.position = direction * 17
+			hurtbox.shape.size = Vector2(23,18)
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = 9
 		
@@ -67,16 +72,36 @@ func _physics_process(delta) -> void:
 		direction = Vector2.LEFT
 		global_position.x -= speed * delta
 		if controls.player_index == 0:
-			$Hurtbox_Component/HurtBox.position.x = -17
+			var hurtbox = $Hurtbox_Component/HurtBox
+			hurtbox.position = direction * 17
+			hurtbox.shape.size = Vector2(23,18)
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
 			
+	elif controls.player_index == 0:
+		if Input.is_action_pressed("1Down"):
+			direction = Vector2.DOWN
+			var hurtbox = $Hurtbox_Component/HurtBox
+			hurtbox.position = direction * 20
+			hurtbox.shape.size = Vector2(18,23)
+	
 	if knockback != Vector2.ZERO:
-		velocity = knockback
-		knockback = lerp(knockback, Vector2.ZERO, 0.1)
+		if is_pogo:
+			knockback.y = 0
+		velocity += knockback
+		if knockback.x != 0:
+			knockback.x = lerp(knockback.x, 0.0, 0.1)
+		if knockback.y != 0:
+			is_pogo = true
 		
-	if position.y > 5000:
+	if global_position.y > 5000:
 		global_position = spawn_point
+		
+	if global_position.y < -100:
+		print("super jumped")
+		
+	if is_on_floor():
+		is_pogo = false
 		
 	move_and_slide()
 	update_animation()
@@ -115,3 +140,4 @@ func entered_door() -> void:
 func die():
 	print("Assume player is killed")
 	global_position = spawn_point
+	$HealthComponent.Set_Health()
