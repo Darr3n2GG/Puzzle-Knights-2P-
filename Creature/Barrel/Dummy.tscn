@@ -17,6 +17,7 @@ size = Vector2(16, 16)
 collision_layer = 2
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_x6ci1")
+can_sleep = false
 lock_rotation = true
 script = ExtResource("1_1ub1h")
 
