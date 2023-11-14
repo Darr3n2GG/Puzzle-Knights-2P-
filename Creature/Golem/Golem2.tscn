@@ -30,7 +30,7 @@ size = Vector2(31, 60)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7mkk"]
 size = Vector2(21, 60)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Golem" type="CharacterBody2D"]
 script = ExtResource("1_2qoqe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
