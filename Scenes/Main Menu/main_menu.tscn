@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8h5477due1r7"]
 
-[ext_resource type="Texture2D" uid="uid://bciqui848gfyw" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/screenshot-1.png" id="1_8l08w"]
+[ext_resource type="Texture2D" uid="uid://bdncjypn0m3k3" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/screenshot-1.png" id="1_8l08w"]
 [ext_resource type="Script" path="res://Scenes/Main Menu/main_menu.gd" id="1_vgsus"]
 
 [sub_resource type="SystemFont" id="SystemFont_gas0e"]
@@ -54,7 +54,7 @@ theme_override_colors/font_outline_color = Color(0.533333, 0.439216, 0.321569, 1
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = SubResource("SystemFont_gas0e")
 theme_override_font_sizes/font_size = 32
-text = "Puzzle Knight"
+text = "Puzzle Knights"
 horizontal_alignment = 1
 vertical_alignment = 1
 

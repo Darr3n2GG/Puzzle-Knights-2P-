@@ -31,6 +31,7 @@ size = Vector2(230, 61)
 
 [node name="Golem" type="CharacterBody2D"]
 script = ExtResource("1_o713q")
+[node name="Golem" type="CharacterBody2D" groups=["creature"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(10, 0)

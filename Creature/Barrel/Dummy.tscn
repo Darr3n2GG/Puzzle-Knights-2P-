@@ -7,13 +7,13 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x6ci1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1b8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tlbt"]
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opaml"]
 size = Vector2(16, 16)
 
-[node name="Dummy" type="RigidBody2D"]
+[node name="Dummy" type="RigidBody2D" groups=["creature"]]
 collision_layer = 2
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_x6ci1")
@@ -27,7 +27,7 @@ region_enabled = true
 region_rect = Rect2(32, 112, 16, 16)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_wu1b8")
+shape = SubResource("RectangleShape2D_6tlbt")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("4_vfmdo")]
 collision_layer = 2
@@ -38,4 +38,4 @@ shape = SubResource("RectangleShape2D_opaml")
 debug_color = Color(0, 0.631373, 0.352941, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_fo58o")]
-MaxHealth = 1.0
+MaxHealth = 2.0

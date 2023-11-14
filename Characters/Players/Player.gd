@@ -1,9 +1,9 @@
-##CharacterBody2d script that is used by player nodes to move, jump, attack, place/carry blocks, die, win and more
-class_name player
+##player script that is used by player nodes to move, jump, attack, place/carry blocks, die, win and more
 extends CharacterBody2D
+class_name player
 
 ##Player Animation Node (temporary)
-@onready var anim : AnimatedSprite2D = $animation
+@onready var anim : AnimatedSprite2D = $Animation
 ##Players spawn point when ready or respawn
 @onready var spawn_point : Vector2 = global_position
 
@@ -14,18 +14,22 @@ var has_jumped : bool = false
 ##Max amount of time in sec that player can coyote jump when not on floor
 @export var maxcoyotetime : float = 0.2
 
+var is_pogo : bool = false
+
 ##Direction a player is facing in int value
-var direction : int = 1
-##detect if player is moving
-var is_moving : bool = false
+var direction : Vector2 = Vector2.RIGHT
+##knockback for player whenever being hit by something or is hitting something
+var knockback : Vector2 = Vector2.ZERO
+##god mode
+var god_mode : bool = false
 
 ##Speed value of player
 @export var speed : float = 200.0
 ##Jump velocity value of player
 @export var jump_vel : float = -300.0
 ##Amount of push force player can exert on rigid bodies
-@export var push_force : float = 40.0
-
+@export var push_force : float = 20.0
+##Place range of player
 @export var base_place_range : float = 16.0
 
 ##Gravity from project settings
@@ -37,58 +41,61 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		if knockback.y <= 0:
+			knockback.y += gravity * delta
 
 	if is_on_floor():
 		coyotetimer = 0.0
 		has_jumped = false
 	else:
 		coyotetimer += delta
-	
-	if Input.is_action_pressed("reset"):
-		global_position = spawn_point
-	
-	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
+		
+	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped and not is_pogo: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
 		velocity.y = jump_vel
 		has_jumped = true
+		print("jump")
 
 	if Input.is_action_pressed(controls.right): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
 		anim.flip_h = false
-		direction = 1
-		is_moving = true
+		direction = Vector2.RIGHT
 		global_position.x += speed * delta
 		if controls.player_index == 0:
-			$Hurtbox_Component/HurtBox.position.x = 17
+			var hurtbox = $Hurtbox_Component/HurtBox
+			hurtbox.position = direction * 17
+			hurtbox.shape.size = Vector2(23,18)
 		else:
-			var terrain_detector : CollisionShape2D = $TerrainDetector/TerrainDetectorCollsion
-			if is_moving:
-				terrain_detector.shape.size = Vector2(46,14)
-				terrain_detector.position.x = 17
-			else:
-				terrain_detector.shape.size = Vector2(30,14)
-				terrain_detector.position.x = 9
-				
+			$TerrainDetector/TerrainDetectorCollsion.position.x = 9
 		
 	elif Input.is_action_pressed(controls.left): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_LEFT):
 		anim.flip_h = true
-		direction = -1
-		is_moving = true
+		direction = Vector2.LEFT
 		global_position.x -= speed * delta
 		if controls.player_index == 0:
-			$Hurtbox_Component/HurtBox.position.x = -17
+			var hurtbox = $Hurtbox_Component/HurtBox
+			hurtbox.position = direction * 17
+			hurtbox.shape.size = Vector2(23,18)
 		else:
-			var terrain_detector : CollisionShape2D = $TerrainDetector/TerrainDetectorCollsion
-			if is_moving:
-				terrain_detector.shape.size = Vector2(46,14)
-				terrain_detector.position.x = -17
-			else:
-				terrain_detector.shape.size = Vector2(30,14)
-				terrain_detector.position.x = -9
-	else:
-		is_moving = false
-		pass
+			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
+			
+	elif controls.player_index == 0:
+		if Input.is_action_pressed("1Down"):
+			direction = Vector2.DOWN
+			var hurtbox = $Hurtbox_Component/HurtBox
+			hurtbox.position = direction * 20
+			hurtbox.shape.size = Vector2(18,23)
+	
+	if knockback != Vector2.ZERO:
+		if knockback.x != 0:
+			global_position.x += knockback.x
+			knockback.x = lerp(knockback.x ,0.0 , 0.1)
+		if knockback.y <= 0:
+			velocity.y = knockback.y
 		
-	if position.y > 5000:
-		global_position = Vector2(0, -10)
+	if global_position.y > 5000:
+		global_position = spawn_point
+		
+	if global_position.y < -100:
+		print("super jumped")
 		
 	move_and_slide()
 	update_animation()
@@ -120,16 +127,11 @@ func push_collision():
 		if collided.get_collider() is RigidBody2D:
 			collided.get_collider().apply_central_impulse(Vector2(-collided.get_normal().x * push_force,0))
 
-func calc_place_range() -> float:
-	if is_moving:
-		return base_place_range * 2.6
-	else:
-		return base_place_range
-
 func entered_door() -> void:
 	visible = false
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func die():
-	pass
 	print("Assume player is killed")
+	global_position = spawn_point
+	$HealthComponent.Set_Health()

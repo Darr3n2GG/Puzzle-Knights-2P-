@@ -19,7 +19,7 @@ enum states
 ##Player 2 state variable
 var p2_states = states.placed
 
-func _input(_event):
+func _physics_process(_delta) -> void:
 	if Input.is_action_just_pressed("2PlaceOrCarry"):
 		if block_in_scene == false:
 			Create_Block()
@@ -33,7 +33,7 @@ func _input(_event):
 				states.carry:
 					Place_Block()
 					p2_states = states.placed
-						
+
 func Create_Block():
 	if not placed_block:
 		var block = load("res://Creature/Barrel/Dummy.tscn")
@@ -47,11 +47,11 @@ func Create_Block():
 	block_in_scene = true
 	
 func Place_Block():
-	$"../Block".visible = false
+	$"../Barrel".visible = false
 	$"../Carry_State_Collision".disabled = true
 	placed_block.On_Placed()
 	
 func Carry_Block():
-	$"../Block".visible = true
+	$"../Barrel".visible = true
 	$"../Carry_State_Collision".disabled = false
 	placed_block.On_Create_or_Carry()

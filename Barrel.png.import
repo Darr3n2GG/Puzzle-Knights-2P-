@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw8nldgdhsmjl"
-path="res://.godot/imported/AK idle.png-a0357c222d8d03a4b66f12ccd5a5adcf.ctex"
+uid="uid://637art2ns8wy"
+path="res://.godot/imported/Barrel.png-57342f00c65d4b9e360bceef58cec58f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imports/AK idle.png"
-dest_files=["res://.godot/imported/AK idle.png-a0357c222d8d03a4b66f12ccd5a5adcf.ctex"]
+source_file="res://Barrel.png"
+dest_files=["res://.godot/imported/Barrel.png-57342f00c65d4b9e360bceef58cec58f.ctex"]
 
 [params]
 
