@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://djo7kll4eugwk"]
 
 [ext_resource type="Script" path="res://Creature/Barrel/Dummy.gd" id="1_1ub1h"]
-[ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_2j32n"]
+[ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_2j32n"]
 [ext_resource type="PackedScene" uid="uid://bpdrkkdpu1hoc" path="res://Resources/Component/health_component.tscn" id="3_fo58o"]
 [ext_resource type="PackedScene" uid="uid://dc560d02gq12i" path="res://Resources/Component/hitbox_component.tscn" id="4_vfmdo"]
 
@@ -38,4 +38,4 @@ shape = SubResource("RectangleShape2D_opaml")
 debug_color = Color(0, 0.631373, 0.352941, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_fo58o")]
-MaxHealth = 2.0
+MaxHealth = 1.0
