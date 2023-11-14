@@ -404,5 +404,5 @@ offset_left = 105.0
 offset_top = -124.0
 offset_right = 193.0
 offset_bottom = -54.0
-text = "S key to attack"
+text = "shift key to attack"
 scroll_active = false

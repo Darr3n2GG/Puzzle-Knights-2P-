@@ -1,6 +1,6 @@
 ##player script that is used by player nodes to move, jump, attack, place/carry blocks, die, win and more
-class_name player
 extends CharacterBody2D
+class_name player
 
 ##Player Animation Node (temporary)
 @onready var anim : AnimatedSprite2D = $Animation
@@ -39,11 +39,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var controls : Resource = null
 
 func _physics_process(delta) -> void:
-	if velocity.x != 0:
-		velocity.x = lerp(Vector2(velocity.x , 0), Vector2.ZERO, 1.0).x
-		
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		if knockback.y <= 0:
+			knockback.y += gravity * delta
 
 	if is_on_floor():
 		coyotetimer = 0.0
@@ -86,22 +85,17 @@ func _physics_process(delta) -> void:
 			hurtbox.shape.size = Vector2(18,23)
 	
 	if knockback != Vector2.ZERO:
-		if is_pogo:
-			knockback.y = 0
-		velocity += knockback
 		if knockback.x != 0:
-			knockback.x = lerp(knockback.x, 0.0, 0.1)
-		if knockback.y != 0:
-			is_pogo = true
+			global_position.x += knockback.x
+			knockback.x = lerp(knockback.x ,0.0 , 0.1)
+		if knockback.y <= 0:
+			velocity.y = knockback.y
 		
 	if global_position.y > 5000:
 		global_position = spawn_point
 		
 	if global_position.y < -100:
 		print("super jumped")
-		
-	if is_on_floor():
-		is_pogo = false
 		
 	move_and_slide()
 	update_animation()

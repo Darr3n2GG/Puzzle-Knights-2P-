@@ -66,14 +66,14 @@ debug_color = Color(0.937255, 0.25098, 0, 0.419608)
 
 [node name="P1_Attack" type="Node" parent="."]
 script = ExtResource("7_55mj7")
-knockback_strength = 100.0
+knockback_strength_x = 2.0
 
 [node name="IsAttacking" type="Timer" parent="P1_Attack"]
 wait_time = 0.1
 one_shot = true
 
 [node name="Attack_Cooldown" type="Timer" parent="P1_Attack"]
-wait_time = 0.9
+wait_time = 0.05
 one_shot = true
 
 [connection signal="area_entered" from="Hurtbox_Component" to="P1_Attack" method="_on_hurtbox_component_area_entered"]
