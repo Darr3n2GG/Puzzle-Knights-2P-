@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0du3wbnslhxa"]
+[gd_scene load_steps=15 format=3 uid="uid://d0du3wbnslhxa"]
 
 [ext_resource type="PackedScene" uid="uid://d6d15jtyyq7l" path="res://tile_map.tscn" id="1_pcrqg"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_ox8gr"]
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="3_0ukhs"]
 [ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Players/Player 2/player_2.tscn" id="4_cgyt7"]
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="6_3pbem"]
+[ext_resource type="PackedScene" uid="uid://n5ussthq3va2" path="res://Creature/Golem/Golem2.tscn" id="7_1mvmm"]
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="7_jj0dv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7ogr"]
@@ -94,3 +95,13 @@ offset_bottom = -38.0
 text = "WASD to move Player 1
 Arrow keys to move Player 2"
 scroll_active = false
+
+[node name="Golem" parent="." instance=ExtResource("7_1mvmm")]
+position = Vector2(470, -159)
+group_name = "Test"
+
+[node name="Marker2D" type="Marker2D" parent="." groups=["Test"]]
+position = Vector2(506, -152)
+
+[node name="Marker2D2" type="Marker2D" parent="." groups=["Test"]]
+position = Vector2(465, -152)
