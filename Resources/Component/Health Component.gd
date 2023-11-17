@@ -2,8 +2,7 @@ extends Node
 class_name Com_HP
 
 @export var MaxHealth: float = 10
-#@export var Name: String
-#@export var type : String = "enemy" # maybe I should make naming manually
+#@export var type : String = "enemy"
 var health : float
 var can_damaged: bool = true
 
@@ -15,6 +14,10 @@ func Set_Health():
 
 func damage(attack : Attack, creature : Object) -> void: 
 	var parent = get_parent()
+	if creature == player:
+		print("true")
+	if parent == player:
+		print("ouch")
 	
 	health -= attack.damage
 	if parent is player:

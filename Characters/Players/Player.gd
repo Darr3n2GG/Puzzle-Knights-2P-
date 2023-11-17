@@ -53,7 +53,10 @@ func _physics_process(delta) -> void:
 	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped and not is_pogo: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
 		velocity.y = jump_vel
 		has_jumped = true
-		print("jump")
+		if global_position.y > -100:
+			print("jump")
+		else:
+			print("super jumped")
 
 	if Input.is_action_pressed(controls.right): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
 		anim.flip_h = false
@@ -94,8 +97,6 @@ func _physics_process(delta) -> void:
 	if global_position.y > 5000:
 		global_position = spawn_point
 		
-	if global_position.y < -100:
-		print("super jumped")
 		
 	move_and_slide()
 	update_animation()
@@ -132,6 +133,6 @@ func entered_door() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func die():
-	print("Assume player is killed")
+	print(get_parent(), " killed")
 	global_position = spawn_point
 	$HealthComponent.Set_Health()

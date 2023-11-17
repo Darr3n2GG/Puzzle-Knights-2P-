@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcuhx8lvw2h2c"]
 
 [ext_resource type="Script" path="res://Puzzle Components/Exit Door/Exit_Door.gd" id="1_ki66w"]
-[ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_2dnw8"]
+[ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_2dnw8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ix0"]
 size = Vector2(13.75, 25)

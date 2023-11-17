@@ -97,11 +97,11 @@ Arrow keys to move Player 2"
 scroll_active = false
 
 [node name="Golem" parent="." instance=ExtResource("7_1mvmm")]
-position = Vector2(470, -159)
+position = Vector2(471, -159)
 group_name = "Test"
 
-[node name="Marker2D" type="Marker2D" parent="." groups=["Test"]]
+[node name="Test Marker 1" type="Marker2D" parent="." groups=["Test"]]
 position = Vector2(506, -152)
 
-[node name="Marker2D2" type="Marker2D" parent="." groups=["Test"]]
+[node name="Test Marker 2" type="Marker2D" parent="." groups=["Test"]]
 position = Vector2(465, -152)
