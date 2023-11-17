@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc82ofqhecg0o"
-path="res://.godot/imported/golem-atk.png-1be24b88809fc3335e9d728ddfc71e98.ctex"
+uid="uid://y2nf1stg1anr"
+path="res://.godot/imported/CK Run.png-7a369892a96746479e08b0b9bd1011f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Creature/Golem/golem-atk.png"
-dest_files=["res://.godot/imported/golem-atk.png-1be24b88809fc3335e9d728ddfc71e98.ctex"]
+source_file="res://Imports/CK/CK Run.png"
+dest_files=["res://.godot/imported/CK Run.png-7a369892a96746479e08b0b9bd1011f1.ctex"]
 
 [params]
 

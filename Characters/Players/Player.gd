@@ -2,41 +2,32 @@
 extends CharacterBody2D
 class_name player
 
-##Player Animation Node (temporary)
 @onready var anim : AnimatedSprite2D = $Animation
-##Players spawn point when ready or respawn
 @onready var spawn_point : Vector2 = global_position
 
-##Counts the amount of sec times delta that time has passed when not on floor
+#coyote jump mechanic
 var coyotetimer : float = 0.0
-##Checks if player has jumped
 var has_jumped : bool = false
-##Max amount of time in sec that player can coyote jump when not on floor
 @export var maxcoyotetime : float = 0.2
 
-var is_pogo : bool = false
-
-##Direction a player is facing in int value
 var direction : Vector2 = Vector2.RIGHT
-##knockback for player whenever being hit by something or is hitting something
 var knockback : Vector2 = Vector2.ZERO
-##god mode
 var god_mode : bool = false
+##check if attack or place/carry block animation is being played
+var alt_animation : bool = false
+var is_attacking : bool = false
 
-##Speed value of player
 @export var speed : float = 200.0
-##Jump velocity value of player
 @export var jump_vel : float = -300.0
-##Amount of push force player can exert on rigid bodies
+##push force for rigid bodies
 @export var push_force : float = 20.0
-##Place range of player
+##player 2 place block base range
 @export var base_place_range : float = 16.0
 
-##Gravity from project settings
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 ##Control resource for two player controls, resources using control.gd can be dragged to this variable in th editor
-@export var controls : Resource = null
+@export var controls : controls = null
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
@@ -50,7 +41,7 @@ func _physics_process(delta) -> void:
 	else:
 		coyotetimer += delta
 		
-	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped and not is_pogo: # or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_UP) and is_on_floor():
+	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped:
 		velocity.y = jump_vel
 		has_jumped = true
 		if global_position.y > -100:
@@ -58,7 +49,7 @@ func _physics_process(delta) -> void:
 		else:
 			print("super jumped")
 
-	if Input.is_action_pressed(controls.right): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_RIGHT):
+	if Input.is_action_pressed(controls.right):
 		anim.flip_h = false
 		direction = Vector2.RIGHT
 		global_position.x += speed * delta
@@ -66,10 +57,14 @@ func _physics_process(delta) -> void:
 			var hurtbox = $Hurtbox_Component/HurtBox
 			hurtbox.position = direction * 17
 			hurtbox.shape.size = Vector2(23,18)
+			
+			var slash = $Slash
+			slash.flip_h = false
+			slash.position.x = 24
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = 9
 		
-	elif Input.is_action_pressed(controls.left): #or Input.is_joy_button_pressed(controls.player_index,JOY_BUTTON_DPAD_LEFT):
+	elif Input.is_action_pressed(controls.left):
 		anim.flip_h = true
 		direction = Vector2.LEFT
 		global_position.x -= speed * delta
@@ -77,6 +72,10 @@ func _physics_process(delta) -> void:
 			var hurtbox = $Hurtbox_Component/HurtBox
 			hurtbox.position = direction * 17
 			hurtbox.shape.size = Vector2(23,18)
+			
+			var slash = $Slash
+			slash.flip_h = true
+			slash.position.x = -24
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
 			
@@ -103,21 +102,37 @@ func _physics_process(delta) -> void:
 	push_collision()
 
 func update_animation():
-	if controls.player_index == 1:
+	if Input.is_action_just_pressed("1Attack") and controls.player_index == 0 and is_attacking or Input.is_action_just_pressed("2PlaceOrCarry") and controls.player_index == 1:
+		alt_animation = true
+	if alt_animation:
+		if controls.player_index == 0:
+			if direction == Vector2.DOWN:
+				pass
+			else:
+				anim.play("attack front")
+				
+				var slash = $Slash
+				slash.visible = true
+				slash.play("slash")
+				if slash.frame == 3:
+					slash.visible = false
+					is_attacking = false
+					print("hi")
+		else:
+			alt_animation = false
+	else:
 		if velocity.y < 0:
-			while not is_on_floor():
-				anim.play("jump up")
-				if anim.frame == 2:
-					anim.pause()
-				break
+			anim.play("jump up")
 		elif velocity.y > 0:
-			while not is_on_floor():
+			if controls.player_index == 0:
+				anim.play("jump limit")
+				while velocity.y < 0:
+					anim.play("jump fall")
+					break
+			else:
 				anim.play("jump fall")
-				if anim.frame == 1:
-					anim.pause()
-				break
-		elif Input.is_action_pressed("2Right") or Input.is_action_pressed("2Left"):
-			anim.play("move")
+		elif Input.is_action_pressed(controls.right) or Input.is_action_pressed(controls.left):
+			anim.play("run")
 		else:
 			anim.play("idle")
 
@@ -131,6 +146,9 @@ func push_collision():
 func entered_door() -> void:
 	visible = false
 	process_mode = Node.PROCESS_MODE_DISABLED
+	
+func on_attacked() -> void:
+	is_attacking = true
 
 func die():
 	print(get_parent(), " killed")

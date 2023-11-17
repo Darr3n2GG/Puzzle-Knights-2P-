@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc82ofqhecg0o"
-path="res://.godot/imported/golem-atk.png-1be24b88809fc3335e9d728ddfc71e98.ctex"
+uid="uid://d3sq03oawyh8e"
+path="res://.godot/imported/CK attack pose.png-9bf117b42b1bed3bdd08edacf39539d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Creature/Golem/golem-atk.png"
-dest_files=["res://.godot/imported/golem-atk.png-1be24b88809fc3335e9d728ddfc71e98.ctex"]
+source_file="res://Imports/CK/CK attack pose.png"
+dest_files=["res://.godot/imported/CK attack pose.png-9bf117b42b1bed3bdd08edacf39539d4.ctex"]
 
 [params]
 
