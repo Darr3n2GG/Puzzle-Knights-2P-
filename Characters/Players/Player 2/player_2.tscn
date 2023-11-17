@@ -148,7 +148,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jqnms")
 }],
 "loop": true,
-"name": &"move",
+"name": &"run",
 "speed": 6.0
 }]
 
@@ -173,7 +173,7 @@ controls = ExtResource("2_iea8n")
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_o2eun")
-animation = &"idle"
+animation = &"run"
 
 [node name="Barrel" type="Sprite2D" parent="."]
 visible = false
