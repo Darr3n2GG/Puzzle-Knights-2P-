@@ -13,6 +13,7 @@ func _on_area_entered(area: Area2D) -> void:
 		attack_instance.damage = damage
 		
 		var knockback = Vector2(knockback_x, 0)
-		attack_instance.knockback = knockback * get_parent().direction
+		if get_parent().get_class() != "AnimatableBody2D":
+			attack_instance.knockback = knockback * get_parent().direction
 		
 		hitbox.damage(attack_instance, get_parent())
