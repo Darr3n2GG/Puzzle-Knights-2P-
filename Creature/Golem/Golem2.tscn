@@ -22,30 +22,32 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gry7f"]
-size = Vector2(31, 60)
+size = Vector2(15.5, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnv5y"]
-size = Vector2(31, 60)
+size = Vector2(14, 30.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7mkk"]
-size = Vector2(21, 60)
+size = Vector2(10, 30)
 
 [node name="Golem" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 5
 script = ExtResource("1_2qoqe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 1)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4n1ya")
+frame_progress = 1.0
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 1)
 shape = SubResource("RectangleShape2D_gry7f")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("2_t163x")]
 hc = NodePath("../HealthComponent")
 
 [node name="HitBox" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(1.5, 1)
+position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_xnv5y")
 debug_color = Color(0.478431, 0.588235, 0, 0.278431)
 
@@ -54,6 +56,6 @@ debug_color = Color(0.478431, 0.588235, 0, 0.278431)
 [node name="Hurtbox_Component" parent="." instance=ExtResource("4_oomec")]
 
 [node name="HurtBox" type="CollisionShape2D" parent="Hurtbox_Component"]
-position = Vector2(10.5, 1)
+position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_x7mkk")
 debug_color = Color(0.984314, 0, 0.352941, 0.360784)
