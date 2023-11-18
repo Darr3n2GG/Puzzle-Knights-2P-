@@ -12,11 +12,13 @@ func _ready() -> void:
 	
 func _physics_process(_delta) -> void:
 	if Input.is_action_just_pressed("1Attack") and attack_cooldown.is_stopped(): #haha bug fixed
+		get_parent().is_attacking = true
 		hurtbox.monitoring = true
 		is_attacking.start()
 		
 
 func _on_is_attacking_timeout() -> void:
+	get_parent().is_attacking = false
 	hurtbox.monitoring = false
 	has_knockbacked = false
 	attack_cooldown.start()

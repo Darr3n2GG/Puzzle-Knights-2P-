@@ -126,7 +126,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack front",
-"speed": 8.0
+"speed": 40.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -253,7 +253,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slash",
-"speed": 8.0
+"speed": 40.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0m543"]
@@ -269,13 +269,13 @@ size = Vector2(27, 18)
 collision_mask = 6
 platform_floor_layers = 4294967293
 script = ExtResource("1_yjl8x")
-speed = 300.0
+speed = 250.0
 controls = ExtResource("2_g5pru")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 0.5)
 sprite_frames = SubResource("SpriteFrames_cwjio")
-animation = &"idle"
+animation = &"attack front"
 
 [node name="Slash" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -321,12 +321,6 @@ one_shot = true
 [node name="Attack_Cooldown" type="Timer" parent="P1_Attack"]
 wait_time = 0.05
 one_shot = true
-
-[node name="Label" type="Label" parent="P1_Attack"]
-offset_left = -20.0
-offset_top = -33.0
-offset_right = 20.0
-offset_bottom = -10.0
 
 [connection signal="area_entered" from="Hurtbox_Component" to="P1_Attack" method="_on_hurtbox_component_area_entered"]
 [connection signal="timeout" from="P1_Attack/IsAttacking" to="P1_Attack" method="_on_is_attacking_timeout"]
