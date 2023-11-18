@@ -4,8 +4,7 @@ class_name player
 
 @onready var anim : AnimatedSprite2D = $Animation
 @onready var spawn_point : Vector2 = global_position
-var run_effect = null
-var jump_effect = null
+#var slash_FX : GPUParticles2D = null
 
 #coyote jump mechanic
 var coyotetimer : float = 0.0
@@ -18,6 +17,7 @@ var god_mode : bool = false
 ##check if attack or place/carry block animation is being played
 var alt_animation : bool = false
 var is_attacking : bool = false
+var has_played : bool = false
 
 @export var speed : float = 200.0
 @export var jump_vel : float = -300.0
@@ -30,6 +30,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 ##Control resource for two player controls, resources using control.gd can be dragged to this variable in th editor
 @export var controls : controls = null
+
+#func _ready() -> void:
+#	if controls.player_index == 0:
+#		slash_FX = $"FX/slash FX R"
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
@@ -121,7 +125,7 @@ func update_animation():
 				if slash.frame == 3:
 					slash.visible = false
 					alt_animation = false
-					print("hi")
+#					print("hi")
 		else:
 			alt_animation = false
 	else:

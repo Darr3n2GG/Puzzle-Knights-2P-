@@ -11,7 +11,7 @@ func _ready() -> void:
 	hurtbox.monitoring = false
 	
 func _physics_process(_delta) -> void:
-	if Input.is_action_just_pressed("1Attack") and attack_cooldown.is_stopped(): #haha bug fixed
+	if Input.is_action_just_pressed("1Attack") and attack_cooldown.is_stopped() and is_attacking.is_stopped(): #haha bug fixed
 		get_parent().is_attacking = true
 		hurtbox.monitoring = true
 		is_attacking.start()

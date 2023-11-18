@@ -11,6 +11,7 @@ func _ready():
 	quit_button.button_down.connect(on_quit_pressed)
 
 func on_start_pressed() -> void: #When clicked on start button
+	$Main_menu_theme.stop()
 	get_tree().change_scene_to_packed(start_level)
 	global.setup_level()
 
