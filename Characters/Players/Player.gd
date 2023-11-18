@@ -4,6 +4,8 @@ class_name player
 
 @onready var anim : AnimatedSprite2D = $Animation
 @onready var spawn_point : Vector2 = global_position
+var run_effect = null
+var jump_effect = null
 
 #coyote jump mechanic
 var coyotetimer : float = 0.0
@@ -44,10 +46,11 @@ func _physics_process(delta) -> void:
 	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped:
 		velocity.y = jump_vel
 		has_jumped = true
-		if global_position.y > -100:
-			print("jump")
-		else:
-			print("super jumped")
+#		if global_position.y > -100:
+#			print("jump")
+#		else:
+#			print("super jumped")
+			
 
 	if Input.is_action_pressed(controls.right):
 		anim.flip_h = false
@@ -79,12 +82,14 @@ func _physics_process(delta) -> void:
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
 			
-	elif controls.player_index == 0:
-		if Input.is_action_pressed("1Down"):
-			direction = Vector2.DOWN
-			var hurtbox = $Hurtbox_Component/HurtBox
-			hurtbox.position = direction * 20
-			hurtbox.shape.size = Vector2(18,23)
+	elif Input.is_action_pressed("1Down") and controls.player_index == 0:
+		direction = Vector2.DOWN
+		var hurtbox = $Hurtbox_Component/HurtBox
+		hurtbox.position = direction * 20
+		hurtbox.shape.size = Vector2(18,23)
+			
+	else:
+		pass
 	
 	if knockback != Vector2.ZERO:
 		if knockback.x != 0:
@@ -96,13 +101,12 @@ func _physics_process(delta) -> void:
 	if global_position.y > 5000:
 		global_position = spawn_point
 		
-		
 	move_and_slide()
 	update_animation()
 	push_collision()
 
 func update_animation():
-	if Input.is_action_just_pressed("1Attack") and controls.player_index == 0 and $P1_Attack/IsAttacking.time_left == 0.1 or Input.is_action_just_pressed("2PlaceOrCarry") and controls.player_index == 1:
+	if controls.player_index == 0 and is_attacking or Input.is_action_just_pressed("2PlaceOrCarry") and controls.player_index == 1:
 		alt_animation = true
 	if alt_animation:
 		if controls.player_index == 0:

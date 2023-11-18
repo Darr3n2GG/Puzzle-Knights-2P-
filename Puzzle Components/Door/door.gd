@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var animation_player = $AnimationPlayer
 @onready var output_class = Output_Puzzle.new()
 @export var move_direction : float = 1.0
 @export var offset = Vector2(0, 0)
@@ -19,6 +18,9 @@ func _on_recieve_input(is_activated : bool) -> void:
 			start_tween(Vector2.ZERO)
 			
 func start_tween(stated_offset : Vector2) -> void:
+	call_deferred("deferred_start_tween",stated_offset)
+	
+func deferred_start_tween(stated_offset : Vector2) -> void:
 	var tween = get_tree().create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.set_loops().set_parallel(false)
 	tween.tween_property($AnimatableBody2D, "position", stated_offset, duration / 2)

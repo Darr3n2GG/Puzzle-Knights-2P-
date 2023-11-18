@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bghlqie32d02s"]
 
 [ext_resource type="Script" path="res://Puzzle Components/pressure plate/pressure_plater.gd" id="1_dm5x0"]
-[ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_ox4oi"]
+[ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_ox4oi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ix0"]
 size = Vector2(22, 8)
