@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://co6b1k2ukru5a"]
+[gd_scene load_steps=4 format=3 uid="uid://co6b1k2ukru5a"]
 
 [ext_resource type="Script" path="res://Scenes/splitscreen.gd" id="1_k0y43"]
 [ext_resource type="PackedScene" uid="uid://d0du3wbnslhxa" path="res://Scenes/Levels/level_1.tscn" id="2_1qqlr"]
+[ext_resource type="AudioStream" uid="uid://brblmadvao7gk" path="res://Imports/Now-We-Ride(chosic.com).mp3" id="3_pegvy"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_k0y43")
@@ -37,3 +38,7 @@ size = Vector2i(320, 360)
 render_target_update_mode = 4
 
 [node name="RightCam" type="Camera2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pegvy")
+autoplay = true
