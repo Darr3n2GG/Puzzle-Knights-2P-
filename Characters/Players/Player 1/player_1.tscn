@@ -322,5 +322,11 @@ one_shot = true
 wait_time = 0.05
 one_shot = true
 
+[node name="Label" type="Label" parent="P1_Attack"]
+offset_left = -20.0
+offset_top = -33.0
+offset_right = 20.0
+offset_bottom = -10.0
+
 [connection signal="area_entered" from="Hurtbox_Component" to="P1_Attack" method="_on_hurtbox_component_area_entered"]
 [connection signal="timeout" from="P1_Attack/IsAttacking" to="P1_Attack" method="_on_is_attacking_timeout"]

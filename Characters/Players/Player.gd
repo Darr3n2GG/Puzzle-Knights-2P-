@@ -102,7 +102,7 @@ func _physics_process(delta) -> void:
 	push_collision()
 
 func update_animation():
-	if Input.is_action_just_pressed("1Attack") and controls.player_index == 0 and is_attacking or Input.is_action_just_pressed("2PlaceOrCarry") and controls.player_index == 1:
+	if Input.is_action_just_pressed("1Attack") and controls.player_index == 0 and $P1_Attack/IsAttacking.time_left == 0.1 or Input.is_action_just_pressed("2PlaceOrCarry") and controls.player_index == 1:
 		alt_animation = true
 	if alt_animation:
 		if controls.player_index == 0:
@@ -116,7 +116,7 @@ func update_animation():
 				slash.play("slash")
 				if slash.frame == 3:
 					slash.visible = false
-					is_attacking = false
+					alt_animation = false
 					print("hi")
 		else:
 			alt_animation = false
@@ -146,9 +146,6 @@ func push_collision():
 func entered_door() -> void:
 	visible = false
 	process_mode = Node.PROCESS_MODE_DISABLED
-	
-func on_attacked() -> void:
-	is_attacking = true
 
 func die():
 	print(get_parent(), " killed")

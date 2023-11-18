@@ -7,17 +7,14 @@ extends Node
 @export var knockback_strength_y : float = 200.0
 var has_knockbacked : bool = false
 
-signal attacked
-
 func _ready() -> void:
 	hurtbox.monitoring = false
-	connect("attacked",get_parent().on_attacked)
-
+	
 func _physics_process(_delta) -> void:
 	if Input.is_action_just_pressed("1Attack") and attack_cooldown.is_stopped(): #haha bug fixed
 		hurtbox.monitoring = true
 		is_attacking.start()
-		emit_signal("attacked")
+		
 
 func _on_is_attacking_timeout() -> void:
 	hurtbox.monitoring = false
