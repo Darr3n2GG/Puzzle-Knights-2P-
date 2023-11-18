@@ -9,6 +9,7 @@ extends Node2D
 func _ready() -> void:
 	if not killable:
 		$AnimatableBody2D/Hurtbox_Component.monitoring = false
+		$AnimatableBody2D/noDMG_collision.disabled = false
 
 func _on_recieve_input(is_activated : bool) -> void:
 	output_class.activated = is_activated

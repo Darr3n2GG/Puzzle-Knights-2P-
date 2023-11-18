@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://drnol0vfgck83"]
+[gd_scene load_steps=6 format=3 uid="uid://drnol0vfgck83"]
 
 [ext_resource type="Script" path="res://Puzzle Components/Door/door.gd" id="1_3x404"]
 [ext_resource type="PackedScene" uid="uid://c8f6t6wa8tuwh" path="res://Resources/Component/Hurtbox_Component.tscn" id="2_2kql4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7thy5"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5rtk"]
+size = Vector2(402.574, 34.877)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6v6t1"]
-size = Vector2(359.338, 34.1086)
+size = Vector2(385.956, 34.1086)
 
 [node name="Door" type="Node2D"]
 scale = Vector2(0.0751381, 1.58318)
@@ -20,6 +23,12 @@ physics_material_override = SubResource("PhysicsMaterial_7thy5")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatableBody2D"]
 polygon = PackedVector2Array(-292.794, 33.4769, -186.324, 33.4769, -186.324, -0.63164, 186.324, -0.63164, 186.324, 33.4769, 292.794, 33.4769, 292.794, -34.1086, -292.794, -34.1086)
 
+[node name="noDMG_collision" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(0, 16.1068)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_h5rtk")
+disabled = true
+
 [node name="Shape2D" type="Polygon2D" parent="AnimatableBody2D"]
 scale = Vector2(16.875, 16.875)
 color = Color(0.12549, 0.0901961, 0.00392157, 1)
@@ -31,6 +40,7 @@ collision_mask = 3
 damage = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Hurtbox_Component"]
-position = Vector2(0, 16.4226)
+position = Vector2(6.65443, 16.4226)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6v6t1")
 debug_color = Color(0.929412, 0, 0.121569, 0.227451)

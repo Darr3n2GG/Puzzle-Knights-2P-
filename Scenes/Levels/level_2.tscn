@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bjskn6uarh4ds"]
+[gd_scene load_steps=48 format=3 uid="uid://bjskn6uarh4ds"]
 
 [ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_ropob"]
 [ext_resource type="Texture2D" uid="uid://dtd0mc3r63bnt" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png" id="2_23kou"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="5_orrw6"]
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="6_v3c68"]
 [ext_resource type="PackedScene" uid="uid://drnol0vfgck83" path="res://Puzzle Components/Door/door.tscn" id="7_0y2p1"]
+[ext_resource type="PackedScene" uid="uid://bd4om4ovgfifr" path="res://Resources/atmospheric_fx.tscn" id="9_tsu1c"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ifvb1"]
 tile_data = PackedInt32Array(0, 1, 5, 65536, 1, 6, 1, 65537, 5, 65537, 65537, 6, 2, 131073, 5, 65538, 131073, 6, 3, 196609, 5, 65539, 196609, 6, 4, 262145, 5, 65540, 262145, 6, 5, 327681, 5, 65541, 327681, 6, 6, 393217, 5, 65542, 393217, 6)
@@ -459,3 +460,6 @@ offset_top = -116.0
 offset_right = 280.0
 offset_bottom = -68.0
 text = "No? That's a shame."
+
+[node name="Atmospheric_FX" parent="." instance=ExtResource("9_tsu1c")]
+position = Vector2(237, -232)

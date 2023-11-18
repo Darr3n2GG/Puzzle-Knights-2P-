@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://u7i88k42gbgg"]
+[gd_scene load_steps=28 format=3 uid="uid://u7i88k42gbgg"]
 
 [ext_resource type="PackedScene" uid="uid://d6d15jtyyq7l" path="res://tile_map.tscn" id="1_wsf6s"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_5iuso"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="7_0o1ek"]
 [ext_resource type="Script" path="res://Creature/Barrel/DummyE.gd" id="7_ob882"]
 [ext_resource type="PackedScene" uid="uid://drnol0vfgck83" path="res://Puzzle Components/Door/door.tscn" id="8_wtvmw"]
+[ext_resource type="PackedScene" uid="uid://bd4om4ovgfifr" path="res://Resources/atmospheric_fx.tscn" id="10_b2fke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20xxw"]
 size = Vector2(16, 192)
@@ -165,5 +166,8 @@ puzzle_array = [NodePath("../Exit Door")]
 [node name="Door" parent="." instance=ExtResource("8_wtvmw")]
 position = Vector2(326, 88)
 scale = Vector2(0.414094, 0.709099)
-offset = Vector2(0, -240)
+offset = Vector2(0, -230)
 duration = 1.0
+
+[node name="Atmospheric_FX" parent="." instance=ExtResource("10_b2fke")]
+position = Vector2(256, -201)

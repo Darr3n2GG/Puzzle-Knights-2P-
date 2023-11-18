@@ -306,6 +306,7 @@ animation = &"attack front"
 
 [node name="Slash" type="AnimatedSprite2D" parent="."]
 visible = false
+modulate = Color(2, 2, 2, 1)
 position = Vector2(24, 0.5)
 sprite_frames = SubResource("SpriteFrames_ejgq3")
 animation = &"slash"

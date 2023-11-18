@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bgqaofe5rkm55"
+path="res://.godot/imported/Quiet Determination Ambient Music.mp3-9361d4c5f7e4a6a5071e18ae37ec1326.mp3str"
+
+[deps]
+
+source_file="res://Music/levels 1-10/Quiet Determination Ambient Music.mp3"
+dest_files=["res://.godot/imported/Quiet Determination Ambient Music.mp3-9361d4c5f7e4a6a5071e18ae37ec1326.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
