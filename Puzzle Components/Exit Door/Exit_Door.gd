@@ -27,7 +27,6 @@ func _on_recieve_input(is_activated : bool) -> void:
 		
 		if is_activated:
 			door.visible = false
-			sound
 		else:
 	#		print("door deactivated")
 			door.visible = true

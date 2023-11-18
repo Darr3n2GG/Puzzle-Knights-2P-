@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://co6b1k2ukru5a"]
+[gd_scene load_steps=7 format=3 uid="uid://co6b1k2ukru5a"]
 
 [ext_resource type="Script" path="res://Scenes/splitscreen.gd" id="1_k0y43"]
 [ext_resource type="PackedScene" uid="uid://d0du3wbnslhxa" path="res://Scenes/Levels/level_1.tscn" id="2_1qqlr"]
-[ext_resource type="AudioStream" uid="uid://brblmadvao7gk" path="res://Imports/Now-We-Ride(chosic.com).mp3" id="3_pegvy"]
+[ext_resource type="AudioStream" uid="uid://brblmadvao7gk" path="res://Music/levels 1-10/Now-We-Ride(chosic.com).mp3" id="3_2gtty"]
+[ext_resource type="Script" path="res://Scenes/Ambience.gd" id="3_ovo4f"]
+[ext_resource type="AudioStream" uid="uid://ccrdfps7h3oj4" path="res://Music/levels 1-10/keys-complex-141459.mp3" id="4_wi86y"]
+[ext_resource type="AudioStream" uid="uid://bp4tksvby552y" path="res://Music/levels 1-10/my-happy-piano-piano-amp-softpad-music-1648.mp3" id="5_gyo5p"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_k0y43")
@@ -39,7 +42,18 @@ render_target_update_mode = 4
 
 [node name="RightCam" type="Camera2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_pegvy")
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_ovo4f")
+
+[node name="Rumble" type="AudioStreamPlayer" parent="Ambience"]
+stream = ExtResource("3_2gtty")
 volume_db = -5.0
 autoplay = true
+
+[node name="wii music ig?" type="AudioStreamPlayer" parent="Ambience"]
+stream = ExtResource("4_wi86y")
+
+[node name="happy" type="AudioStreamPlayer" parent="Ambience"]
+stream = ExtResource("5_gyo5p")
+
+[connection signal="finished" from="Ambience" to="Ambience" method="_on_finished"]
