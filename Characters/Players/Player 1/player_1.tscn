@@ -308,7 +308,7 @@ knockback_x = 100.0
 [node name="HurtBox" type="CollisionShape2D" parent="Hurtbox_Component"]
 position = Vector2(18.5, 0)
 shape = SubResource("RectangleShape2D_ah4og")
-debug_color = Color(0.937255, 0.25098, 0, 0.419608)
+debug_color = Color(0.996078, 0.0509804, 0, 0.419608)
 
 [node name="P1_Attack" type="Node" parent="."]
 script = ExtResource("7_55mj7")

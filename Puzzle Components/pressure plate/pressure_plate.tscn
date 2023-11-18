@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bghlqie32d02s"]
+[gd_scene load_steps=7 format=3 uid="uid://bghlqie32d02s"]
 
 [ext_resource type="Script" path="res://Puzzle Components/pressure plate/pressure_plater.gd" id="1_dm5x0"]
 [ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_ox4oi"]
+[ext_resource type="Texture2D" uid="uid://cl8rmjws5f2gh" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png" id="3_d47vn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ix0"]
 size = Vector2(22, 8)
@@ -15,6 +16,18 @@ tracks/0/path = NodePath("platesprite:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1.75),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("platesprite2:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.25, 1.75),
 "update": 0,
@@ -39,6 +52,13 @@ shape = SubResource("RectangleShape2D_v1ix0")
 [node name="platesprite" type="Sprite2D" parent="."]
 scale = Vector2(1.375, 1)
 texture = ExtResource("2_ox4oi")
+region_enabled = true
+region_rect = Rect2(48, 136, 16, 8)
+
+[node name="platesprite2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.375, 1)
+texture = ExtResource("3_d47vn")
 region_enabled = true
 region_rect = Rect2(48, 136, 16, 8)
 
