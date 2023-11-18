@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bl20xmad8m1sw"
+path="res://.godot/imported/Castle Door Open - QuickSounds.com.mp3-bcf3c851f6000410309b42791cfccd60.mp3str"
+
+[deps]
+
+source_file="res://Imports/Castle Door Open - QuickSounds.com.mp3"
+dest_files=["res://.godot/imported/Castle Door Open - QuickSounds.com.mp3-bcf3c851f6000410309b42791cfccd60.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
