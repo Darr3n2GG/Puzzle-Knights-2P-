@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcuhx8lvw2h2c"]
+[gd_scene load_steps=6 format=3 uid="uid://dcuhx8lvw2h2c"]
 
 [ext_resource type="Script" path="res://Puzzle Components/Exit Door/Exit_Door.gd" id="1_ki66w"]
 [ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_2dnw8"]
 [ext_resource type="AudioStream" uid="uid://bl20xmad8m1sw" path="res://Imports/Castle Door Open - QuickSounds.com.mp3" id="3_xdiqb"]
+[ext_resource type="Script" path="res://Puzzle Components/Exit Door/Door_Sound.gd" id="4_auwwd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ix0"]
 size = Vector2(13.75, 25)
@@ -26,6 +27,7 @@ region_rect = Rect2(16, 144, 48, 32)
 
 [node name="Door_Open" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_xdiqb")
-volume_db = -5.0
+volume_db = 24.0
+script = ExtResource("4_auwwd")
 
 [connection signal="body_entered" from="Area_Door" to="." method="_on_area_door_body_entered"]

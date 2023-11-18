@@ -67,7 +67,7 @@ position = Vector2(280, -64)
 shape = SubResource("RectangleShape2D_dijar")
 
 [node name="Exit Door" parent="." instance=ExtResource("7_jj0dv")]
-position = Vector2(439, -12)
+position = Vector2(437, -12)
 
 [node name="Player 1" parent="." instance=ExtResource("3_0ukhs")]
 position = Vector2(-15, -7)

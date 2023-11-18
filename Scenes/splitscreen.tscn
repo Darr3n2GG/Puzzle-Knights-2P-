@@ -41,5 +41,5 @@ render_target_update_mode = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_pegvy")
-volume_db = -5.0
+volume_db = -7.0
 autoplay = true
