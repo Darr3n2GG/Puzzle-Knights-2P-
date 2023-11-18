@@ -33,3 +33,4 @@ damage = 100.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Hurtbox_Component"]
 position = Vector2(0, 16.4226)
 shape = SubResource("RectangleShape2D_6v6t1")
+debug_color = Color(0.929412, 0, 0.121569, 0.227451)

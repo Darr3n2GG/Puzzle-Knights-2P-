@@ -4,8 +4,12 @@ extends Node2D
 @onready var area = $Area_2D
 @onready var input_class = Input_Puzzle.new()
 @export var puzzle_array : Array[Node2D]
+@export var grey_texture : bool = false
 
 func _ready():
+	if grey_texture:
+		$platesprite2.visible = true
+		$platesprite.visible = false
 	input_class.output_puzzles = puzzle_array
 #	print(input_class.output_puzzles)
 	input_class.setup()
