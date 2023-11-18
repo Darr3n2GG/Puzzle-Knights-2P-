@@ -83,8 +83,9 @@ position = Vector2(-328, -116)
 puzzle_array = [NodePath("../Door")]
 
 [node name="Door" parent="." instance=ExtResource("5_vooc1")]
-position = Vector2(-303, -205)
+position = Vector2(-320, -203)
 rotation = 1.5708
+scale = Vector2(0.075, 1)
 offset = Vector2(0, -100)
 duration = 1.0
 
