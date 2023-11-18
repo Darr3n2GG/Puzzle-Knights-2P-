@@ -14,7 +14,7 @@ var next_position: Marker2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	anim.play("walk_left")
+	anim.play("walk")
 	
 	positions = get_tree().get_nodes_in_group(group_name)
 	get_positions()

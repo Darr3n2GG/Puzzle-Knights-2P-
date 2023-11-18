@@ -23,8 +23,11 @@ func _on_recieve_input(is_activated : bool) -> void:
 #	print(activated)
 	if door_open:
 		var door = $Door
+		var sound = $Door_Open
+		
 		if is_activated:
 			door.visible = false
+			sound
 		else:
 	#		print("door deactivated")
 			door.visible = true
