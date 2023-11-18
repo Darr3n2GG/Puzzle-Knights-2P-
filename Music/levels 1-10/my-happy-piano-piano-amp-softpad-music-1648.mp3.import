@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bp4tksvby552y"
+path="res://.godot/imported/my-happy-piano-piano-amp-softpad-music-1648.mp3-21f4af55e2e6aeb32a23c55e525d0b8d.mp3str"
+
+[deps]
+
+source_file="res://Music/levels 1-10/my-happy-piano-piano-amp-softpad-music-1648.mp3"
+dest_files=["res://.godot/imported/my-happy-piano-piano-amp-softpad-music-1648.mp3-21f4af55e2e6aeb32a23c55e525d0b8d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
