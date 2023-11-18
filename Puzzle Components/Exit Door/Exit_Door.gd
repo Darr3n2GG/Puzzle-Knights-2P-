@@ -4,6 +4,10 @@ extends Node2D
 ##How many players have exited
 var players_exited : int = 0
 const FILE_BEGIN = "res://Scenes/Levels/level_"
+signal sound(is_activated : bool)
+
+func _ready():
+	sound.connect($Door_Open._connect)
 
 func _on_area_door_body_entered(body):
 #	print("entered door ", door_activated, " ", body)
@@ -23,7 +27,7 @@ func _on_recieve_input(is_activated : bool) -> void:
 #	print(activated)
 	if door_open:
 		var door = $Door
-		var sound = $Door_Open
+		sound.emit(is_activated)
 		
 		if is_activated:
 			door.visible = false
