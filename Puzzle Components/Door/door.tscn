@@ -25,7 +25,6 @@ polygon = PackedVector2Array(-292.794, 33.4769, -186.324, 33.4769, -186.324, -0.
 
 [node name="noDMG_collision" type="CollisionShape2D" parent="AnimatableBody2D"]
 position = Vector2(0, 16.1068)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_h5rtk")
 disabled = true
 
@@ -41,6 +40,5 @@ damage = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Hurtbox_Component"]
 position = Vector2(6.65443, 16.4226)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6v6t1")
 debug_color = Color(0.929412, 0, 0.121569, 0.227451)

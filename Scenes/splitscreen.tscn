@@ -56,6 +56,7 @@ render_target_update_mode = 4
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_5io6i")
+volume_db = -10.0
 script = ExtResource("3_ovo4f")
 
 [node name="music_transition" type="Timer" parent="Ambience"]

@@ -12,19 +12,19 @@ func _ready() -> void:
 	
 func _physics_process(_delta) -> void:
 	if Input.is_action_just_pressed("1Attack") and attack_cooldown.is_stopped() and is_attacking.is_stopped(): #haha bug fixed
-		get_parent().is_attacking = true
+		get_parent().is_action = true
 		hurtbox.monitoring = true
 		is_attacking.start()
 		
 
 func _on_is_attacking_timeout() -> void:
-	get_parent().is_attacking = false
+	get_parent().is_action = false
 	hurtbox.monitoring = false
 	has_knockbacked = false
 	attack_cooldown.start()
 
 func _on_hurtbox_component_area_entered(area: Area2D) -> void:
-	print(area.get_parent().name)
+#	print(area.get_parent().name)
 	if hurtbox.monitoring and not has_knockbacked:
 		if area.get_parent().name != "Player 2" :
 			has_knockbacked = true

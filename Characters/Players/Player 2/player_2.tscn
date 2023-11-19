@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bcqvvf88xlpis"]
+[gd_scene load_steps=33 format=3 uid="uid://bcqvvf88xlpis"]
 
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_1r7u3"]
 [ext_resource type="Resource" uid="uid://djypgp1f3hkb3" path="res://Resources/p2_controls.tres" id="2_iea8n"]
@@ -6,9 +6,22 @@
 [ext_resource type="Texture2D" uid="uid://bl5spby5lrgkh" path="res://Imports/AK/AK jump.png" id="4_rpfru"]
 [ext_resource type="Texture2D" uid="uid://cde2a5rmy2nxi" path="res://Imports/AK/AK walk.png" id="5_xbdjt"]
 [ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="6_q8qd8"]
+[ext_resource type="Script" path="res://Characters/Player_Animation.gd" id="7_kynf2"]
 [ext_resource type="Script" path="res://Characters/Players/Player 2/P2Place_Block.gd" id="7_vvske"]
 [ext_resource type="PackedScene" uid="uid://bpdrkkdpu1hoc" path="res://Resources/Component/health_component.tscn" id="8_tgxgk"]
 [ext_resource type="PackedScene" uid="uid://dc560d02gq12i" path="res://Resources/Component/hitbox_component.tscn" id="9_4fw5g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vah8s"]
+size = Vector2(12, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17syw"]
+size = Vector2(12, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h73c5"]
+size = Vector2(30, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qw1vh"]
+size = Vector2(12, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfdwl"]
 atlas = ExtResource("3_2rfap")
@@ -152,28 +165,11 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vah8s"]
-size = Vector2(12, 15)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_17syw"]
-size = Vector2(12, 15)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h73c5"]
-size = Vector2(30, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qw1vh"]
-size = Vector2(12, 15)
-
 [node name="Player 2" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
 platform_floor_layers = 4294967293
 script = ExtResource("1_1r7u3")
 controls = ExtResource("2_iea8n")
-
-[node name="Animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 2)
-sprite_frames = SubResource("SpriteFrames_o2eun")
-animation = &"run"
 
 [node name="Barrel" type="Sprite2D" parent="."]
 visible = false
@@ -214,3 +210,11 @@ hc = NodePath("../HealthComponent")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_qw1vh")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Player_Animation" type="Node2D" parent="."]
+script = ExtResource("7_kynf2")
+
+[node name="Animation" type="AnimatedSprite2D" parent="Player_Animation"]
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_o2eun")
+animation = &"jump fall"
