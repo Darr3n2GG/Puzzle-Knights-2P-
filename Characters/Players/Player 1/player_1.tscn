@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://da1c0fs0p4kxp"]
+[gd_scene load_steps=56 format=3 uid="uid://da1c0fs0p4kxp"]
 
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_yjl8x"]
 [ext_resource type="Resource" uid="uid://deqgd3ry1p2rn" path="res://Resources/p1_controls.tres" id="2_g5pru"]
@@ -10,7 +10,20 @@
 [ext_resource type="Texture2D" uid="uid://y2nf1stg1anr" path="res://Imports/CK/CK Run.png" id="6_cagak"]
 [ext_resource type="Texture2D" uid="uid://cidmjb7fj1cwo" path="res://Imports/CK/CK attack slash.png" id="7_2ui1b"]
 [ext_resource type="Script" path="res://Characters/Players/Player 1/P1_Attack.gd" id="7_55mj7"]
+[ext_resource type="Script" path="res://Characters/Player_Animation.gd" id="7_jb8gs"]
 [ext_resource type="PackedScene" uid="uid://c8f6t6wa8tuwh" path="res://Resources/Component/Hurtbox_Component.tscn" id="8_p584q"]
+[ext_resource type="Shader" path="res://Characters/Players/Player 1/slash.gdshader" id="13_17a5j"]
+[ext_resource type="Texture2D" uid="uid://bb4sc80bfbh5b" path="res://Imports/small_slash_FX.png" id="13_kcgyf"]
+[ext_resource type="Texture2D" uid="uid://mck5gnr74fm2" path="res://Imports/small_slash_FX_LEFT.png" id="14_4i8j5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0m543"]
+size = Vector2(10, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2udho"]
+size = Vector2(10, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah4og"]
+size = Vector2(27, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdvxx"]
 atlas = ExtResource("3_av1ip")
@@ -126,7 +139,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack front",
-"speed": 40.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -169,7 +182,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump fall",
-"speed": 6.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -253,17 +266,32 @@ animations = [{
 }],
 "loop": false,
 "name": &"slash",
-"speed": 40.0
+"speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0m543"]
-size = Vector2(10, 15)
+[sub_resource type="Gradient" id="Gradient_bjqbm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2udho"]
-size = Vector2(10, 15)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0h1qe"]
+gradient = SubResource("Gradient_bjqbm")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ah4og"]
-size = Vector2(27, 18)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ilwnl"]
+shader = ExtResource("13_17a5j")
+shader_parameter/lifetime_gradient = SubResource("GradientTexture1D_0h1qe")
+shader_parameter/tone_mapping = SubResource("GradientTexture1D_0h1qe")
+
+[sub_resource type="Gradient" id="Gradient_sm7f3"]
+offsets = PackedFloat32Array(0.231293, 0.741497)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ru47s"]
+gradient = SubResource("Gradient_sm7f3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2236n"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color_ramp = SubResource("GradientTexture1D_ru47s")
 
 [node name="Player 1" type="CharacterBody2D" groups=["player"]]
 collision_mask = 6
@@ -271,19 +299,6 @@ platform_floor_layers = 4294967293
 script = ExtResource("1_yjl8x")
 speed = 250.0
 controls = ExtResource("2_g5pru")
-
-[node name="Animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 0.5)
-sprite_frames = SubResource("SpriteFrames_cwjio")
-animation = &"attack front"
-
-[node name="Slash" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(24, 0.5)
-sprite_frames = SubResource("SpriteFrames_ejgq3")
-animation = &"slash"
-frame = 3
-frame_progress = 0.999122
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0m543")
@@ -315,12 +330,60 @@ script = ExtResource("7_55mj7")
 knockback_strength_x = 2.0
 
 [node name="IsAttacking" type="Timer" parent="P1_Attack"]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 
 [node name="Attack_Cooldown" type="Timer" parent="P1_Attack"]
-wait_time = 0.05
+wait_time = 0.1
 one_shot = true
+
+[node name="Player_Animation" type="Node2D" parent="."]
+script = ExtResource("7_jb8gs")
+
+[node name="Animation" type="AnimatedSprite2D" parent="Player_Animation"]
+position = Vector2(0, 0.5)
+sprite_frames = SubResource("SpriteFrames_cwjio")
+animation = &"jump limit"
+
+[node name="Slash" type="AnimatedSprite2D" parent="Player_Animation"]
+visible = false
+modulate = Color(2, 2, 2, 1)
+position = Vector2(24, 0.5)
+sprite_frames = SubResource("SpriteFrames_ejgq3")
+animation = &"slash"
+frame = 3
+frame_progress = 0.999122
+
+[node name="FX" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="slash FX R" type="GPUParticles2D" parent="FX"]
+modulate = Color(2, 2, 2, 1)
+material = SubResource("ShaderMaterial_ilwnl")
+use_parent_material = true
+position = Vector2(38, 0)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_2236n")
+texture = ExtResource("13_kcgyf")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+
+[node name="slash FX L" type="GPUParticles2D" parent="FX"]
+modulate = Color(2, 2, 2, 1)
+material = SubResource("ShaderMaterial_ilwnl")
+use_parent_material = true
+position = Vector2(-38, 0)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_2236n")
+texture = ExtResource("14_4i8j5")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+local_coords = true
 
 [connection signal="area_entered" from="Hurtbox_Component" to="P1_Attack" method="_on_hurtbox_component_area_entered"]
 [connection signal="timeout" from="P1_Attack/IsAttacking" to="P1_Attack" method="_on_is_attacking_timeout"]

@@ -79,6 +79,6 @@ text = "Start Game"
 layout_mode = 2
 text = "Quit Game"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Main_menu_theme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6n1h6")
 autoplay = true

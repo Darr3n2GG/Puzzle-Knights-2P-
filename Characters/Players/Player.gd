@@ -2,22 +2,18 @@
 extends CharacterBody2D
 class_name player
 
-@onready var anim : AnimatedSprite2D = $Animation
 @onready var spawn_point : Vector2 = global_position
-var run_effect = null
-var jump_effect = null
 
-#coyote jump mechanic
+#coyote jump mechanic -> jump after in fall state for a certain duration in seconds
 var coyotetimer : float = 0.0
 var has_jumped : bool = false
 @export var maxcoyotetime : float = 0.2
 
 var direction : Vector2 = Vector2.RIGHT
 var knockback : Vector2 = Vector2.ZERO
-var god_mode : bool = false
+#var god_mode : bool = false
 ##check if attack or place/carry block animation is being played
-var alt_animation : bool = false
-var is_attacking : bool = false
+var is_action : bool = false
 
 @export var speed : float = 200.0
 @export var jump_vel : float = -300.0
@@ -25,11 +21,17 @@ var is_attacking : bool = false
 @export var push_force : float = 20.0
 ##player 2 place block base range
 @export var base_place_range : float = 16.0
+##Control resource for two player controls, resources using control.gd can be dragged to this variable in th editor
+@export var controls : controls = null
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-##Control resource for two player controls, resources using control.gd can be dragged to this variable in th editor
-@export var controls : controls = null
+var player_state : Dictionary = {
+	"jump" : false,
+	"fall" : false,
+	"run" : false,
+	"idle" : true
+}
 
 func _physics_process(delta) -> void:
 	if not is_on_floor():
@@ -40,45 +42,46 @@ func _physics_process(delta) -> void:
 	if is_on_floor():
 		coyotetimer = 0.0
 		has_jumped = false
+		player_state["fall"] = false
 	else:
 		coyotetimer += delta
+		
+	if velocity.y > 0:
+		player_state["jump"] = false
+		player_state["fall"] = true
 		
 	if Input.is_action_pressed(controls.up) and coyotetimer < maxcoyotetime and not has_jumped:
 		velocity.y = jump_vel
 		has_jumped = true
-#		if global_position.y > -100:
-#			print("jump")
-#		else:
-#			print("super jumped")
-			
+		player_state["jump"] = true
 
 	if Input.is_action_pressed(controls.right):
-		anim.flip_h = false
 		direction = Vector2.RIGHT
 		global_position.x += speed * delta
+		player_state["run"] = true
 		if controls.player_index == 0:
 			var hurtbox = $Hurtbox_Component/HurtBox
 			hurtbox.position = direction * 17
 			hurtbox.shape.size = Vector2(23,18)
 			
-			var slash = $Slash
-			slash.flip_h = false
-			slash.position.x = 24
+#			var slash = $Slash
+#			slash.flip_h = false
+#			slash.position.x = 24
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = 9
 		
 	elif Input.is_action_pressed(controls.left):
-		anim.flip_h = true
 		direction = Vector2.LEFT
 		global_position.x -= speed * delta
+		player_state["run"] = true
 		if controls.player_index == 0:
 			var hurtbox = $Hurtbox_Component/HurtBox
 			hurtbox.position = direction * 17
 			hurtbox.shape.size = Vector2(23,18)
 			
-			var slash = $Slash
-			slash.flip_h = true
-			slash.position.x = -24
+#			var slash = $Slash
+#			slash.flip_h = true
+#			slash.position.x = -24
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
 			
@@ -89,7 +92,8 @@ func _physics_process(delta) -> void:
 		hurtbox.shape.size = Vector2(18,23)
 			
 	else:
-		pass
+		player_state["run"] = false
+		player_state["idle"] = true
 	
 	if knockback != Vector2.ZERO:
 		if knockback.x != 0:
@@ -102,43 +106,8 @@ func _physics_process(delta) -> void:
 		global_position = spawn_point
 		
 	move_and_slide()
-	update_animation()
+	$Player_Animation.update_animation(direction, is_action , controls.player_index, player_state)
 	push_collision()
-
-func update_animation():
-	if controls.player_index == 0 and is_attacking or Input.is_action_just_pressed("2PlaceOrCarry") and controls.player_index == 1:
-		alt_animation = true
-	if alt_animation:
-		if controls.player_index == 0:
-			if direction == Vector2.DOWN:
-				pass
-			else:
-				anim.play("attack front")
-				
-				var slash = $Slash
-				slash.visible = true
-				slash.play("slash")
-				if slash.frame == 3:
-					slash.visible = false
-					alt_animation = false
-					print("hi")
-		else:
-			alt_animation = false
-	else:
-		if velocity.y < 0:
-			anim.play("jump up")
-		elif velocity.y > 0:
-			if controls.player_index == 0:
-				anim.play("jump limit")
-				while velocity.y < 0:
-					anim.play("jump fall")
-					break
-			else:
-				anim.play("jump fall")
-		elif Input.is_action_pressed(controls.right) or Input.is_action_pressed(controls.left):
-			anim.play("run")
-		else:
-			anim.play("idle")
 
 ##Adds collision to rigid bodies
 func push_collision():

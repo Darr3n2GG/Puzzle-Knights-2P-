@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0du3wbnslhxa"]
+[gd_scene load_steps=16 format=3 uid="uid://d0du3wbnslhxa"]
 
 [ext_resource type="PackedScene" uid="uid://d6d15jtyyq7l" path="res://tile_map.tscn" id="1_pcrqg"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_ox8gr"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Players/Player 2/player_2.tscn" id="4_cgyt7"]
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="6_3pbem"]
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="7_jj0dv"]
+[ext_resource type="PackedScene" uid="uid://bd4om4ovgfifr" path="res://Resources/atmospheric_fx.tscn" id="7_kvi1k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_etg0b"]
 size = Vector2(16, 192)
@@ -113,3 +114,5 @@ offset_top = -178.0
 offset_right = 444.0
 offset_bottom = -102.0
 text = "Ohoho, welcome! Take a seat."
+
+[node name="Atmospheric_FX" parent="." instance=ExtResource("7_kvi1k")]

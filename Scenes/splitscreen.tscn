@@ -2,10 +2,22 @@
 
 [ext_resource type="Script" path="res://Scenes/splitscreen.gd" id="1_k0y43"]
 [ext_resource type="PackedScene" uid="uid://d0du3wbnslhxa" path="res://Scenes/Levels/level_1.tscn" id="2_1qqlr"]
-[ext_resource type="AudioStream" uid="uid://brblmadvao7gk" path="res://Music/levels 1-10/Now-We-Ride(chosic.com).mp3" id="3_2gtty"]
+[ext_resource type="AudioStream" uid="uid://bgqaofe5rkm55" path="res://Music/levels 1-10/Quiet Determination Ambient Music.mp3" id="3_dhdln"]
 [ext_resource type="Script" path="res://Scenes/Ambience.gd" id="3_ovo4f"]
-[ext_resource type="AudioStream" uid="uid://ccrdfps7h3oj4" path="res://Music/levels 1-10/keys-complex-141459.mp3" id="4_wi86y"]
-[ext_resource type="AudioStream" uid="uid://bp4tksvby552y" path="res://Music/levels 1-10/my-happy-piano-piano-amp-softpad-music-1648.mp3" id="5_gyo5p"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5io6i"]
+streams_count = 1
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("3_dhdln")
+stream_0/weight = 1.0
+
+[sub_resource type="Environment" id="Environment_6uk76"]
+glow_enabled = true
+glow_strength = 2.0
+glow_bloom = 0.3
+glow_blend_mode = 0
+glow_hdr_threshold = 2.0
 
 [node name="Node" type="Node"]
 script = ExtResource("1_k0y43")
@@ -43,17 +55,16 @@ render_target_update_mode = 4
 [node name="RightCam" type="Camera2D" parent="HBoxContainer/RightViewportContainer/RightSubViewport"]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_5io6i")
+volume_db = -10.0
 script = ExtResource("3_ovo4f")
 
-[node name="Rumble" type="AudioStreamPlayer" parent="Ambience"]
-stream = ExtResource("3_2gtty")
-volume_db = -5.0
-autoplay = true
+[node name="music_transition" type="Timer" parent="Ambience"]
+wait_time = 10.0
+one_shot = true
 
-[node name="wii music ig?" type="AudioStreamPlayer" parent="Ambience"]
-stream = ExtResource("4_wi86y")
-
-[node name="happy" type="AudioStreamPlayer" parent="Ambience"]
-stream = ExtResource("5_gyo5p")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6uk76")
 
 [connection signal="finished" from="Ambience" to="Ambience" method="_on_finished"]
+[connection signal="timeout" from="Ambience/music_transition" to="Ambience" method="_on_music_transition_timeout"]
