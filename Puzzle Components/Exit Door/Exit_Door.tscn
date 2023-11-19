@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Puzzle Components/Exit Door/Exit_Door.gd" id="1_ki66w"]
 [ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_2dnw8"]
-[ext_resource type="AudioStream" uid="uid://bl20xmad8m1sw" path="res://Imports/Castle Door Open - QuickSounds.com.mp3" id="3_xdiqb"]
+[ext_resource type="AudioStream" uid="uid://bl20xmad8m1sw" path="res://Music/SFX/Castle Door Open - QuickSounds.com.mp3" id="3_xdiqb"]
 [ext_resource type="Script" path="res://Puzzle Components/Exit Door/Door_Sound.gd" id="4_auwwd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ix0"]
