@@ -28,5 +28,5 @@ func _on_hurtbox_component_area_entered(area: Area2D) -> void:
 	if hurtbox.monitoring and not has_knockbacked:
 		if area.get_parent().name != "Player 2" :
 			has_knockbacked = true
-			var knockback_force = Vector2(knockback_strength_x * get_parent().direction.x * -1, knockback_strength_y * get_parent().direction.y * -1) 
+			var knockback_force = Vector2(knockback_strength_x * get_parent().direction.x * -1, -knockback_strength_y * get_parent().direction.y) 
 			get_parent().knockback += knockback_force

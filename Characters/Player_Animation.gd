@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var animation : AnimatedSprite2D = $Animation
 #var slash_fx : GPUParticles2D = null
+var has_played : bool = false
 
 func update_animation(direction : Vector2, is_action : bool, player_index : int, state : Dictionary ) -> void:
 	if direction.x == 1:
@@ -20,20 +21,8 @@ func update_animation(direction : Vector2, is_action : bool, player_index : int,
 			slash.position.x = -24
 			
 	if is_action:
-		if player_index == 0:
-			if direction == Vector2.DOWN:
-				pass
-			else:
-				animation.play("attack front")
-#				var slash_fx_timer = $"SlashFX timer"
-#				slash_fx.emitting = true
-#				slash_fx_timer.start()
-				var slash = $Slash
-				slash.visible = true
-				slash.play("slash")
-				if slash.frame == 3:
-					slash.visible = false
-#					print("hi")
+		if player_index == 0 and not has_played:
+			play_slash_animation(direction)
 		else:
 			pass
 	else:
@@ -68,3 +57,31 @@ func update_animation(direction : Vector2, is_action : bool, player_index : int,
 #			anim.play("run")
 #		else:
 #			anim.play("idle")
+
+func play_slash_animation(direction) -> void:
+	if direction.y == 1:
+		animation.play("attack down")
+		var slash = $"Down Slash"
+		slash.visible = true
+		slash.play("down slash")
+		has_played = true
+#				if slash.frame == 4:
+#					slash.visible = false
+	else:
+		animation.play("attack front")
+#				var slash_fx_timer = $"SlashFX timer"w
+#				slash_fx.emitting = true
+#				slash_fx_timer.start()
+		var slash = $Slash
+		slash.visible = true
+		slash.play("slash")
+		has_played = true
+#				if slash.frame == 3:
+#					slash.visible = false
+#					print("hi")
+
+func _on_slash_animation_finished() -> void:
+	has_played = false
+
+func _on_down_slash_animation_finished() -> void:
+	has_played = false

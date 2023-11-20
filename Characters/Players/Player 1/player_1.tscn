@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://da1c0fs0p4kxp"]
+[gd_scene load_steps=69 format=3 uid="uid://da1c0fs0p4kxp"]
 
 [ext_resource type="Shader" path="res://Characters/Players/damage_flash.gdshader" id="1_8shjw"]
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_yjl8x"]
@@ -13,9 +13,11 @@
 [ext_resource type="Script" path="res://Characters/Players/Player 1/P1_Attack.gd" id="7_55mj7"]
 [ext_resource type="Script" path="res://Characters/Player_Animation.gd" id="7_jb8gs"]
 [ext_resource type="PackedScene" uid="uid://c8f6t6wa8tuwh" path="res://Resources/Component/Hurtbox_Component.tscn" id="8_p584q"]
+[ext_resource type="Texture2D" uid="uid://cf8ex314xvajp" path="res://Imports/CK/CK attack down ss.png" id="9_ke3wf"]
 [ext_resource type="Shader" path="res://Characters/Players/Player 1/slash.gdshader" id="13_17a5j"]
 [ext_resource type="Texture2D" uid="uid://bb4sc80bfbh5b" path="res://Imports/small_slash_FX.png" id="13_kcgyf"]
 [ext_resource type="Texture2D" uid="uid://mck5gnr74fm2" path="res://Imports/small_slash_FX_LEFT.png" id="14_4i8j5"]
+[ext_resource type="Texture2D" uid="uid://biov64jgxyuvl" path="res://Imports/CK/attack down slash.png" id="15_yw0vb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6tdy8"]
 resource_local_to_scene = true
@@ -30,7 +32,19 @@ size = Vector2(10, 15)
 size = Vector2(10, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ah4og"]
-size = Vector2(27, 18)
+size = Vector2(23, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y464"]
+atlas = ExtResource("9_ke3wf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni4bf"]
+atlas = ExtResource("9_ke3wf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx03n"]
+atlas = ExtResource("9_ke3wf")
+region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdvxx"]
 atlas = ExtResource("3_av1ip")
@@ -134,6 +148,20 @@ region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cwjio"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y464")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ni4bf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx03n")
+}],
+"loop": true,
+"name": &"attack down",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wdvxx")
@@ -276,6 +304,49 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcjt6"]
+atlas = ExtResource("15_yw0vb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_goted"]
+atlas = ExtResource("15_yw0vb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwqvo"]
+atlas = ExtResource("15_yw0vb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5bl8"]
+atlas = ExtResource("15_yw0vb")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubtp5"]
+atlas = ExtResource("15_yw0vb")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t8qsi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcjt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goted")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwqvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5bl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubtp5")
+}],
+"loop": false,
+"name": &"down slash",
+"speed": 25.0
+}]
+
 [sub_resource type="Gradient" id="Gradient_bjqbm"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0h1qe"]
@@ -336,7 +407,7 @@ debug_color = Color(0.996078, 0.0509804, 0, 0.419608)
 [node name="P1_Attack" type="Node" parent="."]
 script = ExtResource("7_55mj7")
 knockback_strength_x = 2.0
-knockback_strength_y = 500.0
+knockback_strength_y = 300.0
 
 [node name="IsAttacking" type="Timer" parent="P1_Attack"]
 wait_time = 0.2
@@ -354,18 +425,27 @@ script = ExtResource("7_jb8gs")
 use_parent_material = true
 position = Vector2(0, 0.5)
 sprite_frames = SubResource("SpriteFrames_cwjio")
-animation = &"jump limit"
+animation = &"idle"
 
 [node name="Slash" type="AnimatedSprite2D" parent="Player_Animation"]
+visible = false
 modulate = Color(1.3, 1.3, 1.3, 1)
-top_level = true
 position = Vector2(24, 0.5)
 sprite_frames = SubResource("SpriteFrames_ejgq3")
 animation = &"slash"
 frame = 3
 frame_progress = 0.999122
 
+[node name="Down Slash" type="AnimatedSprite2D" parent="Player_Animation"]
+visible = false
+position = Vector2(0, 19)
+sprite_frames = SubResource("SpriteFrames_t8qsi")
+animation = &"down slash"
+frame = 1
+frame_progress = 0.224442
+
 [node name="FX" type="Node2D" parent="."]
+visible = false
 scale = Vector2(0.5, 0.5)
 
 [node name="slash FX R" type="GPUParticles2D" parent="FX"]
@@ -398,3 +478,7 @@ local_coords = true
 
 [connection signal="area_entered" from="Hurtbox_Component" to="P1_Attack" method="_on_hurtbox_component_area_entered"]
 [connection signal="timeout" from="P1_Attack/IsAttacking" to="P1_Attack" method="_on_is_attacking_timeout"]
+[connection signal="animation_finished" from="Player_Animation/Slash" to="Player_Animation" method="_on_slash_animation_finished"]
+[connection signal="animation_finished" from="Player_Animation/Slash" to="Player_Animation/Slash" method="set_visible" binds= [false]]
+[connection signal="animation_finished" from="Player_Animation/Down Slash" to="Player_Animation" method="_on_down_slash_animation_finished"]
+[connection signal="animation_finished" from="Player_Animation/Down Slash" to="Player_Animation/Down Slash" method="set_visible" binds= [false]]
