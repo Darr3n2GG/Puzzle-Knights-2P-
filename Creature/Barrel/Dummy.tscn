@@ -81,9 +81,10 @@ texture = ExtResource("2_2j32n")
 region_enabled = true
 region_rect = Rect2(32, 112, 16, 16)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="explosion" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_gnl2e")
 lifetime = 0.75
+one_shot = true
 explosiveness = 1.0

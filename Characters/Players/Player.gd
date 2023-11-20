@@ -54,6 +54,8 @@ func _physics_process(delta) -> void:
 		velocity.y = jump_vel
 		has_jumped = true
 		player_state["jump"] = true
+		
+
 			
 	if Input.is_action_pressed(controls.right):
 		direction = Vector2.RIGHT
@@ -67,16 +69,16 @@ func _physics_process(delta) -> void:
 		player_state["run"] = true
 		action_process()
 		
-	if Input.is_action_pressed("1Down") and controls.player_index == 0:
-		if player_state["jump"] or player_state["fall"]:
-			direction.y = 1
-			action_process()
-			
 	else:
 		direction.y = 0
 		player_state["run"] = false
 		player_state["idle"] = true
+		
 		action_process()
+	if Input.is_action_pressed("1Down") and controls.player_index == 0:
+		if player_state["jump"] or player_state["fall"]:
+			direction.y = 1
+			action_process()
 	
 	if knockback != Vector2.ZERO:
 		if knockback.x != 0:
@@ -122,8 +124,18 @@ func action_process() -> void:
 func entered_door() -> void:
 	visible = false
 	process_mode = Node.PROCESS_MODE_DISABLED
+	
+func damaged() -> void:
+	material.set_shader_parameter("flash_modifier", 1)
+	$flash_timer.start()
+
+func _on_flash_timer_timeout() -> void:
+	material.set_shader_parameter("flash_modifier", 0)
 
 func die():
 	print(get_parent(), " killed")
 	global_position = spawn_point
 	$HealthComponent.Set_Health()
+
+
+

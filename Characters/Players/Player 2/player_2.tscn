@@ -228,3 +228,9 @@ use_parent_material = true
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_o2eun")
 animation = &"jump fall"
+
+[node name="flash_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="flash_timer" to="." method="_on_flash_timer_timeout"]
