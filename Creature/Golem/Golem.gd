@@ -51,4 +51,9 @@ func get_next_positions():
 	direction *= -1
 
 
+func damaged() -> void:
+	material.set_shader_parameter("flash_modifier", 1)
+	$flash_timer.start()
 
+func _on_flash_timer_timeout() -> void:
+	material.set_shader_parameter("flash_modifier", 0)

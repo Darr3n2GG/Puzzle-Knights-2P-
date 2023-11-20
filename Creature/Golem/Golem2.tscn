@@ -1,10 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://n5ussthq3va2"]
+[gd_scene load_steps=19 format=3 uid="uid://n5ussthq3va2"]
 
 [ext_resource type="Script" path="res://Creature/Golem/Golem.gd" id="1_2qoqe"]
+[ext_resource type="Shader" path="res://Characters/Players/damage_flash.gdshader" id="1_x3bgc"]
 [ext_resource type="Texture2D" uid="uid://diesgr2hcvwv4" path="res://Creature/Golem/new-golem-walk.png" id="2_0n3lv"]
 [ext_resource type="PackedScene" uid="uid://dc560d02gq12i" path="res://Resources/Component/hitbox_component.tscn" id="2_t163x"]
 [ext_resource type="PackedScene" uid="uid://bpdrkkdpu1hoc" path="res://Resources/Component/health_component.tscn" id="3_hy83j"]
 [ext_resource type="PackedScene" uid="uid://c8f6t6wa8tuwh" path="res://Resources/Component/Hurtbox_Component.tscn" id="4_oomec"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_72og2"]
+shader = ExtResource("1_x3bgc")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05ba0"]
 atlas = ExtResource("2_0n3lv")
@@ -73,11 +79,13 @@ size = Vector2(14, 30.5)
 size = Vector2(10, 30)
 
 [node name="Golem" type="CharacterBody2D"]
+material = SubResource("ShaderMaterial_72og2")
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_2qoqe")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4n1ya")
 animation = &"walk"
@@ -102,3 +110,9 @@ debug_color = Color(0.478431, 0.588235, 0, 0.278431)
 position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_x7mkk")
 debug_color = Color(0.984314, 0, 0.352941, 0.360784)
+
+[node name="flash_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="flash_timer" to="." method="_on_flash_timer_timeout"]

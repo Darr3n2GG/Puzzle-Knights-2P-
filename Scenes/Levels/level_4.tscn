@@ -63,13 +63,13 @@ size = Vector2(112, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osedd"]
 size = Vector2(16, 96)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aoi5w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrqky"]
 resource_local_to_scene = true
 shader = ExtResource("5_sckba")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ju32"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ij8jb"]
 resource_local_to_scene = true
 shader = ExtResource("5_sckba")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -159,11 +159,11 @@ shape = SubResource("RectangleShape2D_osedd")
 position = Vector2(529, -108)
 
 [node name="Player 2" parent="." instance=ExtResource("3_o86ys")]
-material = SubResource("ShaderMaterial_aoi5w")
+material = SubResource("ShaderMaterial_rrqky")
 position = Vector2(15, -6)
 
 [node name="Player 1" parent="." instance=ExtResource("4_8qak7")]
-material = SubResource("ShaderMaterial_4ju32")
+material = SubResource("ShaderMaterial_ij8jb")
 position = Vector2(-15, -8)
 
 [node name="DummyE" parent="." instance=ExtResource("5_rshh1")]
@@ -186,3 +186,14 @@ duration = 1.0
 
 [node name="Atmospheric_FX" parent="." instance=ExtResource("10_b2fke")]
 position = Vector2(256, -201)
+
+[node name="text" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="witch text" type="RichTextLabel" parent="text"]
+modulate = Color(0.870588, 0.411765, 1, 1)
+offset_left = 34.0
+offset_top = -144.0
+offset_right = 148.0
+offset_bottom = -46.0
+text = "Please don't kill the little boy, if you do press P."

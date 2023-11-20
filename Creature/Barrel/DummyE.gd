@@ -13,6 +13,9 @@ var can_damaged : bool = true
 
 func Setup() -> void:
 	$HealthComponent.Set_Health()
+	
+func damaged() -> void:
+	$explosion.emitting = true
 
 func die() -> void:
 	$Collision.call_deferred("set_disabled",true)

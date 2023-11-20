@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://4lxo2r7d1lbd"
+path="res://.godot/imported/reflected-light-147979.mp3-d6aa3047dfbe5a76ee6adb8fbe7650ed.mp3str"
+
+[deps]
+
+source_file="res://Music/levels 1-10/reflected-light-147979.mp3"
+dest_files=["res://.godot/imported/reflected-light-147979.mp3-d6aa3047dfbe5a76ee6adb8fbe7650ed.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

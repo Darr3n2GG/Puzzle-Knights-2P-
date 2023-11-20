@@ -1,16 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://co6b1k2ukru5a"]
+[gd_scene load_steps=9 format=3 uid="uid://co6b1k2ukru5a"]
 
 [ext_resource type="Script" path="res://Scenes/splitscreen.gd" id="1_k0y43"]
 [ext_resource type="PackedScene" uid="uid://d0du3wbnslhxa" path="res://Scenes/Levels/level_1.tscn" id="2_1qqlr"]
 [ext_resource type="AudioStream" uid="uid://bgqaofe5rkm55" path="res://Music/levels 1-10/Quiet Determination Ambient Music.mp3" id="3_dhdln"]
 [ext_resource type="Script" path="res://Scenes/Ambience.gd" id="3_ovo4f"]
+[ext_resource type="AudioStream" uid="uid://4lxo2r7d1lbd" path="res://Music/levels 1-10/reflected-light-147979.mp3" id="4_m6rmc"]
+[ext_resource type="AudioStream" uid="uid://d0m8hxo2bo631" path="res://Music/levels 1-10/relaxing-145038.mp3" id="5_i7ohg"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5io6i"]
-streams_count = 1
+streams_count = 3
 random_pitch = 1.0
 random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("3_dhdln")
 stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_m6rmc")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_i7ohg")
+stream_2/weight = 1.0
 
 [sub_resource type="Environment" id="Environment_q2byf"]
 background_mode = 3

@@ -438,6 +438,7 @@ frame_progress = 0.999122
 
 [node name="Down Slash" type="AnimatedSprite2D" parent="Player_Animation"]
 visible = false
+modulate = Color(1.5, 1.5, 1.5, 1)
 position = Vector2(0, 19)
 sprite_frames = SubResource("SpriteFrames_t8qsi")
 animation = &"down slash"
