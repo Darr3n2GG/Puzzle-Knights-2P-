@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bghlqie32d02s"]
 
 [ext_resource type="Script" path="res://Puzzle Components/pressure plate/pressure_plater.gd" id="1_dm5x0"]
-[ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_ox4oi"]
-[ext_resource type="Texture2D" uid="uid://dtd0mc3r63bnt" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png" id="3_d47vn"]
+[ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_ox4oi"]
+[ext_resource type="Texture2D" uid="uid://cl8rmjws5f2gh" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png" id="3_d47vn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ix0"]
 size = Vector2(22, 8)
@@ -12,7 +12,7 @@ resource_name = "Move"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("platesprite:offset")
+tracks/0/path = NodePath("woodplate:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("platesprite2:offset")
+tracks/1/path = NodePath("stoneplate:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -49,13 +49,13 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_2D"]
 shape = SubResource("RectangleShape2D_v1ix0")
 
-[node name="platesprite" type="Sprite2D" parent="."]
+[node name="woodplate" type="Sprite2D" parent="."]
 scale = Vector2(1.375, 1)
 texture = ExtResource("2_ox4oi")
 region_enabled = true
 region_rect = Rect2(48, 136, 16, 8)
 
-[node name="platesprite2" type="Sprite2D" parent="."]
+[node name="stoneplate" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(1.375, 1)
 texture = ExtResource("3_d47vn")

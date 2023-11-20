@@ -9,7 +9,7 @@ gravity = Vector3(0, 10, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_max = 3.0
-color = Color(0.196078, 0.168627, 0.156863, 1)
+color = Color(0.215686, 0.164706, 0.113725, 1)
 
 [node name="Atmospheric_FX" type="GPUParticles2D"]
 position = Vector2(237, -201)
