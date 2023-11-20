@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bghlqie32d02s"]
+[gd_scene load_steps=8 format=3 uid="uid://bghlqie32d02s"]
 
 [ext_resource type="Script" path="res://Puzzle Components/pressure plate/pressure_plater.gd" id="1_dm5x0"]
 [ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_ox4oi"]
@@ -12,7 +12,7 @@ resource_name = "Move"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("woodplate:offset")
+tracks/0/path = NodePath("platesprite:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("stoneplate:offset")
+tracks/1/path = NodePath("platesprite2:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -34,9 +34,25 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(0, 8)]
 }
 
+[sub_resource type="Animation" id="Animation_dqai2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("platesprite2:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0d8k6"]
 _data = {
-"Move": SubResource("Animation_tt0k6")
+"Move": SubResource("Animation_tt0k6"),
+"RESET": SubResource("Animation_dqai2")
 }
 
 [node name="pressure plate" type="Node2D"]
@@ -49,13 +65,13 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area_2D"]
 shape = SubResource("RectangleShape2D_v1ix0")
 
-[node name="woodplate" type="Sprite2D" parent="."]
+[node name="platesprite" type="Sprite2D" parent="."]
 scale = Vector2(1.375, 1)
 texture = ExtResource("2_ox4oi")
 region_enabled = true
 region_rect = Rect2(48, 136, 16, 8)
 
-[node name="stoneplate" type="Sprite2D" parent="."]
+[node name="platesprite2" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(1.375, 1)
 texture = ExtResource("3_d47vn")
