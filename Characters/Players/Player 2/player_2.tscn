@@ -1,6 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://bcqvvf88xlpis"]
+[gd_scene load_steps=35 format=3 uid="uid://bcqvvf88xlpis"]
 
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_1r7u3"]
+[ext_resource type="Shader" path="res://Characters/Players/damage_flash.gdshader" id="1_sd8y0"]
 [ext_resource type="Resource" uid="uid://djypgp1f3hkb3" path="res://Resources/p2_controls.tres" id="2_iea8n"]
 [ext_resource type="Texture2D" uid="uid://cywimtmvyu8m5" path="res://Imports/AK/AK idle.png" id="3_2rfap"]
 [ext_resource type="Texture2D" uid="uid://bl5spby5lrgkh" path="res://Imports/AK/AK jump.png" id="4_rpfru"]
@@ -10,6 +11,12 @@
 [ext_resource type="Script" path="res://Characters/Players/Player 2/P2Place_Block.gd" id="7_vvske"]
 [ext_resource type="PackedScene" uid="uid://bpdrkkdpu1hoc" path="res://Resources/Component/health_component.tscn" id="8_tgxgk"]
 [ext_resource type="PackedScene" uid="uid://dc560d02gq12i" path="res://Resources/Component/hitbox_component.tscn" id="9_4fw5g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22qmq"]
+resource_local_to_scene = true
+shader = ExtResource("1_sd8y0")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vah8s"]
 size = Vector2(12, 15)
@@ -166,6 +173,7 @@ animations = [{
 }]
 
 [node name="Player 2" type="CharacterBody2D" groups=["player"]]
+material = SubResource("ShaderMaterial_22qmq")
 collision_mask = 6
 platform_floor_layers = 4294967293
 script = ExtResource("1_1r7u3")
@@ -212,9 +220,11 @@ shape = SubResource("RectangleShape2D_qw1vh")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Player_Animation" type="Node2D" parent="."]
+use_parent_material = true
 script = ExtResource("7_kynf2")
 
 [node name="Animation" type="AnimatedSprite2D" parent="Player_Animation"]
+use_parent_material = true
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_o2eun")
 animation = &"jump fall"

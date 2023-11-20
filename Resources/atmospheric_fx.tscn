@@ -12,6 +12,7 @@ scale_max = 3.0
 color = Color(0.196078, 0.168627, 0.156863, 1)
 
 [node name="Atmospheric_FX" type="GPUParticles2D"]
+modulate = Color(2, 2, 2, 1)
 position = Vector2(237, -201)
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_5eq0d")

@@ -1,13 +1,26 @@
-[gd_scene load_steps=27 format=3 uid="uid://0shm7v5tl587"]
+[gd_scene load_steps=30 format=3 uid="uid://0shm7v5tl587"]
 
 [ext_resource type="PackedScene" path="res://Resources/tile_map.tscn" id="1_b7swc"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_rtgi1"]
 [ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Players/Player 2/player_2.tscn" id="3_chwue"]
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="4_i0wd6"]
+[ext_resource type="Shader" path="res://Characters/Players/damage_flash.gdshader" id="4_ivn1r"]
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="4_magxq"]
 [ext_resource type="PackedScene" uid="uid://drnol0vfgck83" path="res://Puzzle Components/Door/door.tscn" id="5_vooc1"]
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="6_gdt24"]
 [ext_resource type="PackedScene" uid="uid://bd4om4ovgfifr" path="res://Resources/atmospheric_fx.tscn" id="8_4pw7w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l8osf"]
+resource_local_to_scene = true
+shader = ExtResource("4_ivn1r")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lem5x"]
+resource_local_to_scene = true
+shader = ExtResource("4_ivn1r")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fmta"]
 size = Vector2(16, 112)
@@ -75,9 +88,11 @@ layer_2/tile_data = PackedInt32Array(-1114122, 458752, 1, -1048586, 458752, 1, -
 position = Vector2(248, -204)
 
 [node name="Player 1" parent="." instance=ExtResource("4_i0wd6")]
+material = SubResource("ShaderMaterial_l8osf")
 position = Vector2(-212, -24)
 
 [node name="Player 2" parent="." instance=ExtResource("3_chwue")]
+material = SubResource("ShaderMaterial_lem5x")
 position = Vector2(-182, -24)
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("4_magxq")]

@@ -12,12 +12,11 @@ random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("3_dhdln")
 stream_0/weight = 1.0
 
-[sub_resource type="Environment" id="Environment_6uk76"]
+[sub_resource type="Environment" id="Environment_q2byf"]
+background_mode = 3
 glow_enabled = true
-glow_strength = 2.0
-glow_bloom = 0.3
 glow_blend_mode = 0
-glow_hdr_threshold = 2.0
+glow_hdr_threshold = 0.64
 
 [node name="Node" type="Node"]
 script = ExtResource("1_k0y43")
@@ -64,7 +63,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6uk76")
+environment = SubResource("Environment_q2byf")
 
 [connection signal="finished" from="Ambience" to="Ambience" method="_on_finished"]
 [connection signal="timeout" from="Ambience/music_transition" to="Ambience" method="_on_music_transition_timeout"]

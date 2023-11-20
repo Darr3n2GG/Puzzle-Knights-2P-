@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djo7kll4eugwk"]
+[gd_scene load_steps=15 format=3 uid="uid://djo7kll4eugwk"]
 
 [ext_resource type="Script" path="res://Creature/Barrel/Dummy.gd" id="1_1ub1h"]
 [ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_2j32n"]
@@ -13,6 +13,46 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opaml"]
 size = Vector2(16, 16)
 
+[sub_resource type="Curve" id="Curve_oxxbx"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rqenv"]
+curve = SubResource("Curve_oxxbx")
+
+[sub_resource type="Gradient" id="Gradient_btmws"]
+offsets = PackedFloat32Array(0.258503, 0.734694)
+colors = PackedColorArray(0.730469, 0.457031, 0.277344, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0g1yc"]
+gradient = SubResource("Gradient_btmws")
+
+[sub_resource type="Curve" id="Curve_640bx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n1rd3"]
+width = 2048
+curve = SubResource("Curve_640bx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gnl2e"]
+emission_shape = 1
+emission_sphere_radius = 5.0
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_curve = SubResource("CurveTexture_rqenv")
+scale_min = 2.0
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_n1rd3")
+color_ramp = SubResource("GradientTexture1D_0g1yc")
+
 [node name="Dummy" type="RigidBody2D" groups=["creature"]]
 collision_layer = 2
 collision_mask = 7
@@ -20,12 +60,6 @@ physics_material_override = SubResource("PhysicsMaterial_x6ci1")
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_1ub1h")
-
-[node name="Block" type="Sprite2D" parent="."]
-position = Vector2(-2.68221e-07, -6.4075e-07)
-texture = ExtResource("2_2j32n")
-region_enabled = true
-region_rect = Rect2(32, 112, 16, 16)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6tlbt")
@@ -40,3 +74,16 @@ debug_color = Color(0, 0.631373, 0.352941, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_fo58o")]
 MaxHealth = 1.0
+
+[node name="Block" type="Sprite2D" parent="."]
+position = Vector2(-2.68221e-07, -6.4075e-07)
+texture = ExtResource("2_2j32n")
+region_enabled = true
+region_rect = Rect2(32, 112, 16, 16)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_gnl2e")
+lifetime = 0.75
+explosiveness = 1.0
