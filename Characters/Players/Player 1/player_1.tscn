@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://da1c0fs0p4kxp"]
+[gd_scene load_steps=78 format=3 uid="uid://da1c0fs0p4kxp"]
 
 [ext_resource type="Shader" path="res://Characters/Players/damage_flash.gdshader" id="1_8shjw"]
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_yjl8x"]
@@ -14,9 +14,11 @@
 [ext_resource type="Script" path="res://Characters/Player_Animation.gd" id="7_jb8gs"]
 [ext_resource type="PackedScene" uid="uid://c8f6t6wa8tuwh" path="res://Resources/Component/Hurtbox_Component.tscn" id="8_p584q"]
 [ext_resource type="Texture2D" uid="uid://cf8ex314xvajp" path="res://Imports/CK/CK attack down ss.png" id="9_ke3wf"]
+[ext_resource type="Texture2D" uid="uid://dr8r006lhtqxf" path="res://Imports/CK/CK attack ver 2 ss.png" id="11_j253t"]
 [ext_resource type="Shader" path="res://Characters/Players/Player 1/slash.gdshader" id="13_17a5j"]
 [ext_resource type="Texture2D" uid="uid://bb4sc80bfbh5b" path="res://Imports/small_slash_FX.png" id="13_kcgyf"]
 [ext_resource type="Texture2D" uid="uid://mck5gnr74fm2" path="res://Imports/small_slash_FX_LEFT.png" id="14_4i8j5"]
+[ext_resource type="Texture2D" uid="uid://wapp2sml3o00" path="res://Imports/CK/small_slash_2.png" id="14_tie7h"]
 [ext_resource type="Texture2D" uid="uid://biov64jgxyuvl" path="res://Imports/CK/attack down slash.png" id="15_yw0vb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6tdy8"]
@@ -57,6 +59,18 @@ region = Rect2(32, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3ify"]
 atlas = ExtResource("3_av1ip")
 region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nt5d"]
+atlas = ExtResource("11_j253t")
+region = Rect2(0, 0, 33, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mq22"]
+atlas = ExtResource("11_j253t")
+region = Rect2(33, 0, 33, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq1l5"]
+atlas = ExtResource("11_j253t")
+region = Rect2(0, 23, 33, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s2dbk"]
 atlas = ExtResource("4_gjer5")
@@ -178,6 +192,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8nt5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mq22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq1l5")
+}],
+"loop": false,
+"name": &"attack front wide",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_s2dbk")
 }, {
 "duration": 1.0,
@@ -268,6 +296,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vbgc"]
+atlas = ExtResource("14_tie7h")
+region = Rect2(0, 0, 65, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjwym"]
+atlas = ExtResource("14_tie7h")
+region = Rect2(65, 0, 65, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnmok"]
+atlas = ExtResource("14_tie7h")
+region = Rect2(130, 0, 65, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rirg"]
+atlas = ExtResource("14_tie7h")
+region = Rect2(195, 0, 65, 27)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7e7r3"]
 atlas = ExtResource("7_2ui1b")
 region = Rect2(0, 0, 64, 32)
@@ -286,6 +330,23 @@ region = Rect2(0, 32, 64, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ejgq3"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vbgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjwym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnmok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rirg")
+}],
+"loop": false,
+"name": &"big slash",
+"speed": 20.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7e7r3")
@@ -397,10 +458,9 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="Hurtbox_Component" parent="." instance=ExtResource("8_p584q")]
 collision_layer = 0
 collision_mask = 11
-knockback_x = 100.0
 
 [node name="HurtBox" type="CollisionShape2D" parent="Hurtbox_Component"]
-position = Vector2(18.5, 0)
+position = Vector2(17.5, 0)
 shape = SubResource("RectangleShape2D_ah4og")
 debug_color = Color(0.996078, 0.0509804, 0, 0.419608)
 
@@ -414,7 +474,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Attack_Cooldown" type="Timer" parent="P1_Attack"]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 
 [node name="Player_Animation" type="Node2D" parent="."]
@@ -425,16 +485,17 @@ script = ExtResource("7_jb8gs")
 use_parent_material = true
 position = Vector2(0, 0.5)
 sprite_frames = SubResource("SpriteFrames_cwjio")
-animation = &"run"
+animation = &"attack front wide"
 
 [node name="Slash" type="AnimatedSprite2D" parent="Player_Animation"]
 visible = false
 modulate = Color(1.3, 1.3, 1.3, 1)
-position = Vector2(24, 0.5)
+position = Vector2(13, 0)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ejgq3")
-animation = &"slash"
+animation = &"big slash"
 frame = 3
-frame_progress = 0.999122
+frame_progress = 1.0
 
 [node name="Down Slash" type="AnimatedSprite2D" parent="Player_Animation"]
 visible = false
@@ -481,6 +542,7 @@ local_coords = true
 wait_time = 0.1
 one_shot = true
 
+[connection signal="damaged" from="HitboxComponent" to="." method="damaged"]
 [connection signal="area_entered" from="Hurtbox_Component" to="P1_Attack" method="_on_hurtbox_component_area_entered"]
 [connection signal="timeout" from="P1_Attack/IsAttacking" to="P1_Attack" method="_on_is_attacking_timeout"]
 [connection signal="animation_finished" from="Player_Animation/Slash" to="Player_Animation" method="_on_slash_animation_finished"]

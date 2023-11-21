@@ -18,12 +18,17 @@ func damage(attack : Attack, creature : Object) -> void:
 		print("true")
 	if parent == player:
 		print("ouch")
+	if parent.get_groups() == ["enemy"]:
+		print("enemy spotted")
 	
 	health -= attack.damage
+	
 	if parent is player:
-		pass
-	elif parent is Barrel or BarrelE:
-		parent.apply_central_impulse(attack.knockback) #knockback func
+		parent.knockback += attack.knockback
+	elif parent is Barrel or parent is BarrelE:
+		parent.apply_central_impulse(attack.knockback * 100) #knockback func
+	elif parent.get_groups() == ["enemy"]:
+		parent.velocity += attack.knockback
 	
 	var parent_class = parent.get_class()
 	var creature_class = creature.get_class()

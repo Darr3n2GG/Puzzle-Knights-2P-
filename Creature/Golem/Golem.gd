@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 const SPEED = 50.0
 const JUMP_VELOCITY = -400.0
+const group_name : String = "GolemMarker"
 
 @onready var anim : AnimatedSprite2D = $Animation
-@export var group_name: String
 @export var direction :int = 1
 var positions: Array
 var temp_position: Array
@@ -50,10 +50,13 @@ func get_next_positions():
 	next_position = temp_position.pop_front()
 	direction *= -1
 
-
 func damaged() -> void:
 	material.set_shader_parameter("flash_modifier", 1)
+	print("golem flash")
 	$flash_timer.start()
 
 func _on_flash_timer_timeout() -> void:
 	material.set_shader_parameter("flash_modifier", 0)
+	
+func die() -> void:
+	queue_free()

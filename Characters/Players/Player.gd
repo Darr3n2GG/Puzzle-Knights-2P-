@@ -109,14 +109,14 @@ func action_process() -> void:
 	elif direction.x == 1:
 		if controls.player_index == 0:
 			var hurtbox = $Hurtbox_Component/HurtBox
-			hurtbox.position = direction * 17
+			hurtbox.position = direction * 17.5
 			hurtbox.shape.size = Vector2(23,18)
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = 9
 	elif direction.x == -1:
 		if controls.player_index == 0:
 			var hurtbox = $Hurtbox_Component/HurtBox
-			hurtbox.position = direction * 17
+			hurtbox.position = direction * 17.5
 			hurtbox.shape.size = Vector2(23,18)
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
