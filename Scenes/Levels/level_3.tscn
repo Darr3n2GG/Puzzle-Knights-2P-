@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cu7t504wjyrwg"]
+[gd_scene load_steps=47 format=3 uid="uid://cu7t504wjyrwg"]
 
 [ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_w1imt"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_8utug"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Creature/Barrel/DummyE.gd" id="10_g2ssb"]
 [ext_resource type="PackedScene" uid="uid://n5ussthq3va2" path="res://Creature/Golem/Golem2.tscn" id="11_gof8c"]
 [ext_resource type="PackedScene" uid="uid://bd4om4ovgfifr" path="res://Resources/atmospheric_fx.tscn" id="12_ya1v4"]
+[ext_resource type="PackedScene" uid="uid://c5k5ee1ild20f" path="res://Resources/ts_marker.tscn" id="13_rnej7"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ifvb1"]
 tile_data = PackedInt32Array(0, 1, 5, 65536, 1, 6, 1, 65537, 5, 65537, 65537, 6, 2, 131073, 5, 65538, 131073, 6, 3, 196609, 5, 65539, 196609, 6, 4, 262145, 5, 65540, 262145, 6, 5, 327681, 5, 65541, 327681, 6, 6, 393217, 5, 65542, 393217, 6)
@@ -306,13 +307,13 @@ size = Vector2(16, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrjdo"]
 size = Vector2(16, 112)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gdbn3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2rjgd"]
 resource_local_to_scene = true
 shader = ExtResource("6_7dqyp")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_coamq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctt7j"]
 resource_local_to_scene = true
 shader = ExtResource("6_7dqyp")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -392,11 +393,11 @@ shape = SubResource("RectangleShape2D_rrjdo")
 position = Vector2(447, -140)
 
 [node name="Player 1" parent="." instance=ExtResource("3_lw85p")]
-material = SubResource("ShaderMaterial_gdbn3")
+material = SubResource("ShaderMaterial_2rjgd")
 position = Vector2(-15, -8)
 
 [node name="Player 2" parent="." instance=ExtResource("4_xj6vo")]
-material = SubResource("ShaderMaterial_coamq")
+material = SubResource("ShaderMaterial_ctt7j")
 position = Vector2(15, -6)
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("7_qh14o")]
@@ -437,13 +438,12 @@ text = "I am the witch, and apparently, both of you are here to save the princes
 
 [node name="Golem" parent="." instance=ExtResource("11_gof8c")]
 position = Vector2(463, -17)
-group_name = "TestSubject"
 
-[node name="TS Marker 1" type="Marker2D" parent="." groups=["TestSubject"]]
-position = Vector2(513, -7)
+[node name="TS Marker 1" parent="." instance=ExtResource("13_rnej7")]
+position = Vector2(509, -10)
 
-[node name="TS Marker 2" type="Marker2D" parent="." groups=["TestSubject"]]
-position = Vector2(330, -6)
+[node name="TS Marker 2" parent="." instance=ExtResource("13_rnej7")]
+position = Vector2(330, -10)
 
 [node name="Atmospheric_FX" parent="." instance=ExtResource("12_ya1v4")]
 position = Vector2(237, -216)

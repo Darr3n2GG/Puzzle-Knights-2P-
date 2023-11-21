@@ -397,10 +397,9 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="Hurtbox_Component" parent="." instance=ExtResource("8_p584q")]
 collision_layer = 0
 collision_mask = 11
-knockback_x = 100.0
 
 [node name="HurtBox" type="CollisionShape2D" parent="Hurtbox_Component"]
-position = Vector2(18.5, 0)
+position = Vector2(17.5, 0)
 shape = SubResource("RectangleShape2D_ah4og")
 debug_color = Color(0.996078, 0.0509804, 0, 0.419608)
 
@@ -414,7 +413,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Attack_Cooldown" type="Timer" parent="P1_Attack"]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 
 [node name="Player_Animation" type="Node2D" parent="."]
@@ -425,7 +424,7 @@ script = ExtResource("7_jb8gs")
 use_parent_material = true
 position = Vector2(0, 0.5)
 sprite_frames = SubResource("SpriteFrames_cwjio")
-animation = &"run"
+animation = &"idle"
 
 [node name="Slash" type="AnimatedSprite2D" parent="Player_Animation"]
 visible = false
@@ -481,6 +480,7 @@ local_coords = true
 wait_time = 0.1
 one_shot = true
 
+[connection signal="damaged" from="HitboxComponent" to="." method="damaged"]
 [connection signal="area_entered" from="Hurtbox_Component" to="P1_Attack" method="_on_hurtbox_component_area_entered"]
 [connection signal="timeout" from="P1_Attack/IsAttacking" to="P1_Attack" method="_on_is_attacking_timeout"]
 [connection signal="animation_finished" from="Player_Animation/Slash" to="Player_Animation" method="_on_slash_animation_finished"]

@@ -227,10 +227,11 @@ script = ExtResource("7_kynf2")
 use_parent_material = true
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_o2eun")
-animation = &"jump fall"
+animation = &"idle"
 
 [node name="flash_timer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 
+[connection signal="damaged" from="HitboxComponent" to="." method="damaged"]
 [connection signal="timeout" from="flash_timer" to="." method="_on_flash_timer_timeout"]

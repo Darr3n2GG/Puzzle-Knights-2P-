@@ -1,17 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbyixppra0gas"]
+[gd_scene load_steps=14 format=3 uid="uid://bbyixppra0gas"]
 
-[ext_resource type="PackedScene" path="res://Resources/tile_map.tscn" id="1_hqn75"]
+[ext_resource type="PackedScene" uid="uid://d6d15jtyyq7l" path="res://tile_map.tscn" id="1_72exd"]
+[ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_0je2t"]
 [ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Players/Player 2/player_2.tscn" id="2_x6skj"]
 [ext_resource type="Shader" path="res://Characters/Players/damage_flash.gdshader" id="3_j7tme"]
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="3_ltlvf"]
+[ext_resource type="PackedScene" uid="uid://n5ussthq3va2" path="res://Creature/Golem/Golem2.tscn" id="6_pg5in"]
+[ext_resource type="PackedScene" uid="uid://c5k5ee1ild20f" path="res://Resources/ts_marker.tscn" id="7_33q51"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca3g7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7rtk"]
+size = Vector2(16, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0vkk"]
+size = Vector2(576, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tw3ow"]
+size = Vector2(672, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhu6t"]
+size = Vector2(16, 192)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fr4t"]
 resource_local_to_scene = true
 shader = ExtResource("3_j7tme")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4s2ii"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qf627"]
 resource_local_to_scene = true
 shader = ExtResource("3_j7tme")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -19,13 +34,43 @@ shader_parameter/flash_modifier = 0.0
 
 [node name="Level_6" type="Node2D"]
 
-[node name="TileMap" parent="." instance=ExtResource("1_hqn75")]
-layer_0/tile_data = PackedInt32Array(65518, 0, 0, 65519, 65536, 0, 65520, 131072, 0, 65521, 0, 0, 65522, 65536, 0, 65523, 131072, 0, 65524, 0, 0, 65525, 65536, 0, 65526, 131072, 0, 65527, 0, 0, 65528, 65536, 0, 65529, 131072, 0, 65530, 0, 0, 65531, 65536, 0, 65532, 131072, 0, 65533, 0, 0, 65534, 65536, 0, 65535, 131072, 0, 0, 0, 0, 1, 65536, 0, 2, 131072, 0, 3, 0, 0, 4, 65536, 0, 5, 131072, 0, 6, 0, 0, 7, 65536, 0, 8, 131072, 0, 9, 0, 0, 10, 65536, 0, 11, 131072, 0, 12, 0, 0, 13, 65536, 0, 14, 131072, 0, 15, 0, 0, 16, 65536, 0, 17, 131072, 0, -18, 1, 0, -17, 1, 0, -16, 1, 0, -15, 1, 0, -14, 1, 0, -13, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -65521, 1, 0, -65520, 1, 0, -65519, 1, 0, -12, 1, 0, -11, 1, 0, -10, 1, 0, -9, 1, 0, -8, 1, 0, -7, 1, 0, -6, 1, 0, -5, 1, 0, -4, 1, 0, -3, 1, 0, -720906, 0, 0, -720905, 0, 0, -720904, 0, 0, -720903, 0, 0, -720902, 0, 0, -655368, 0, 0, -589832, 0, 0, -524296, 0, 0, -720899, 0, 0, -655363, 0, 0, -589827, 0, 0, -524291, 0, 0, -655362, 0, 0, -655361, 0, 0, -589825, 0, 0, -524289, 0, 0, -524290, 0, 0, -786430, 0, 0, -786429, 0, 0, -786428, 0, 0, -720894, 0, 0, -655358, 0, 0, -589822, 0, 0, -589821, 0, 0, -589820, 0, 0)
+[node name="TileMap" parent="." instance=ExtResource("1_72exd")]
+layer_0/tile_data = PackedInt32Array(65515, 327680, 7, 65516, 393216, 7, 65517, 393216, 7, 65518, 393216, 7, 65519, 393216, 7, 65520, 393216, 7, 65521, 393216, 7, 65522, 393216, 7, 65523, 393216, 7, 65524, 393216, 7, 65525, 393216, 7, 65526, 393216, 7, 65527, 393216, 7, 65528, 393216, 7, 65529, 393216, 7, 65530, 393216, 7, 65531, 393216, 7, 65532, 393216, 7, 65533, 393216, 7, 65534, 393216, 7, 65535, 393216, 7, 0, 393216, 7, 1, 393216, 7, 2, 393216, 7, 3, 393216, 7, 4, 393216, 7, 5, 393216, 7, 6, 393216, 7, 7, 393216, 7, 8, 393216, 7, 9, 393216, 7, 10, 393216, 7, 11, 393216, 7, 12, 393216, 7, 13, 393216, 7, 14, 393216, 7, 15, 393216, 7, 16, 393216, 7, 17, 393216, 7, 18, 393216, 7, 19, 393216, 7, 20, 458752, 7, -131090, 458752, 5, -65554, 458752, 5, -18, 458752, 6, -327698, 458752, 5, -262162, 458752, 5, -196626, 458752, 5, -524306, 458752, 5, -458770, 458752, 5, -393234, 458752, 5, -786450, 327680, 7, -720914, 458752, 4, -655378, 458752, 5, -589842, 458752, 5, -786449, 393216, 7, -786448, 393216, 7, -786447, 393216, 7, -786446, 393216, 7, -786445, 393216, 7, -786444, 393216, 7, -786443, 393216, 7, -786442, 393216, 7, -786441, 393216, 7, -786440, 393216, 7, -786439, 393216, 7, -786438, 393216, 7, -786437, 393216, 7, -786436, 393216, 7, -786435, 393216, 7, -786434, 393216, 7, -786433, 393216, 7, -851968, 393216, 7, -851967, 393216, 7, -851966, 393216, 7, -851965, 393216, 7, -851964, 393216, 7, -851963, 393216, 7, -851962, 393216, 7, -851961, 393216, 7, -851960, 393216, 7, -851959, 393216, 7, -851958, 393216, 7, -851957, 393216, 7, -851956, 393216, 7, -851955, 393216, 7, -851954, 393216, 7, -851953, 393216, 7, -851952, 393216, 7, -851951, 458752, 7, -786415, 458752, 4, -655343, 458752, 5, -720879, 458752, 5, -589807, 458752, 5, -524271, 458752, 5, -458735, 458752, 5, -393199, 458752, 5, -327663, 458752, 5, -262127, 458752, 5, -196591, 458752, 5, -131055, 458752, 5, -65519, 458752, 6)
+
+[node name="TileMapBaker" parent="." instance=ExtResource("2_0je2t")]
+position = Vector2(237, 0)
+tilemap_nodepath = NodePath("../TileMap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapBaker"]
+position = Vector2(-280, -96)
+shape = SubResource("RectangleShape2D_o7rtk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TileMapBaker"]
+position = Vector2(0, -200)
+shape = SubResource("RectangleShape2D_v0vkk")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="TileMapBaker"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_tw3ow")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="TileMapBaker"]
+position = Vector2(280, -96)
+shape = SubResource("RectangleShape2D_fhu6t")
 
 [node name="Player 2" parent="." instance=ExtResource("2_x6skj")]
-material = SubResource("ShaderMaterial_ca3g7")
-position = Vector2(-122, -24)
+material = SubResource("ShaderMaterial_3fr4t")
+position = Vector2(15, -8)
 
 [node name="Player 1" parent="." instance=ExtResource("3_ltlvf")]
-material = SubResource("ShaderMaterial_4s2ii")
-position = Vector2(-152, -26)
+material = SubResource("ShaderMaterial_qf627")
+position = Vector2(-15, -8)
+
+[node name="Golem" parent="." instance=ExtResource("6_pg5in")]
+position = Vector2(203, -15)
+direction = -1
+
+[node name="TS Marker 1" parent="." instance=ExtResource("7_33q51")]
+position = Vector2(159, -10)
+
+[node name="TS Marker 2" parent="." instance=ExtResource("7_33q51")]
+position = Vector2(238, -10)

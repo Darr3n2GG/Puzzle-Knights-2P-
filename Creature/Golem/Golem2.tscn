@@ -70,18 +70,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gry7f"]
-size = Vector2(15.5, 29)
+size = Vector2(14, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnv5y"]
-size = Vector2(14, 30.5)
+size = Vector2(14, 30.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7mkk"]
-size = Vector2(10, 30)
+size = Vector2(16, 30)
 
-[node name="Golem" type="CharacterBody2D"]
+[node name="Golem" type="CharacterBody2D" groups=["enemy"]]
 material = SubResource("ShaderMaterial_72og2")
 collision_layer = 8
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("1_2qoqe")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
@@ -95,19 +95,23 @@ frame_progress = 0.0434134
 shape = SubResource("RectangleShape2D_gry7f")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("2_t163x")]
+collision_layer = 8
+collision_mask = 0
 hc = NodePath("../HealthComponent")
 
 [node name="HitBox" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, -0.25)
+position = Vector2(0, -0.125)
 shape = SubResource("RectangleShape2D_xnv5y")
 debug_color = Color(0.478431, 0.588235, 0, 0.278431)
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_hy83j")]
+MaxHealth = 10000.0
 
 [node name="Hurtbox_Component" parent="." instance=ExtResource("4_oomec")]
+knockback_x = 2.0
+knockback_y = 300.0
 
 [node name="HurtBox" type="CollisionShape2D" parent="Hurtbox_Component"]
-position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_x7mkk")
 debug_color = Color(0.984314, 0, 0.352941, 0.360784)
 
@@ -115,4 +119,5 @@ debug_color = Color(0.984314, 0, 0.352941, 0.360784)
 wait_time = 0.1
 one_shot = true
 
+[connection signal="damaged" from="HitboxComponent" to="." method="damaged"]
 [connection signal="timeout" from="flash_timer" to="." method="_on_flash_timer_timeout"]

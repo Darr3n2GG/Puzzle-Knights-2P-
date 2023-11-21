@@ -36,23 +36,29 @@ func On_Create_or_Carry() -> void:
 	$Block.visible = false
 	$Collision.disabled = true
 	$HitboxComponent.monitorable = false
+	call_deferred("set_collision_mask_value",1 , true)
+	call_deferred("set_collision_mask_value",2 , true)
+	call_deferred("set_collision_layer_value",2 , true)
 
 func On_Placed() -> void :
 	Golem_State = States.placed
 	$Block.visible = true
 	$Collision.disabled = false
 	$HitboxComponent.monitorable = true
+	call_deferred("set_collision_mask_value",1 , true)
+	call_deferred("set_collision_mask_value",2 , true)
+	call_deferred("set_collision_layer_value",2 , true)
 
 func Setup() -> void:
 	$HealthComponent.Set_Health()
-	
-func damaged() -> void:
-	$explosion.emitting = true
 
 func die() -> void:
 	if is_instance_valid(p2):
 		p2.get_node("Place_Block").block_in_scene = false 
-	$Collision.call_deferred("set_disabled",true)
+	call_deferred("set_collision_mask_value",1 , false)
+	call_deferred("set_collision_mask_value",2 , false)
+	call_deferred("set_collision_layer_value",2 , false)
 	$HitboxComponent.call_deferred("set_monitorable",false)
 	Golem_State = States.dead
 	$Block.visible = false
+	$explosion.emitting = true
