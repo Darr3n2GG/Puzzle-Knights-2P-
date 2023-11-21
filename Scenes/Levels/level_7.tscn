@@ -6,13 +6,13 @@
 [ext_resource type="Shader" path="res://Characters/Players/damage_flash.gdshader" id="3_fqfhh"]
 [ext_resource type="PackedScene" uid="uid://n5ussthq3va2" path="res://Creature/Golem/Golem2.tscn" id="4_nce2e"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkaui"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phmkf"]
 resource_local_to_scene = true
 shader = ExtResource("3_fqfhh")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3mfu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_drdd8"]
 resource_local_to_scene = true
 shader = ExtResource("3_fqfhh")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -26,11 +26,11 @@ layer_1/tile_data = PackedInt32Array(327681, 262145, 4, 327682, 327681, 4, 32768
 layer_2/tile_data = PackedInt32Array(-5, 0, 7, 65531, 0, 8, 131067, 0, 7, 196603, 0, 8, 262139, 0, 7, 327675, 0, 7, 393211, 0, 8, 65536, 393217, 5, 131072, 393217, 6, 196608, 393217, 6, 262144, 393217, 6, 327680, 393217, 6, 65546, 393217, 5, 131082, 393217, 6, 196618, 393217, 6, 262154, 393217, 6, 327690, 393217, 6, -131083, 262144, 9, -65547, 262144, 10, -131082, 327680, 9, -65546, 327680, 10, -131081, 393216, 9, -65545, 393216, 10)
 
 [node name="Player 1" parent="." instance=ExtResource("2_o5s4l")]
-material = SubResource("ShaderMaterial_lkaui")
+material = SubResource("ShaderMaterial_phmkf")
 position = Vector2(-166, -29)
 
 [node name="Player 2" parent="." instance=ExtResource("3_d8dpf")]
-material = SubResource("ShaderMaterial_l3mfu")
+material = SubResource("ShaderMaterial_drdd8")
 position = Vector2(-136, -27)
 
 [node name="Golem" parent="." instance=ExtResource("4_nce2e")]

@@ -11,14 +11,14 @@ func update_animation(direction : Vector2, is_action : bool, player_index : int,
 #			slash_fx = $"../FX/slash FX R"
 			var slash = $Slash
 			slash.flip_h = false
-			slash.position.x = 24
+			slash.position.x = 13
 	else:
 		animation.flip_h = true
 		if not is_action and player_index == 0:
 #			slash_fx = $"../FX/slash FX L"
 			var slash = $Slash
 			slash.flip_h = true
-			slash.position.x = -24
+			slash.position.x = -13
 			
 	if is_action:
 		if player_index == 0 and not has_played:
@@ -68,13 +68,13 @@ func play_slash_animation(direction) -> void:
 #				if slash.frame == 4:
 #					slash.visible = false
 	else:
-		animation.play("attack front")
+		animation.play("attack front wide")
 #				var slash_fx_timer = $"SlashFX timer"w
 #				slash_fx.emitting = true
 #				slash_fx_timer.start()
 		var slash = $Slash
 		slash.visible = true
-		slash.play("slash")
+		slash.play("big slash")
 		has_played = true
 #				if slash.frame == 3:
 #					slash.visible = false
