@@ -63,13 +63,13 @@ size = Vector2(112, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osedd"]
 size = Vector2(16, 96)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_58vmk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6tf4e"]
 resource_local_to_scene = true
 shader = ExtResource("5_sckba")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ufmmw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ds62f"]
 resource_local_to_scene = true
 shader = ExtResource("5_sckba")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -159,11 +159,11 @@ shape = SubResource("RectangleShape2D_osedd")
 position = Vector2(529, -108)
 
 [node name="Player 2" parent="." instance=ExtResource("3_o86ys")]
-material = SubResource("ShaderMaterial_58vmk")
+material = SubResource("ShaderMaterial_6tf4e")
 position = Vector2(15, -6)
 
 [node name="Player 1" parent="." instance=ExtResource("4_8qak7")]
-material = SubResource("ShaderMaterial_ufmmw")
+material = SubResource("ShaderMaterial_ds62f")
 position = Vector2(-15, -8)
 
 [node name="DummyE" parent="." instance=ExtResource("5_rshh1")]
@@ -182,7 +182,6 @@ puzzle_array = [NodePath("../Exit Door")]
 position = Vector2(326, 88)
 scale = Vector2(0.414094, 0.709099)
 offset = Vector2(0, -230)
-duration = 1.0
 
 [node name="Atmospheric_FX" parent="." instance=ExtResource("10_b2fke")]
 position = Vector2(256, -201)

@@ -65,7 +65,7 @@ volume_db = -10.0
 script = ExtResource("3_ovo4f")
 
 [node name="music_transition" type="Timer" parent="Ambience"]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

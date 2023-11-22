@@ -489,13 +489,11 @@ animation = &"attack front wide"
 
 [node name="Slash" type="AnimatedSprite2D" parent="Player_Animation"]
 visible = false
-modulate = Color(1.3, 1.3, 1.3, 1)
+modulate = Color(10, 10, 10, 1)
 position = Vector2(13, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ejgq3")
 animation = &"big slash"
-frame = 3
-frame_progress = 1.0
 
 [node name="Down Slash" type="AnimatedSprite2D" parent="Player_Animation"]
 visible = false
@@ -507,6 +505,7 @@ frame = 1
 frame_progress = 0.224442
 
 [node name="FX" type="Node2D" parent="."]
+process_mode = 4
 visible = false
 scale = Vector2(0.5, 0.5)
 

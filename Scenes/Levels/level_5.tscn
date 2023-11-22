@@ -10,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="6_gdt24"]
 [ext_resource type="PackedScene" uid="uid://bd4om4ovgfifr" path="res://Resources/atmospheric_fx.tscn" id="8_4pw7w"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4sog2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rgcrk"]
 resource_local_to_scene = true
 shader = ExtResource("4_ivn1r")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3wxm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1mdmb"]
 resource_local_to_scene = true
 shader = ExtResource("4_ivn1r")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -89,11 +89,11 @@ visible = false
 position = Vector2(248, -204)
 
 [node name="Player 1" parent="." instance=ExtResource("4_i0wd6")]
-material = SubResource("ShaderMaterial_4sog2")
+material = SubResource("ShaderMaterial_rgcrk")
 position = Vector2(-212, -24)
 
 [node name="Player 2" parent="." instance=ExtResource("3_chwue")]
-material = SubResource("ShaderMaterial_c3wxm")
+material = SubResource("ShaderMaterial_1mdmb")
 position = Vector2(-182, -24)
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("4_magxq")]
@@ -105,7 +105,6 @@ position = Vector2(-320, -203)
 rotation = 1.5708
 scale = Vector2(0.075, 1)
 offset = Vector2(0, -100)
-duration = 1.0
 killable = false
 
 [node name="pressure plate2" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("4_magxq")]
@@ -116,7 +115,6 @@ puzzle_array = [NodePath("../Door2")]
 position = Vector2(-25, 19)
 scale = Vector2(0.075, 1)
 offset = Vector2(0, -50)
-duration = 1.0
 
 [node name="pressure plate St" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("4_magxq")]
 position = Vector2(41, -116)

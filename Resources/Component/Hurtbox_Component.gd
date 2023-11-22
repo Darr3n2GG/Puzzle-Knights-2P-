@@ -15,6 +15,14 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		var knockback = Vector2(knockback_x, 0)
 		if get_parent().get_class() != "AnimatableBody2D":
-			attack_instance.knockback = knockback * get_parent().direction
+			
+			attack_instance.knockback = knockback * Get_Direction()
 		
 		hitbox.damage(attack_instance, get_parent())
+		
+func Get_Direction(): ##direction for vector or int
+	if get_parent().get("direction") == null:
+		return 1
+	else:
+		var direction = get_parent().direction
+		return direction

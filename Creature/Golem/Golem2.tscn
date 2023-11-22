@@ -108,6 +108,8 @@ debug_color = Color(0.478431, 0.588235, 0, 0.278431)
 MaxHealth = 10000.0
 
 [node name="Hurtbox_Component" parent="." instance=ExtResource("4_oomec")]
+collision_layer = 0
+collision_mask = 3
 knockback_x = 2.0
 knockback_y = 300.0
 
