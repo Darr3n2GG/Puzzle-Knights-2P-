@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://0shm7v5tl587"]
 
-[ext_resource type="PackedScene" path="res://Resources/tile_map.tscn" id="1_b7swc"]
+[ext_resource type="PackedScene" uid="uid://bxjod2sflh7jp" path="res://Resources/tile_map.tscn" id="1_b7swc"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_rtgi1"]
 [ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Players/Player 2/player_2.tscn" id="3_chwue"]
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="4_i0wd6"]
@@ -85,7 +85,6 @@ layer_1/tile_data = PackedInt32Array(-327703, 131072, 5, -262167, 131072, 6, -19
 layer_2/tile_data = PackedInt32Array(-1114122, 458752, 1, -1048586, 458752, 1, -983050, 458752, 1, -589846, 458752, 8, -65543, 262145, 8, -65542, 196609, 7, -65541, 327681, 8, -786436, 0, 7, -720900, 0, 8, -655364, 0, 7, -589828, 0, 8, -917489, 327681, 9, -851953, 327681, 10, -720879, 393217, 8, -917515, 393217, 0, -851979, 393217, 1, -786443, 393217, 2, -917513, 393217, 0, -851977, 393217, 1, -786441, 393217, 2, -917514, 393217, 0, -851978, 393217, 1, -786442, 393217, 2, -131086, 262144, 9, -65550, 262144, 10, -131085, 327680, 9, -65549, 327680, 10, -131084, 393216, 9, -65548, 393216, 10, -917490, 262145, 9, -851954, 262145, 10, -917488, 393217, 9, -851952, 393217, 10)
 
 [node name="Exit Door" parent="." instance=ExtResource("6_gdt24")]
-visible = false
 position = Vector2(248, -204)
 
 [node name="Player 1" parent="." instance=ExtResource("4_i0wd6")]

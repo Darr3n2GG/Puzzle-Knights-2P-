@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const SPEED = 50.0
 const JUMP_VELOCITY = -400.0
-const group_name : String = "GolemMarker"
 
+@export var group_name : String = "GolemMarker" #different golem uses different group
 @onready var anim : AnimatedSprite2D = $Animation
 @export var direction :int = 1
 var positions: Array
