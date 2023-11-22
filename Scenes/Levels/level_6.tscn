@@ -20,13 +20,13 @@ size = Vector2(672, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fhu6t"]
 size = Vector2(16, 192)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kjkhq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqr0b"]
 resource_local_to_scene = true
 shader = ExtResource("3_j7tme")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7t33p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ypl7"]
 resource_local_to_scene = true
 shader = ExtResource("3_j7tme")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -58,11 +58,11 @@ position = Vector2(280, -96)
 shape = SubResource("RectangleShape2D_fhu6t")
 
 [node name="Player 2" parent="." instance=ExtResource("2_x6skj")]
-material = SubResource("ShaderMaterial_kjkhq")
+material = SubResource("ShaderMaterial_nqr0b")
 position = Vector2(15, -8)
 
 [node name="Player 1" parent="." instance=ExtResource("3_ltlvf")]
-material = SubResource("ShaderMaterial_7t33p")
+material = SubResource("ShaderMaterial_8ypl7")
 position = Vector2(-15, -8)
 
 [node name="Golem" parent="." instance=ExtResource("6_pg5in")]
