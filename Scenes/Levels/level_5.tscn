@@ -10,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="6_gdt24"]
 [ext_resource type="PackedScene" uid="uid://bd4om4ovgfifr" path="res://Resources/atmospheric_fx.tscn" id="8_4pw7w"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4sog2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_djnaq"]
 resource_local_to_scene = true
 shader = ExtResource("4_ivn1r")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3wxm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6f6c4"]
 resource_local_to_scene = true
 shader = ExtResource("4_ivn1r")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -85,15 +85,14 @@ layer_1/tile_data = PackedInt32Array(-327703, 131072, 5, -262167, 131072, 6, -19
 layer_2/tile_data = PackedInt32Array(-1114122, 458752, 1, -1048586, 458752, 1, -983050, 458752, 1, -589846, 458752, 8, -65543, 262145, 8, -65542, 196609, 7, -65541, 327681, 8, -786436, 0, 7, -720900, 0, 8, -655364, 0, 7, -589828, 0, 8, -917489, 327681, 9, -851953, 327681, 10, -720879, 393217, 8, -917515, 393217, 0, -851979, 393217, 1, -786443, 393217, 2, -917513, 393217, 0, -851977, 393217, 1, -786441, 393217, 2, -917514, 393217, 0, -851978, 393217, 1, -786442, 393217, 2, -131086, 262144, 9, -65550, 262144, 10, -131085, 327680, 9, -65549, 327680, 10, -131084, 393216, 9, -65548, 393216, 10, -917490, 262145, 9, -851954, 262145, 10, -917488, 393217, 9, -851952, 393217, 10)
 
 [node name="Exit Door" parent="." instance=ExtResource("6_gdt24")]
-visible = false
 position = Vector2(248, -204)
 
 [node name="Player 1" parent="." instance=ExtResource("4_i0wd6")]
-material = SubResource("ShaderMaterial_4sog2")
+material = SubResource("ShaderMaterial_djnaq")
 position = Vector2(-212, -24)
 
 [node name="Player 2" parent="." instance=ExtResource("3_chwue")]
-material = SubResource("ShaderMaterial_c3wxm")
+material = SubResource("ShaderMaterial_6f6c4")
 position = Vector2(-182, -24)
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("4_magxq")]

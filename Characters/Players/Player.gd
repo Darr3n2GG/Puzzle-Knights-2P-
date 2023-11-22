@@ -75,7 +75,7 @@ func _physics_process(delta) -> void:
 		player_state["idle"] = true
 		
 		action_process()
-	if Input.is_action_pressed("1Down") and controls.player_index == 0:
+	if Input.is_action_pressed("1Slash") and controls.player_index == 0:
 		if player_state["jump"] or player_state["fall"]:
 			direction.y = 1
 			action_process()

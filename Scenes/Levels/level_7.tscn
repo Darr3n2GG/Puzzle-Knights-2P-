@@ -108,13 +108,13 @@ size = Vector2(128, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5e67i"]
 size = Vector2(16, 368)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hek04"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3txf"]
 resource_local_to_scene = true
 shader = ExtResource("3_fqfhh")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0pbb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_10pqn"]
 resource_local_to_scene = true
 shader = ExtResource("3_fqfhh")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -259,16 +259,15 @@ position = Vector2(680, -72)
 shape = SubResource("RectangleShape2D_5e67i")
 
 [node name="Player 1" parent="." instance=ExtResource("2_o5s4l")]
-material = SubResource("ShaderMaterial_hek04")
+material = SubResource("ShaderMaterial_s3txf")
 position = Vector2(-166, -29)
 
 [node name="Player 2" parent="." instance=ExtResource("3_d8dpf")]
-material = SubResource("ShaderMaterial_e0pbb")
+material = SubResource("ShaderMaterial_10pqn")
 position = Vector2(-136, -27)
 
 [node name="Golem" parent="." instance=ExtResource("4_nce2e")]
 position = Vector2(94, 94)
-group_name = "Gl I"
 
 [node name="Golem I 1" type="Marker2D" parent="." groups=["Gl I"]]
 position = Vector2(173, 102)
@@ -278,7 +277,6 @@ position = Vector2(70, 101)
 
 [node name="Golem2" parent="." instance=ExtResource("4_nce2e")]
 position = Vector2(396, 97)
-group_name = "Banner"
 
 [node name="Golem II 1" type="Marker2D" parent="." groups=["Banner"]]
 position = Vector2(411, 104)
@@ -320,8 +318,9 @@ move_direction = -1.0
 offset = Vector2(0, 100)
 duration = 1.0
 
-[node name="pressure plate3" parent="." instance=ExtResource("9_6pos0")]
+[node name="pressure plate3" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("9_6pos0")]
 position = Vector2(441, -228)
+puzzle_array = [NodePath("../Exit Door2")]
 
 [node name="Exit Door2" parent="." instance=ExtResource("6_5dpvl")]
 position = Vector2(632, 100)
