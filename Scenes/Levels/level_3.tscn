@@ -1,8 +1,8 @@
 [gd_scene load_steps=47 format=3 uid="uid://cu7t504wjyrwg"]
 
-[ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_w1imt"]
+[ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_w1imt"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_8utug"]
-[ext_resource type="Texture2D" uid="uid://cl8rmjws5f2gh" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png" id="2_46ddp"]
+[ext_resource type="Texture2D" uid="uid://dtd0mc3r63bnt" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png" id="2_46ddp"]
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="3_lw85p"]
 [ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Players/Player 2/player_2.tscn" id="4_xj6vo"]
 [ext_resource type="Shader" path="res://Characters/Players/damage_flash.gdshader" id="6_7dqyp"]
@@ -307,13 +307,13 @@ size = Vector2(16, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrjdo"]
 size = Vector2(16, 112)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rth8x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nji2n"]
 resource_local_to_scene = true
 shader = ExtResource("6_7dqyp")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynu87"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_br86i"]
 resource_local_to_scene = true
 shader = ExtResource("6_7dqyp")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -393,11 +393,11 @@ shape = SubResource("RectangleShape2D_rrjdo")
 position = Vector2(447, -140)
 
 [node name="Player 1" parent="." instance=ExtResource("3_lw85p")]
-material = SubResource("ShaderMaterial_rth8x")
+material = SubResource("ShaderMaterial_nji2n")
 position = Vector2(-15, -8)
 
 [node name="Player 2" parent="." instance=ExtResource("4_xj6vo")]
-material = SubResource("ShaderMaterial_ynu87")
+material = SubResource("ShaderMaterial_br86i")
 position = Vector2(15, -6)
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("7_qh14o")]

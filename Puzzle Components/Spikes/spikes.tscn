@@ -11,8 +11,8 @@ region_enabled = true
 region_rect = Rect2(0, 3, 16, 13)
 
 [node name="Hurtbox_Component" parent="." instance=ExtResource("2_3us8e")]
+collision_mask = 11
 damage = 10.0
-oneshot = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox_Component"]
 position = Vector2(0, 0.5)

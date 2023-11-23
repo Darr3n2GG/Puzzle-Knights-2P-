@@ -4,10 +4,10 @@ extends Node2D
 
 @onready var output_class = Output_Puzzle.new()
 const FILE_BEGIN = "res://Scenes/Levels/level_"
-signal sound(is_activated : bool)
+#signal sound(is_activated : bool)
 
-func _ready():
-	sound.connect($Door_Open._connect)
+#func _ready():
+#	sound.connect($Door_Open._connect)
 
 func _on_area_door_body_entered(body):
 #	print("entered door ", door_activated, " ", body)
@@ -27,10 +27,11 @@ func _on_recieve_input(is_activated : bool) -> void:
 #	print(activated)
 	if door_open:
 		var door = $Door
-		sound.emit(is_activated)
+#		sound.emit(is_activated)
 		
 		if is_activated:
 			door.visible = false
+#			$Door_Open.play()
 		else:
 	#		print("door deactivated")
 			door.visible = true
