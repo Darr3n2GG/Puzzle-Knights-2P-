@@ -307,13 +307,13 @@ size = Vector2(16, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrjdo"]
 size = Vector2(16, 112)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rth8x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_htept"]
 resource_local_to_scene = true
 shader = ExtResource("6_7dqyp")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynu87"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0e60l"]
 resource_local_to_scene = true
 shader = ExtResource("6_7dqyp")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -393,11 +393,11 @@ shape = SubResource("RectangleShape2D_rrjdo")
 position = Vector2(447, -140)
 
 [node name="Player 1" parent="." instance=ExtResource("3_lw85p")]
-material = SubResource("ShaderMaterial_rth8x")
+material = SubResource("ShaderMaterial_htept")
 position = Vector2(-15, -8)
 
 [node name="Player 2" parent="." instance=ExtResource("4_xj6vo")]
-material = SubResource("ShaderMaterial_ynu87")
+material = SubResource("ShaderMaterial_0e60l")
 position = Vector2(15, -6)
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("7_qh14o")]
@@ -415,6 +415,7 @@ offset = Vector2(0, 50)
 [node name="DummyE" parent="." instance=ExtResource("8_okv1c")]
 position = Vector2(143, -21)
 script = ExtResource("10_g2ssb")
+cube = true
 
 [node name="text" type="Node2D" parent="."]
 scale = Vector2(0.5, 0.5)

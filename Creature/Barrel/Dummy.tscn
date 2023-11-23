@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://djo7kll4eugwk"]
 
 [ext_resource type="Script" path="res://Creature/Barrel/Dummy.gd" id="1_1ub1h"]
-[ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_2j32n"]
+[ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="2_2j32n"]
 [ext_resource type="PackedScene" uid="uid://bpdrkkdpu1hoc" path="res://Resources/Component/health_component.tscn" id="3_fo58o"]
 [ext_resource type="PackedScene" uid="uid://dc560d02gq12i" path="res://Resources/Component/hitbox_component.tscn" id="4_vfmdo"]
 
@@ -80,6 +80,12 @@ position = Vector2(-2.68221e-07, -6.4075e-07)
 texture = ExtResource("2_2j32n")
 region_enabled = true
 region_rect = Rect2(32, 112, 16, 16)
+
+[node name="Barrel" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_2j32n")
+region_enabled = true
+region_rect = Rect2(16, 112, 16, 16)
 
 [node name="explosion" type="GPUParticles2D" parent="."]
 emitting = false
