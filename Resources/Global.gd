@@ -7,6 +7,9 @@ var current_level = 1
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("reset") and get_tree().current_scene.name != "Menu":
 		reset_scene()
+	if Input.is_action_just_pressed("Quit game"):
+		get_tree().quit()
+	
 
 func setup_level() -> void:
 	call_deferred("deferred_setup_level")

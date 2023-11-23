@@ -18,6 +18,7 @@ config/icon="res://Barrel.png"
 [autoload]
 
 global="*res://Resources/Global.gd"
+gl_door="*res://gl_door.gd"
 
 [display]
 

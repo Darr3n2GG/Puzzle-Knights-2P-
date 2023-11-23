@@ -1,8 +1,8 @@
 extends Node2D
 
+#the code to detect the amount of exited player is moved to gl_door.gd
+
 @onready var output_class = Output_Puzzle.new()
-##How many players have exited
-var players_exited : int = 0
 const FILE_BEGIN = "res://Scenes/Levels/level_"
 signal sound(is_activated : bool)
 
@@ -13,13 +13,13 @@ func _on_area_door_body_entered(body):
 #	print("entered door ", door_activated, " ", body)
 	if output_class.activated and body is player:
 		body.entered_door()
-		players_exited += 1
-		if players_exited == 2:
+		gl_door.players_exited += 1
+		if gl_door.players_exited == 2:
 			var current_scene_file = get_parent().scene_file_path
 			var next_level_number = current_scene_file.to_int() + 1
 			var next_level_path = FILE_BEGIN + str(next_level_number) + ".tscn"
 			global.change_scene(next_level_path)
-			
+			gl_door.players_exited = 0
 
 func _on_recieve_input(is_activated : bool) -> void:
 	output_class.activated = is_activated
