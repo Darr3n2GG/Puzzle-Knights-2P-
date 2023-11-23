@@ -5,4 +5,8 @@
 [node name="Hurtbox_Component" type="Area2D"]
 script = ExtResource("1_u1hcr")
 
+[node name="Hurtbox_Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="Hurtbox_Timer" to="." method="_on_hurtbox_timer_timeout"]

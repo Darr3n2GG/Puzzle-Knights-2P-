@@ -126,10 +126,12 @@ func entered_door() -> void:
 	
 func damaged() -> void:
 	material.set_shader_parameter("flash_modifier", 1)
+	$HitboxComponent.set_deferred("monitorable", false)
 	$flash_timer.start()
 
 func _on_flash_timer_timeout() -> void:
 	material.set_shader_parameter("flash_modifier", 0)
+	$HitboxComponent.set_deferred("monitorable", true)
 
 func die():
 	print(get_parent(), " killed")

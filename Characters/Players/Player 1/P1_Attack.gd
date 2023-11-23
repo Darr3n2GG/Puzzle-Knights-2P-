@@ -15,21 +15,21 @@ func _ready() -> void:
 	
 func _physics_process(_delta) -> void:
 	if Input.is_action_just_pressed("1Attack") and attack_cooldown.is_stopped() and is_attacking.is_stopped(): 
-		parent.is_action = true
-		hurtbox.monitoring = true
-		is_attacking.start()
+		attack()
+		
+	if Input.is_action_just_pressed("1Slash") and parent.direction.y == 1 and attack_cooldown.is_stopped() and is_attacking.is_stopped(): 
+		attack()
+
+func attack() -> void:
+	parent.is_action = true
+	hurtbox.monitoring = true
+	is_attacking.start()
+	if parent.direction.y == 1:
+		$"../Hurtbox_Component".knockback_y = attack_knockback_y
+		$"../Hurtbox_Component".knockback_x = 0
+	else: 
 		$"../Hurtbox_Component".knockback_y = 0
 		$"../Hurtbox_Component".knockback_x = attack_knockback_x
-	if Input.is_action_just_pressed("1Slash") and attack_cooldown.is_stopped() and is_attacking.is_stopped(): 
-		parent.is_action = true
-		hurtbox.monitoring = true
-		is_attacking.start()
-		if parent.direction.y == 1:
-			$"../Hurtbox_Component".knockback_y = attack_knockback_y
-			$"../Hurtbox_Component".knockback_x = 0
-		else: 
-			$"../Hurtbox_Component".knockback_y = 0
-			$"../Hurtbox_Component".knockback_x = attack_knockback_x
 
 
 func _on_is_attacking_timeout() -> void:

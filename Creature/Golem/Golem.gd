@@ -52,7 +52,7 @@ func get_next_positions():
 
 func damaged() -> void:
 	material.set_shader_parameter("flash_modifier", 1)
-	print("golem flash")
+#	print("golem flash")
 	$flash_timer.start()
 
 func _on_flash_timer_timeout() -> void:

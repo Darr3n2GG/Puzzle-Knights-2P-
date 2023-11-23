@@ -112,6 +112,7 @@ collision_layer = 0
 collision_mask = 3
 knockback_x = 2.0
 knockback_y = 300.0
+hurtbox_cooldown = 0.5
 
 [node name="HurtBox" type="CollisionShape2D" parent="Hurtbox_Component"]
 shape = SubResource("RectangleShape2D_x7mkk")

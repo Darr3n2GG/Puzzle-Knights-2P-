@@ -458,6 +458,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="Hurtbox_Component" parent="." instance=ExtResource("8_p584q")]
 collision_layer = 0
 collision_mask = 11
+oneshot = true
 
 [node name="HurtBox" type="CollisionShape2D" parent="Hurtbox_Component"]
 position = Vector2(17.5, 0)
