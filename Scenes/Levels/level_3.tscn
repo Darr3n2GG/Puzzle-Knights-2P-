@@ -415,6 +415,7 @@ offset = Vector2(0, 50)
 [node name="DummyE" parent="." instance=ExtResource("8_okv1c")]
 position = Vector2(143, -21)
 script = ExtResource("10_g2ssb")
+cube = true
 
 [node name="text" type="Node2D" parent="."]
 scale = Vector2(0.5, 0.5)
