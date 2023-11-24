@@ -33,19 +33,19 @@ size = Vector2(16, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0lpr"]
 size = Vector2(16, 128)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6r8x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_30ewy"]
 resource_local_to_scene = true
 shader = ExtResource("5_qnyb1")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfpmm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lqcjl"]
 resource_local_to_scene = true
 shader = ExtResource("5_qnyb1")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[node name="Tutorial" type="Node2D"]
+[node name="level_1" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource("1_pcrqg")]
 layer_0/tile_data = PackedInt32Array(65515, 327680, 7, 65516, 393216, 7, 65517, 393216, 7, 65518, 393216, 7, 65519, 393216, 7, 65520, 393216, 7, 65521, 393216, 7, 65522, 393216, 7, 65523, 393216, 7, 65524, 393216, 7, 65525, 393216, 7, 65526, 393216, 7, 65527, 393216, 7, 65528, 393216, 7, 65529, 393216, 7, 65530, 393216, 7, 65531, 393216, 7, 65532, 393216, 7, 65533, 393216, 7, 65534, 393216, 7, 65535, 393216, 7, 0, 393216, 7, 1, 393216, 7, 2, 393216, 7, 3, 393216, 7, 4, 393216, 7, 5, 393216, 7, 6, 393216, 7, 7, 393216, 7, 8, 393216, 7, 9, 393216, 7, 10, 393216, 7, 11, 393216, 7, 12, 393216, 7, 13, 393216, 7, 14, 393216, 7, 15, 393216, 7, 16, 393216, 7, 17, 393216, 7, 18, 393216, 7, 19, 393216, 7, 20, 458752, 7, -131090, 458752, 5, -65554, 458752, 5, -18, 458752, 6, -327698, 458752, 5, -262162, 458752, 5, -196626, 458752, 5, -524306, 458752, 5, -458770, 458752, 5, -393234, 458752, 5, -786450, 327680, 7, -720914, 458752, 4, -655378, 458752, 5, -589842, 458752, 5, -786449, 393216, 7, -786448, 393216, 7, -786447, 393216, 7, -786446, 393216, 7, -786445, 393216, 7, -786444, 393216, 7, -786443, 393216, 7, -786442, 393216, 7, -786441, 393216, 7, -786440, 393216, 7, -786439, 393216, 7, -786438, 393216, 7, -786437, 393216, 7, -786436, 393216, 7, -786435, 393216, 7, -786434, 393216, 7, -589810, 0, 0, -589809, 0, 0, -589808, 0, 0, -786433, 393216, 7, -851968, 393216, 7, -851967, 393216, 7, -851966, 393216, 7, -851965, 393216, 7, -851964, 393216, 7, -851963, 393216, 7, -851962, 393216, 7, -851961, 393216, 7, -851960, 393216, 7, -851959, 393216, 7, -851958, 393216, 7, -851957, 393216, 7, -851956, 393216, 7, -851955, 393216, 7, -851954, 393216, 7, -851953, 393216, 7, -851952, 393216, 7, -851951, 458752, 7, -786415, 458752, 4, -655343, 458752, 5, -720879, 458752, 5, -589807, 458752, 5, -524271, 458752, 5, -458735, 458752, 5, -393199, 458752, 5, -327663, 458752, 5, -262127, 458752, 5, -196591, 458752, 5, -131055, 458752, 5, -65519, 458752, 6, -65540, 0, 0, -4, 0, 0, -65539, 0, 0, -3, 0, 0, -65538, 0, 0, -2, 0, 0, -1, 65536, 7)
@@ -92,11 +92,11 @@ shape = SubResource("RectangleShape2D_h0lpr")
 position = Vector2(437, -12)
 
 [node name="Player 1" parent="." instance=ExtResource("3_0ukhs")]
-material = SubResource("ShaderMaterial_a6r8x")
+material = SubResource("ShaderMaterial_30ewy")
 position = Vector2(-15, -7)
 
 [node name="Player 2" parent="." instance=ExtResource("4_cgyt7")]
-material = SubResource("ShaderMaterial_kfpmm")
+material = SubResource("ShaderMaterial_lqcjl")
 position = Vector2(15, -8)
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("6_3pbem")]

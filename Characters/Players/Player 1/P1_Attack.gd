@@ -8,6 +8,8 @@ extends Node
 @export var knockback_strength_y : float = 200.0
 @export var attack_knockback_x : float = 4
 @export var attack_knockback_y : float = -100
+@export var bounce_x : float = 5
+@export var bounce_y : float = 1.25
 var has_knockbacked : bool = false
 
 func _ready() -> void:
@@ -43,11 +45,21 @@ func _on_hurtbox_component_area_entered(area: Area2D) -> void:
 	if hurtbox.monitoring and not has_knockbacked:
 		if area.get_parent().name != "Player 2" :
 			has_knockbacked = true
-			var knockback_force = calculate_force()
+			var knockback_force = calculate_force(area)
 			parent.knockback += knockback_force
 			
-func calculate_force() -> Vector2:
+func calculate_force(passed_area: Area2D) -> Vector2:
 	if parent.direction.y == 1:
-		return Vector2(0,-knockback_strength_y * get_parent().direction.y)
+		if passed_area.get_parent() is bounceshroom:
+			return Vector2(0,-knockback_strength_y * get_parent().direction.y * bounce_y)
+		else:
+			return Vector2(0,-knockback_strength_y * get_parent().direction.y)
 	else:
-		return Vector2(knockback_strength_x * get_parent().direction.x * -1,0)
+		if passed_area.get_parent() is bounceshroom:
+			return Vector2(knockback_strength_x * get_parent().direction.x * -1 * bounce_x,0)
+		else:
+			return Vector2(knockback_strength_x * get_parent().direction.x * -1,0)
+#		if bounceshroom in $"../Hurtbox_Component".get_overlapping_bodies():
+#			return Vector2(0,-knockback_strength_y * get_parent().direction.y * 1.5)
+#		else:
+#			return Vector2(0,-knockback_strength_y * get_parent().direction.y)

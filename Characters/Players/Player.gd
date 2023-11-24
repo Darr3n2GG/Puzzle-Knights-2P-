@@ -54,8 +54,6 @@ func _physics_process(delta) -> void:
 		velocity.y = jump_vel
 		has_jumped = true
 		player_state["jump"] = true
-		
-
 			
 	if Input.is_action_pressed(controls.right):
 		direction = Vector2.RIGHT
@@ -74,11 +72,16 @@ func _physics_process(delta) -> void:
 		player_state["run"] = false
 		player_state["idle"] = true
 		action_process()
+		
 	if Input.is_action_pressed("1Slash") and controls.player_index == 0:
 		if player_state["jump"] or player_state["fall"]:
 			direction.y = 1
 			action_process()
 	
+#	print($RayCast2D.get_collider())
+	if $Floor_detection.get_collider() is bounceshroom:
+		velocity.y = jump_vel / 2
+
 	if knockback != Vector2.ZERO:
 		if knockback.x != 0:
 			global_position.x += knockback.x
@@ -88,6 +91,7 @@ func _physics_process(delta) -> void:
 		
 	if global_position.y > 5000:
 		global_position = spawn_point
+		
 		
 	move_and_slide()
 	$Player_Animation.update_animation(direction, is_action , controls.player_index, player_state)
@@ -110,15 +114,19 @@ func action_process() -> void:
 			var hurtbox = $Hurtbox_Component/HurtBox
 			hurtbox.position = direction * 17.5
 			hurtbox.shape.size = Vector2(23,18)
+			$Floor_detection.position.x = -5
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = 9
+			$Floor_detection.position.x = -6
 	elif direction.x == -1:
 		if controls.player_index == 0:
 			var hurtbox = $Hurtbox_Component/HurtBox
 			hurtbox.position = direction * 17.5
 			hurtbox.shape.size = Vector2(23,18)
+			$Floor_detection.position.x = 5
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
+			$Floor_detection.position.x = 6
 
 func entered_door() -> void:
 	visible = false

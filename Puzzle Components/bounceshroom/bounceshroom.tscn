@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://b475a1ahlvcnn"]
+
+[ext_resource type="Script" path="res://Puzzle Components/bounceshroom/bounceshroom.gd" id="1_4ysjp"]
+[ext_resource type="Script" path="res://Resources/Component/HitboxComponent.gd" id="2_jbnpy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_anbe8"]
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnmew"]
+size = Vector2(16, 16)
+
+[sub_resource type="Curve" id="Curve_xtgn0"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rqenv"]
+curve = SubResource("Curve_xtgn0")
+
+[sub_resource type="Gradient" id="Gradient_bwymx"]
+offsets = PackedFloat32Array(0.258503, 0.748538)
+colors = PackedColorArray(0, 1, 0.458824, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0g1yc"]
+gradient = SubResource("Gradient_bwymx")
+
+[sub_resource type="Curve" id="Curve_2lwnq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n1rd3"]
+width = 2048
+curve = SubResource("Curve_2lwnq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xh5ns"]
+emission_shape = 1
+emission_sphere_radius = 5.0
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_curve = SubResource("CurveTexture_rqenv")
+scale_min = 2.0
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_n1rd3")
+color_ramp = SubResource("GradientTexture1D_0g1yc")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryf1k"]
+size = Vector2(16, 16)
+
+[node name="Bounceshroom" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_anbe8")
+script = ExtResource("1_4ysjp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nnmew")
+
+[node name="explosion" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_xh5ns")
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+
+[node name="Com_HitB" type="Area2D" parent="."]
+script = ExtResource("2_jbnpy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Com_HitB"]
+shape = SubResource("RectangleShape2D_ryf1k")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.439216, 1, 0.466667, 1)
+polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[connection signal="damaged" from="Com_HitB" to="." method="_on_com_hit_b_damaged"]

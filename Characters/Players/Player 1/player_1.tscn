@@ -444,6 +444,11 @@ controls = ExtResource("2_g5pru")
 shape = SubResource("RectangleShape2D_0m543")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
+[node name="Floor_detection" type="RayCast2D" parent="."]
+position = Vector2(-5, 0)
+target_position = Vector2(0, 10)
+collision_mask = 4
+
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("5_g81ct")]
 collision_layer = 1
 collision_mask = 0
@@ -486,7 +491,7 @@ script = ExtResource("7_jb8gs")
 use_parent_material = true
 position = Vector2(0, 0.5)
 sprite_frames = SubResource("SpriteFrames_cwjio")
-animation = &"attack front wide"
+animation = &"idle"
 
 [node name="Slash" type="AnimatedSprite2D" parent="Player_Animation"]
 visible = false

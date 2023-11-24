@@ -8,4 +8,4 @@ signal damaged
 func damage(attack : Attack, creature : Object) -> void: 
 	if hc:
 		hc.damage(attack, creature)
-		emit_signal("damaged")
+	emit_signal("damaged")

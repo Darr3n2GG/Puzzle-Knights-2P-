@@ -20,8 +20,12 @@ func _on_recieve_input(is_activated : bool) -> void:
 #		var move_amount : float = 10 * move_direction
 		if is_activated:
 			start_tween(final_offset)
+			if killable:
+				$AnimatableBody2D/noDMG_collision.set_deferred("disabled", false)
 		else:
 			start_tween(Vector2.ZERO)
+			if killable:
+				$AnimatableBody2D/noDMG_collision.set_deferred("disabled", true)
 			
 func start_tween(stated_offset : Vector2) -> void:
 	call_deferred("deferred_start_tween",stated_offset)

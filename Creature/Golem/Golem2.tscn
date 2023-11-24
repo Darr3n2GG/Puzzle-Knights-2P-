@@ -84,6 +84,10 @@ collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_2qoqe")
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-50, 0)
+collision_mask = 3
+
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 scale = Vector2(0.5, 0.5)

@@ -190,6 +190,15 @@ region_rect = Rect2(32, 112, 16, 16)
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_vah8s")
 
+[node name="Floor_detection" type="RayCast2D" parent="."]
+position = Vector2(-6, 0)
+target_position = Vector2(0, 10)
+collision_mask = 4
+
+[node name="flash_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="Carry_State_Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14.5)
 shape = SubResource("RectangleShape2D_17syw")
@@ -229,9 +238,5 @@ position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_o2eun")
 animation = &"idle"
 
-[node name="flash_timer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
-[connection signal="damaged" from="HitboxComponent" to="." method="damaged"]
 [connection signal="timeout" from="flash_timer" to="." method="_on_flash_timer_timeout"]
+[connection signal="damaged" from="HitboxComponent" to="." method="damaged"]
