@@ -36,9 +36,9 @@ func _on_recieve_input(is_activated : bool) -> void:
 	#		print("door deactivated")
 			door.visible = true
 			
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("skip_level") and get_tree().current_scene.name != "Menu":
-		var current_scene_file = get_parent().scene_file_path
-		var next_level_number = current_scene_file.to_int() + 1
-		var next_level_path = FILE_BEGIN + str(next_level_number) + ".tscn"
-		global.change_scene(next_level_path)
+#func _input(_event: InputEvent) -> void:
+#	if Input.is_action_just_pressed("skip_level") and get_tree().current_scene.name != "Menu":
+#		var current_scene_file = get_parent().scene_file_path
+#		var next_level_number = current_scene_file.to_int() + 1
+#		var next_level_path = FILE_BEGIN + str(next_level_number) + ".tscn"
+#		global.change_scene(next_level_path)
