@@ -20,6 +20,8 @@ func deferred_setup_level() -> void:
 	current_level = current_level_scene.to_int()
 	
 func change_scene(path) -> void:
+	level_transition()
+	await get_tree().create_timer(1).timeout
 	call_deferred("deferred_change_scene",path)
 	
 func deferred_change_scene(path) -> void:
@@ -30,6 +32,8 @@ func deferred_change_scene(path) -> void:
 	root.get_child(root.get_child_count() - 1).get_node("HBoxContainer/LeftViewportContainer/LeftSubViewport").add_child(current_level_node)
 	var splitscreen = root.get_node("Node")
 	splitscreen._ready()
+	var fade_player : AnimationPlayer = root.get_child(root.get_child_count() - 1).get_child(root.get_child_count() + 1)
+	fade_player.play_backwards("fade")
 	
 func reset_scene() -> void:
 	call_deferred("deferred_reset_scene")
@@ -41,3 +45,8 @@ func deferred_reset_scene():
 	root.get_child(root.get_child_count() - 1).get_node("HBoxContainer/LeftViewportContainer/LeftSubViewport").add_child(current_level_node)
 	var splitscreen = root.get_node("Node")
 	splitscreen._ready()
+	
+func level_transition() -> void:
+	var fade_player : AnimationPlayer = root.get_child(root.get_child_count() - 1).get_child(root.get_child_count() + 1)
+	fade_player.play("fade")
+	

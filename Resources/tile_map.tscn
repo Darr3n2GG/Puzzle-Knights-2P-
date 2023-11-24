@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxjod2sflh7jp"]
+[gd_scene load_steps=23 format=3 uid="uid://badqgpmdxakyi"]
 
 [ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_dpooq"]
 [ext_resource type="Texture2D" uid="uid://dtd0mc3r63bnt" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png" id="2_ytq3n"]
@@ -268,8 +268,7 @@ pattern_16 = SubResource("TileMapPattern_xic4g")
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource("TileSet_dq8s2")
 format = 2
-layer_0/name = "Platforms"
-layer_0/tile_data = PackedInt32Array(65518, 0, 0, 65519, 65536, 0, 65520, 131072, 0, 65521, 0, 0, 65522, 65536, 0, 65523, 131072, 0, 65524, 0, 0, 65525, 65536, 0, 65526, 131072, 0, 65527, 0, 0, 65528, 65536, 0, 65529, 131072, 0, 65530, 0, 0, 65531, 65536, 0, 65532, 131072, 0, 65533, 0, 0, 65534, 65536, 0, 65535, 131072, 0, 0, 0, 0, 1, 65536, 0, 2, 131072, 0, 3, 0, 0, 4, 65536, 0, 5, 131072, 0, 6, 0, 0, 7, 65536, 0, 8, 131072, 0, 9, 0, 0, 10, 65536, 0, 11, 131072, 0, 12, 0, 0, 13, 65536, 0, 14, 131072, 0, 15, 0, 0, 16, 65536, 0, 17, 131072, 0, -18, 1, 0, -17, 1, 0, -16, 1, 0, -15, 1, 0, -14, 1, 0, -13, 1, 0, -12, 1, 0, -11, 1, 0, -10, 1, 0, -9, 1, 0, -8, 1, 0, -7, 1, 0, -6, 1, 0, -5, 1, 0, -4, 1, 0, -3, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -65521, 1, 0, -65520, 1, 0, -65519, 1, 0)
+layer_0/name = "Decorations"
 layer_1/name = "Background"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
@@ -277,10 +276,10 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
-layer_2/name = "Decorations"
+layer_2/name = "Platforms"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
+layer_2/tile_data = PackedInt32Array(65518, 0, 0, 65519, 65536, 0, 65520, 131072, 0, 65521, 0, 0, 65522, 65536, 0, 65523, 131072, 0, 65524, 0, 0, 65525, 65536, 0, 65526, 131072, 0, 65527, 0, 0, 65528, 65536, 0, 65529, 131072, 0, 65530, 0, 0, 65531, 65536, 0, 65532, 131072, 0, 65533, 0, 0, 65534, 65536, 0, 65535, 131072, 0, 0, 0, 0, 1, 65536, 0, 2, 131072, 0, 3, 0, 0, 4, 65536, 0, 5, 131072, 0, 6, 0, 0, 7, 65536, 0, 8, 131072, 0, 9, 0, 0, 10, 65536, 0, 11, 131072, 0, 12, 0, 0, 13, 65536, 0, 14, 131072, 0, 15, 0, 0, 16, 65536, 0, 17, 131072, 0, -18, 1, 0, -17, 1, 0, -16, 1, 0, -15, 1, 0, -14, 1, 0, -13, 1, 0, -12, 1, 0, -11, 1, 0, -10, 1, 0, -9, 1, 0, -8, 1, 0, -7, 1, 0, -6, 1, 0, -5, 1, 0, -4, 1, 0, -3, 1, 0, -2, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -65521, 1, 0, -65520, 1, 0, -65519, 1, 0)
