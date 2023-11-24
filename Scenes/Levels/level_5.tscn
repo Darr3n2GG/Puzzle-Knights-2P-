@@ -10,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="6_gdt24"]
 [ext_resource type="PackedScene" uid="uid://bd4om4ovgfifr" path="res://Resources/atmospheric_fx.tscn" id="8_4pw7w"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_54x26"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkc8p"]
 resource_local_to_scene = true
 shader = ExtResource("4_ivn1r")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vka7q"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ve677"]
 resource_local_to_scene = true
 shader = ExtResource("4_ivn1r")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -88,11 +88,11 @@ layer_2/tile_data = PackedInt32Array(-1114122, 458752, 1, -1048586, 458752, 1, -
 position = Vector2(248, -204)
 
 [node name="Player 1" parent="." instance=ExtResource("4_i0wd6")]
-material = SubResource("ShaderMaterial_54x26")
+material = SubResource("ShaderMaterial_lkc8p")
 position = Vector2(-212, -24)
 
 [node name="Player 2" parent="." instance=ExtResource("3_chwue")]
-material = SubResource("ShaderMaterial_vka7q")
+material = SubResource("ShaderMaterial_ve677")
 position = Vector2(-182, -24)
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("4_magxq")]

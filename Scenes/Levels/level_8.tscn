@@ -36,13 +36,13 @@ size = Vector2(192, 192)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y32me"]
 size = Vector2(16, 160)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mihi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_voigh"]
 resource_local_to_scene = true
 shader = ExtResource("4_w04cd")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_udn0r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kayup"]
 resource_local_to_scene = true
 shader = ExtResource("4_w04cd")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -94,11 +94,11 @@ position = Vector2(504, -272)
 shape = SubResource("RectangleShape2D_y32me")
 
 [node name="Player 2" parent="." instance=ExtResource("3_6nodr")]
-material = SubResource("ShaderMaterial_3mihi")
+material = SubResource("ShaderMaterial_voigh")
 position = Vector2(15, -8)
 
 [node name="Player 1" parent="." instance=ExtResource("5_uhuci")]
-material = SubResource("ShaderMaterial_udn0r")
+material = SubResource("ShaderMaterial_kayup")
 position = Vector2(-15, -9)
 
 [node name="bouncshroom group" type="Node2D" parent="."]
@@ -143,6 +143,7 @@ position = Vector2(453, -229)
 
 [node name="Golem" parent="." instance=ExtResource("10_xkvh3")]
 position = Vector2(453, -15)
+direction = -1
 
 [node name="TS Marker 1" parent="." instance=ExtResource("11_wot35")]
 position = Vector2(333, -9)

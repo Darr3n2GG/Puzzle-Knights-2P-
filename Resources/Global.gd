@@ -29,11 +29,15 @@ func deferred_change_scene(path) -> void:
 	var next_scene = ResourceLoader.load(path)
 	current_level_node = next_scene.instantiate()
 	current_level_node.name = "Level " + str(current_level)
-	root.get_child(root.get_child_count() - 1).get_node("HBoxContainer/LeftViewportContainer/LeftSubViewport").add_child(current_level_node)
-	var splitscreen = root.get_node("Node")
-	splitscreen._ready()
-	var fade_player : AnimationPlayer = root.get_child(root.get_child_count() - 1).get_child(root.get_child_count() + 1)
-	fade_player.play_backwards("fade")
+	if current_level_node.name != "Level 10":
+		root.get_child(root.get_child_count() - 1).get_node("HBoxContainer/LeftViewportContainer/LeftSubViewport").add_child(current_level_node)
+		var splitscreen = root.get_node("Node")
+		splitscreen._ready()
+		var fade_player : AnimationPlayer = root.get_child(root.get_child_count() - 1).get_child(root.get_child_count() + 1)
+		fade_player.play_backwards("fade")
+	else:
+		var level_10 = preload("res://Scenes/Levels/level_10.tscn")
+		level_10.change_scene()
 	
 func reset_scene() -> void:
 	call_deferred("deferred_reset_scene")

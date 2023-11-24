@@ -1,3 +1,11 @@
 [gd_scene format=3 uid="uid://dqbwm55kbmuno"]
 
 [node name="level_10" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 114.0
+offset_right = 637.0
+offset_bottom = 240.0
+text = "Adventure Knight turns against Combat Knight as he knew the princess was the real danger. Combat Knight defeats the witch and Adventure Knight, but the princess is actually the real witch! Combat knight shocked steps back. Adventure knight and Combat knight fight the princess. In the end the princess flees."
+autowrap_mode = 3
