@@ -54,5 +54,5 @@ func Place_Block():
 	
 func Carry_Block():
 	$"../Barrel".visible = true
-	$"../Carry_State_Collision".disabled = false
+	$"../Carry_State_Collision".disabled = true
 	placed_block.On_Create_or_Carry()

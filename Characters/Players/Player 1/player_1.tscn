@@ -480,7 +480,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Attack_Cooldown" type="Timer" parent="P1_Attack"]
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [node name="Player_Animation" type="Node2D" parent="."]
