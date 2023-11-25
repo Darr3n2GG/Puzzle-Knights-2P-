@@ -6,14 +6,12 @@ var texture
 
 func _ready():
 	if cube == true:
-		texture = $Barrel
-		$Block.visible = false
-		$Barrel.visible = true
+		texture = $Block
+		$Block.visible = true
+		$Barrel.visible = false
 	else: 
 		texture = $Block
 	
-
-
 func Setup() -> void:
 	$HealthComponent.Set_Health()
 

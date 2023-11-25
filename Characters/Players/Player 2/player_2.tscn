@@ -22,7 +22,7 @@ shader_parameter/flash_modifier = 0.0
 size = Vector2(12, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17syw"]
-size = Vector2(12, 15)
+size = Vector2(16, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h73c5"]
 size = Vector2(30, 14)
@@ -181,7 +181,7 @@ controls = ExtResource("2_iea8n")
 
 [node name="Barrel" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, -15)
+position = Vector2(14, 0)
 texture = ExtResource("6_q8qd8")
 region_enabled = true
 region_rect = Rect2(32, 112, 16, 16)
@@ -200,7 +200,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Carry_State_Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -14.5)
+position = Vector2(14, 1)
 shape = SubResource("RectangleShape2D_17syw")
 disabled = true
 

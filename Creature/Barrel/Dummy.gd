@@ -21,7 +21,7 @@ func _physics_process(_delta) -> void:
 		States.placed:
 			if Input.is_action_just_pressed("reset"):
 				global_position = Vector2(0, -50)
-			if global_position.y > 100:
+			if global_position.y > 100000:
 				die()
 			gravity_scale = 1.0
 		States.carry:
