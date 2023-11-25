@@ -3,7 +3,7 @@ class_name ambience
 
 
 func _ready() -> void:
-	play_music()
+	play()
 	
 func play_music() -> void:
 	$music_transition.start()
