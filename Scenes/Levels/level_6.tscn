@@ -54,13 +54,13 @@ size = Vector2(81, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q13f"]
 size = Vector2(16, 16)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0sni"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_th8fl"]
 resource_local_to_scene = true
 shader = ExtResource("3_j7tme")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4b54v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_takfy"]
 resource_local_to_scene = true
 shader = ExtResource("3_j7tme")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -175,11 +175,11 @@ position = Vector2(120, -56)
 shape = SubResource("RectangleShape2D_4q13f")
 
 [node name="Player 2" parent="." instance=ExtResource("2_x6skj")]
-material = SubResource("ShaderMaterial_m0sni")
+material = SubResource("ShaderMaterial_th8fl")
 position = Vector2(15, -8)
 
 [node name="Player 1" parent="." instance=ExtResource("3_ltlvf")]
-material = SubResource("ShaderMaterial_4b54v")
+material = SubResource("ShaderMaterial_takfy")
 position = Vector2(-15, -8)
 
 [node name="Golem" parent="." instance=ExtResource("6_pg5in")]
@@ -213,3 +213,14 @@ offset = Vector2(0, -80)
 [node name="pressure plate3" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("9_sglfq")]
 position = Vector2(661, -116)
 puzzle_array = [NodePath("../Exit Door")]
+
+[node name="text" type="Node2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="text"]
+offset_left = 86.0
+offset_top = -104.0
+offset_right = 244.0
+offset_bottom = -20.0
+text = "S while mid-air to attack downward, and pogo"
+scroll_active = false

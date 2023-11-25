@@ -14,13 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://n5ussthq3va2" path="res://Creature/Golem/Golem2.tscn" id="12_h5j1a"]
 [ext_resource type="PackedScene" uid="uid://b475a1ahlvcnn" path="res://Puzzle Components/bounceshroom/bounceshroom.tscn" id="13_5hqu1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3t4rf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bltd7"]
 resource_local_to_scene = true
 shader = ExtResource("3_o7516")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_28lqp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6u0q"]
 resource_local_to_scene = true
 shader = ExtResource("3_o7516")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -184,11 +184,11 @@ layer_1/tile_data = PackedInt32Array(-1572882, 65536, 3, -1507346, 65536, 3, -14
 layer_2/tile_data = PackedInt32Array(-655374, 393216, 6, -589838, 393216, 6, -524302, 393216, 6, -851975, 131072, 8, -851974, 131072, 8, -851973, 131072, 8, -851972, 131072, 8, -851971, 131072, 8, -851970, 131072, 8, -851969, 131072, 8, -917504, 131072, 8, -917503, 131072, 8, -917502, 131072, 8, -917501, 131072, 8, -720905, 196608, 8, -720904, 196608, 8, -720903, 196608, 8, -1572880, 393216, 8, -1572878, 458752, 8, -1638396, 458752, 8, -1638398, 393216, 8, -1245188, 393216, 8, -1245193, 458752, 8, -1179635, 458752, 8, -1048552, 393216, 8, -655336, 393216, 8, -1376232, 393216, 8, -1638389, 393216, 8, -1638387, 458752, 8, -1572843, 262144, 9, -1507307, 262144, 10, -1572842, 327680, 9, -1507306, 327680, 10, -1572841, 393216, 9, -1507305, 393216, 10, 1441787, 393217, 6, 1507323, 393217, 6, 1572859, 393217, 6, 1638395, 393217, 6, 1703931, 393217, 6, 1769467, 393217, 6, 1507337, 393217, 6, 1572873, 393217, 6, 1638409, 393217, 6, 1703945, 393217, 6, 1310733, 393217, 6, 1376269, 393217, 6, 1441805, 393217, 6, 1507341, 393217, 6, 1572877, 393217, 6, 1638413, 393217, 6, 1703949, 393217, 6, 1572880, 393217, 6, 1638416, 393217, 6, 1703952, 393217, 6, 1376275, 458753, 1, 1441811, 458753, 1, 1507347, 458753, 1, 1572883, 458753, 1, 1638419, 458753, 1, 1703955, 458753, 2, 786441, 393217, 6, 851977, 393217, 6, 917513, 393217, 6, 983049, 393217, 6, 1048585, 393217, 6, 851975, 196609, 5, 917511, 196609, 6, 983047, 196609, 5, 1048583, 196609, 6, 1114119, 196609, 5, 786440, 196609, 5, 851976, 196609, 6, 917512, 196609, 5, 983048, 196609, 6, 1048584, 196609, 5, 1114120, 196609, 6, 1179655, 196609, 6, 720903, 196609, 5, 786439, 196609, 6, 720904, 196609, 6)
 
 [node name="Player 1" parent="." instance=ExtResource("2_3qgim")]
-material = SubResource("ShaderMaterial_3t4rf")
+material = SubResource("ShaderMaterial_bltd7")
 position = Vector2(-273, -139)
 
 [node name="Player 2" parent="." instance=ExtResource("4_mk2l6")]
-material = SubResource("ShaderMaterial_28lqp")
+material = SubResource("ShaderMaterial_n6u0q")
 position = Vector2(-207, 424)
 
 [node name="TileMapBaker" parent="." instance=ExtResource("6_d7ma4")]
