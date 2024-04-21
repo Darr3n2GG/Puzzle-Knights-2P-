@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://badqgpmdxakyi"]
 
-[ext_resource type="Texture2D" uid="uid://dk32bhdwgpidq" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_dpooq"]
-[ext_resource type="Texture2D" uid="uid://dtd0mc3r63bnt" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png" id="2_ytq3n"]
+[ext_resource type="Texture2D" uid="uid://cby1fcaeb53v2" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_dpooq"]
+[ext_resource type="Texture2D" uid="uid://cl8rmjws5f2gh" path="res://Imports/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset-grayscale.png" id="2_ytq3n"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ifvb1"]
 tile_data = PackedInt32Array(0, 1, 5, 65536, 1, 6, 1, 65537, 5, 65537, 65537, 6, 2, 131073, 5, 65538, 131073, 6, 3, 196609, 5, 65539, 196609, 6, 4, 262145, 5, 65540, 262145, 6, 5, 327681, 5, 65541, 327681, 6, 6, 393217, 5, 65542, 393217, 6)
@@ -268,7 +268,7 @@ pattern_16 = SubResource("TileMapPattern_xic4g")
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource("TileSet_dq8s2")
 format = 2
-layer_0/name = "Decorations"
+layer_0/name = "Platform"
 layer_1/name = "Background"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
@@ -276,7 +276,7 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
-layer_2/name = "Platforms"
+layer_2/name = "Decoration"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false

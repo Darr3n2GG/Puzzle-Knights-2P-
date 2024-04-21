@@ -37,13 +37,13 @@ size = Vector2(192, 192)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y32me"]
 size = Vector2(16, 160)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_acbqc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eq5i2"]
 resource_local_to_scene = true
 shader = ExtResource("3_fqfhh")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ru0do"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtwbv"]
 resource_local_to_scene = true
 shader = ExtResource("3_fqfhh")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -98,11 +98,11 @@ position = Vector2(504, -272)
 shape = SubResource("RectangleShape2D_y32me")
 
 [node name="Player 2" parent="." instance=ExtResource("3_d8dpf")]
-material = SubResource("ShaderMaterial_acbqc")
+material = SubResource("ShaderMaterial_eq5i2")
 position = Vector2(15, -8)
 
 [node name="Player 1" parent="." instance=ExtResource("2_o5s4l")]
-material = SubResource("ShaderMaterial_ru0do")
+material = SubResource("ShaderMaterial_gtwbv")
 position = Vector2(-15, -9)
 
 [node name="bouncshroom group" type="Node2D" parent="."]
