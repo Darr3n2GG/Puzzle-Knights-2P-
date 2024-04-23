@@ -83,7 +83,7 @@ size = Vector2(16, 16)
 size = Vector2(32, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dm1bw"]
-size = Vector2(176, 16)
+size = Vector2(176, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgdy0"]
 size = Vector2(32, 16)
@@ -112,13 +112,13 @@ size = Vector2(16, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3o0u"]
 size = Vector2(16, 368)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nx7je"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sja5r"]
 resource_local_to_scene = true
 shader = ExtResource("4_w04cd")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eoc6u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h402x"]
 resource_local_to_scene = true
 shader = ExtResource("4_w04cd")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -139,7 +139,6 @@ position = Vector2(632, 100)
 
 [node name="TileMapBaker" parent="." instance=ExtResource("2_hvc5d")]
 tilemap_nodepath = NodePath("../TileMap")
-target_tiles_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapBaker"]
 position = Vector2(-280, -136)
@@ -234,7 +233,7 @@ position = Vector2(432, 92)
 shape = SubResource("RectangleShape2D_vy84a")
 
 [node name="CollisionShape2D56" type="CollisionShape2D" parent="TileMapBaker"]
-position = Vector2(440, -88)
+position = Vector2(440, -84)
 shape = SubResource("RectangleShape2D_dm1bw")
 
 [node name="CollisionShape2D57" type="CollisionShape2D" parent="TileMapBaker"]
@@ -274,11 +273,11 @@ position = Vector2(680, -72)
 shape = SubResource("RectangleShape2D_j3o0u")
 
 [node name="Player 1" parent="." instance=ExtResource("5_uhuci")]
-material = SubResource("ShaderMaterial_nx7je")
+material = SubResource("ShaderMaterial_sja5r")
 position = Vector2(-166, -29)
 
 [node name="Player 2" parent="." instance=ExtResource("3_6nodr")]
-material = SubResource("ShaderMaterial_eoc6u")
+material = SubResource("ShaderMaterial_h402x")
 position = Vector2(-136, -27)
 
 [node name="Golem 1" type="Node2D" parent="."]
@@ -340,7 +339,7 @@ killable = false
 
 [node name="pressure plate3" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("8_2ik73")]
 position = Vector2(441, -228)
-puzzle_array = [NodePath("../Exit Door2")]
+puzzle_array = [NodePath("../Exit Door2"), NodePath("../Door2")]
 
 [node name="spike group" type="Node2D" parent="."]
 
@@ -376,3 +375,9 @@ position = Vector2(504, -94)
 
 [node name="Spikes11" parent="spike group" instance=ExtResource("9_chgx2")]
 position = Vector2(520, -94)
+
+[node name="Door2" parent="." instance=ExtResource("7_1th0a")]
+position = Vector2(-56, 0)
+scale = Vector2(0.083, 0.475)
+offset = Vector2(0, 234)
+killable = false

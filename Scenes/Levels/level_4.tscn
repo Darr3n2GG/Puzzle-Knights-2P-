@@ -63,13 +63,13 @@ size = Vector2(112, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ry3q8"]
 size = Vector2(16, 96)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6h21b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8ae0"]
 resource_local_to_scene = true
 shader = ExtResource("5_sckba")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_stngv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2qb6l"]
 resource_local_to_scene = true
 shader = ExtResource("5_sckba")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -86,7 +86,6 @@ layer_2/tile_data = PackedInt32Array(-131055, 262144, 9, -131053, 393216, 9, -52
 [node name="TileMapBaker" parent="." instance=ExtResource("2_5iuso")]
 position = Vector2(233, 0)
 tilemap_nodepath = NodePath("../TileMap")
-target_tiles_layer = 0
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="TileMapBaker"]
 position = Vector2(-280, -96)
@@ -176,11 +175,11 @@ default_color = Color(0, 0, 0, 1)
 position = Vector2(529, -108)
 
 [node name="Player 2" parent="." instance=ExtResource("3_o86ys")]
-material = SubResource("ShaderMaterial_6h21b")
+material = SubResource("ShaderMaterial_o8ae0")
 position = Vector2(15, -6)
 
 [node name="Player 1" parent="." instance=ExtResource("4_8qak7")]
-material = SubResource("ShaderMaterial_stngv")
+material = SubResource("ShaderMaterial_2qb6l")
 position = Vector2(-15, -8)
 
 [node name="DummyE" parent="." instance=ExtResource("5_rshh1")]

@@ -327,13 +327,13 @@ size = Vector2(16, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f061l"]
 size = Vector2(48, 16)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ped18"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlwjh"]
 resource_local_to_scene = true
 shader = ExtResource("6_mhl0f")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1oum7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s151n"]
 resource_local_to_scene = true
 shader = ExtResource("6_mhl0f")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -464,11 +464,11 @@ default_color = Color(0, 0, 0, 1)
 position = Vector2(447, -12)
 
 [node name="Player 1" parent="." instance=ExtResource("3_dmsnf")]
-material = SubResource("ShaderMaterial_ped18")
+material = SubResource("ShaderMaterial_tlwjh")
 position = Vector2(-15, -8)
 
 [node name="Player 2" parent="." instance=ExtResource("4_c2o0x")]
-material = SubResource("ShaderMaterial_1oum7")
+material = SubResource("ShaderMaterial_s151n")
 position = Vector2(15, -8)
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("5_orrw6")]
