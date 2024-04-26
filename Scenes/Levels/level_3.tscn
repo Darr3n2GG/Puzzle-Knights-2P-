@@ -307,13 +307,13 @@ size = Vector2(16, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrjdo"]
 size = Vector2(16, 112)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbx8q"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_livdr"]
 resource_local_to_scene = true
 shader = ExtResource("6_7dqyp")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvoe5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjj7y"]
 resource_local_to_scene = true
 shader = ExtResource("6_7dqyp")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -389,27 +389,15 @@ shape = SubResource("RectangleShape2D_j4j5g")
 position = Vector2(296, -56)
 shape = SubResource("RectangleShape2D_rrjdo")
 
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2(-183, 0)
-points = PackedVector2Array(326, -4, 326, 10, 423, 10)
-width = 5.0
-default_color = Color(0, 0, 0, 1)
-
-[node name="Line2D2" type="Line2D" parent="."]
-position = Vector2(9, -128)
-points = PackedVector2Array(326, -4, 326, 10, 438, 10, 438, -12)
-width = 5.0
-default_color = Color(0, 0, 0, 1)
-
 [node name="Exit Door" parent="." instance=ExtResource("6_72or7")]
 position = Vector2(447, -140)
 
 [node name="Player 1" parent="." instance=ExtResource("3_lw85p")]
-material = SubResource("ShaderMaterial_jbx8q")
+material = SubResource("ShaderMaterial_livdr")
 position = Vector2(-15, -8)
 
 [node name="Player 2" parent="." instance=ExtResource("4_xj6vo")]
-material = SubResource("ShaderMaterial_lvoe5")
+material = SubResource("ShaderMaterial_qjj7y")
 position = Vector2(15, -6)
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("7_qh14o")]
@@ -447,6 +435,13 @@ offset_top = -404.0
 offset_right = 850.0
 offset_bottom = -266.0
 text = "I am the witch, and apparently, both of you are here to save the princess, I will not allow that."
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text"]
+offset_left = 586.0
+offset_top = -198.0
+offset_right = 790.0
+offset_bottom = -118.0
+text = "From now on, you have to figure out the pressure plate bsystem by yourself"
 
 [node name="Golem" parent="." instance=ExtResource("11_gof8c")]
 position = Vector2(463, -17)

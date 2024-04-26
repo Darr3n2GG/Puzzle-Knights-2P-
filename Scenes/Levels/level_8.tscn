@@ -74,7 +74,7 @@ size = Vector2(32, 16)
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nus2"]
-size = Vector2(16, 32)
+size = Vector2(16, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76yq1"]
 size = Vector2(16, 16)
@@ -112,13 +112,13 @@ size = Vector2(16, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3o0u"]
 size = Vector2(16, 368)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sja5r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52hxh"]
 resource_local_to_scene = true
 shader = ExtResource("4_w04cd")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h402x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lhwb"]
 resource_local_to_scene = true
 shader = ExtResource("4_w04cd")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -221,7 +221,7 @@ position = Vector2(376, -184)
 shape = SubResource("RectangleShape2D_1h7by")
 
 [node name="CollisionShape2D53" type="CollisionShape2D" parent="TileMapBaker"]
-position = Vector2(424, 64)
+position = Vector2(424, 68)
 shape = SubResource("RectangleShape2D_0nus2")
 
 [node name="CollisionShape2D54" type="CollisionShape2D" parent="TileMapBaker"]
@@ -273,11 +273,11 @@ position = Vector2(680, -72)
 shape = SubResource("RectangleShape2D_j3o0u")
 
 [node name="Player 1" parent="." instance=ExtResource("5_uhuci")]
-material = SubResource("ShaderMaterial_sja5r")
+material = SubResource("ShaderMaterial_52hxh")
 position = Vector2(-166, -29)
 
 [node name="Player 2" parent="." instance=ExtResource("3_6nodr")]
-material = SubResource("ShaderMaterial_h402x")
+material = SubResource("ShaderMaterial_3lhwb")
 position = Vector2(-136, -27)
 
 [node name="Golem 1" type="Node2D" parent="."]
@@ -316,6 +316,15 @@ offset_bottom = 94.0
 text = "Oh, here's a barrel for you!"
 scroll_active = false
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Text"]
+modulate = Color(0.870588, 0.411765, 1, 1)
+offset_left = -318.0
+offset_top = -224.0
+offset_right = -186.0
+offset_bottom = -132.0
+text = "Seperating you two sounds like a good idea"
+fit_content = true
+
 [node name="DummyE" parent="." instance=ExtResource("8_nx0kt")]
 position = Vector2(394, -26)
 script = ExtResource("9_7x57i")
@@ -323,7 +332,7 @@ cube = false
 
 [node name="pressure plate" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("8_2ik73")]
 position = Vector2(360, -20)
-puzzle_array = [NodePath("../Exit Door")]
+puzzle_array = [NodePath("../Exit Door2")]
 
 [node name="pressure plate2" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("8_2ik73")]
 position = Vector2(-104, -20)
@@ -339,7 +348,7 @@ killable = false
 
 [node name="pressure plate3" parent="." node_paths=PackedStringArray("puzzle_array") instance=ExtResource("8_2ik73")]
 position = Vector2(441, -228)
-puzzle_array = [NodePath("../Exit Door2"), NodePath("../Door2")]
+puzzle_array = [NodePath("../Exit Door")]
 
 [node name="spike group" type="Node2D" parent="."]
 
@@ -375,9 +384,3 @@ position = Vector2(504, -94)
 
 [node name="Spikes11" parent="spike group" instance=ExtResource("9_chgx2")]
 position = Vector2(520, -94)
-
-[node name="Door2" parent="." instance=ExtResource("7_1th0a")]
-position = Vector2(-56, 0)
-scale = Vector2(0.083, 0.475)
-offset = Vector2(0, 234)
-killable = false

@@ -22,12 +22,13 @@ var p2_states = states.placed
 func _physics_process(_delta) -> void:
 	if Input.is_action_just_pressed("2PlaceOrCarry"):
 		if block_in_scene == false:
-			Create_Block()
+			if not $"../TerrainDetector".has_overlapping_bodies():
+				Create_Block()
 		else:
 			match p2_states:
 				states.placed:
 					dist = p2.global_position.distance_to(placed_block.global_position)
-					if dist < 100:
+					if dist < 100 and not $"../TerrainDetector".has_overlapping_bodies():
 						Carry_Block()
 						p2_states = states.carry
 				states.carry:
