@@ -217,6 +217,7 @@ debug_color = Color(0.992157, 0, 0.239216, 0.419608)
 script = ExtResource("7_vvske")
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_tgxgk")]
+MaxHealth = 5.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("hc") instance=ExtResource("9_4fw5g")]
 collision_layer = 1

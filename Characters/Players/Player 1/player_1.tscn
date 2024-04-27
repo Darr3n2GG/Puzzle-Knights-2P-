@@ -459,6 +459,7 @@ shape = SubResource("RectangleShape2D_2udho")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_0g6dk")]
+MaxHealth = 5.0
 
 [node name="Hurtbox_Component" parent="." instance=ExtResource("8_p584q")]
 collision_layer = 0
