@@ -42,3 +42,5 @@ func _input(_event: InputEvent) -> void:
 		var next_level_number = current_scene_file.to_int() + 1
 		var next_level_path = FILE_BEGIN + str(next_level_number) + ".tscn"
 		global.change_scene(next_level_path)
+	if Input.is_action_just_pressed("reset"):
+		gl_door.players_exited = 0

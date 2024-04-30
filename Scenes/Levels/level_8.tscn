@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://badqgpmdxakyi" path="res://Resources/tile_map.tscn" id="1_p4lsu"]
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_hvc5d"]
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="2_qge32"]
-[ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Players/Player 2/player_2.tscn" id="3_6nodr"]
-[ext_resource type="Shader" path="res://Characters/Players/damage_flash.gdshader" id="4_w04cd"]
+[ext_resource type="PackedScene" uid="uid://bco5ytke8irak" path="res://Characters/Players/Player 2/player_2.tscn" id="3_6nodr"]
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="5_uhuci"]
 [ext_resource type="PackedScene" uid="uid://drnol0vfgck83" path="res://Puzzle Components/Door/door.tscn" id="7_1th0a"]
 [ext_resource type="PackedScene" uid="uid://bghlqie32d02s" path="res://Puzzle Components/pressure plate/pressure_plate.tscn" id="8_2ik73"]
@@ -112,15 +111,28 @@ size = Vector2(16, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3o0u"]
 size = Vector2(16, 368)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7opcf"]
+[sub_resource type="Shader" id="Shader_w0j00"]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color : source_color = vec4(1.0);
+uniform float flash_modifier : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xyr4r"]
 resource_local_to_scene = true
-shader = ExtResource("4_w04cd")
+shader = SubResource("Shader_w0j00")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6a8u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3sx0"]
 resource_local_to_scene = true
-shader = ExtResource("4_w04cd")
+shader = SubResource("Shader_w0j00")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
@@ -273,11 +285,11 @@ position = Vector2(680, -72)
 shape = SubResource("RectangleShape2D_j3o0u")
 
 [node name="Player 1" parent="." instance=ExtResource("5_uhuci")]
-material = SubResource("ShaderMaterial_7opcf")
+material = SubResource("ShaderMaterial_xyr4r")
 position = Vector2(-166, -29)
 
 [node name="Player 2" parent="." instance=ExtResource("3_6nodr")]
-material = SubResource("ShaderMaterial_g6a8u")
+material = SubResource("ShaderMaterial_x3sx0")
 position = Vector2(-136, -27)
 
 [node name="Golem 1" type="Node2D" parent="."]

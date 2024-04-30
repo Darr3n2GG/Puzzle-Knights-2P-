@@ -118,7 +118,7 @@ func action_process() -> void:
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = 9
 			$Floor_detection.position.x = -6
-			$Carry_State_Collision.position.x = 40
+			$Carry_State_Collision.position.x = 14
 			$Barrel.position.x = 14
 	elif direction.x == -1:
 		if controls.player_index == 0:
@@ -129,7 +129,7 @@ func action_process() -> void:
 		else:
 			$TerrainDetector/TerrainDetectorCollsion.position.x = -9
 			$Floor_detection.position.x = 6
-			$Carry_State_Collision.position.x = -40
+			$Carry_State_Collision.position.x = -14
 			$Barrel.position.x = -14
 
 func entered_door() -> void:

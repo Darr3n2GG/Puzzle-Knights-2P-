@@ -42,6 +42,7 @@ func Create_Block():
 		placed_block = block.instantiate()
 		placed_block.set_name("block")
 		p2.get_parent().add_child(placed_block)
+		$"../Carry_State_Collision".disabled = false
 	else:
 		placed_block.Setup()
 	Carry_Block()
@@ -55,5 +56,5 @@ func Place_Block():
 	
 func Carry_Block():
 	$"../Barrel".visible = true
-	$"../Carry_State_Collision".disabled = true
+	$"../Carry_State_Collision".disabled = false
 	placed_block.On_Create_or_Carry()

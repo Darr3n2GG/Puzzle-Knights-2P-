@@ -1,6 +1,5 @@
 [gd_scene load_steps=78 format=3 uid="uid://da1c0fs0p4kxp"]
 
-[ext_resource type="Shader" path="res://Characters/Players/damage_flash.gdshader" id="1_8shjw"]
 [ext_resource type="Script" path="res://Characters/Players/Player.gd" id="1_yjl8x"]
 [ext_resource type="Resource" uid="uid://deqgd3ry1p2rn" path="res://Resources/p1_controls.tres" id="2_g5pru"]
 [ext_resource type="Texture2D" uid="uid://d3sq03oawyh8e" path="res://Imports/CK/CK attack pose.png" id="3_av1ip"]
@@ -21,9 +20,22 @@
 [ext_resource type="Texture2D" uid="uid://wapp2sml3o00" path="res://Imports/CK/small_slash_2.png" id="14_tie7h"]
 [ext_resource type="Texture2D" uid="uid://biov64jgxyuvl" path="res://Imports/CK/attack down slash.png" id="15_yw0vb"]
 
+[sub_resource type="Shader" id="Shader_w0j00"]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color : source_color = vec4(1.0);
+uniform float flash_modifier : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6tdy8"]
 resource_local_to_scene = true
-shader = ExtResource("1_8shjw")
+shader = SubResource("Shader_w0j00")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 

@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c5pgl83n2f8ig" path="res://Resources/tile_map_baker.tscn" id="2_0je2t"]
 [ext_resource type="PackedScene" uid="uid://drx3un0lw1oad" path="res://Puzzle Components/Spikes/spikes.tscn" id="2_3oddr"]
 [ext_resource type="PackedScene" uid="uid://dcuhx8lvw2h2c" path="res://Puzzle Components/Exit Door/Exit_Door.tscn" id="2_ig4b8"]
-[ext_resource type="PackedScene" uid="uid://bcqvvf88xlpis" path="res://Characters/Players/Player 2/player_2.tscn" id="2_x6skj"]
-[ext_resource type="Shader" path="res://Characters/Players/damage_flash.gdshader" id="3_j7tme"]
+[ext_resource type="PackedScene" uid="uid://bco5ytke8irak" path="res://Characters/Players/Player 2/player_2.tscn" id="2_x6skj"]
 [ext_resource type="PackedScene" uid="uid://da1c0fs0p4kxp" path="res://Characters/Players/Player 1/player_1.tscn" id="3_ltlvf"]
 [ext_resource type="PackedScene" uid="uid://n5ussthq3va2" path="res://Creature/Golem/Golem2.tscn" id="6_pg5in"]
 [ext_resource type="PackedScene" uid="uid://c5k5ee1ild20f" path="res://Resources/ts_marker.tscn" id="7_33q51"]
@@ -54,15 +53,28 @@ size = Vector2(368, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_likxa"]
 size = Vector2(16, 80)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7lesh"]
+[sub_resource type="Shader" id="Shader_w0j00"]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color : source_color = vec4(1.0);
+uniform float flash_modifier : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE,UV);
+	color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+	COLOR = color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fq1n"]
 resource_local_to_scene = true
-shader = ExtResource("3_j7tme")
+shader = SubResource("Shader_w0j00")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebiy7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jr8oh"]
 resource_local_to_scene = true
-shader = ExtResource("3_j7tme")
+shader = SubResource("Shader_w0j00")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
@@ -177,11 +189,11 @@ position = Vector2(664, -152)
 shape = SubResource("RectangleShape2D_likxa")
 
 [node name="Player 2" parent="." instance=ExtResource("2_x6skj")]
-material = SubResource("ShaderMaterial_7lesh")
+material = SubResource("ShaderMaterial_0fq1n")
 position = Vector2(15, -8)
 
 [node name="Player 1" parent="." instance=ExtResource("3_ltlvf")]
-material = SubResource("ShaderMaterial_ebiy7")
+material = SubResource("ShaderMaterial_jr8oh")
 position = Vector2(-15, -8)
 
 [node name="Golem" parent="." instance=ExtResource("6_pg5in")]
